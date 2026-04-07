@@ -8,11 +8,11 @@ description: >-
 type: Index
 image: https://kinlane-productions.s3.amazonaws.com/apis-json/apis-json-logo.jpg
 tags:
+  - Autonomous Vehicles
+  - AWS
   - Machine Learning
   - Reinforcement Learning
-  - Autonomous Vehicles
   - Robotics
-  - AWS
 url: >-
   https://raw.githubusercontent.com/api-evangelist/amazon-deepracer/refs/heads/main/apis.yml
 created: '2026-03-16'
@@ -28,9 +28,9 @@ apis:
     humanURL: https://aws.amazon.com/deepracer/
     baseURL: https://deepracer.amazonaws.com
     tags:
+      - Autonomous Racing
       - Machine Learning
       - Reinforcement Learning
-      - Autonomous Racing
     properties:
       - type: Documentation
         url: https://docs.aws.amazon.com/deepracer/latest/developerguide/deepracer-understand-api.html
