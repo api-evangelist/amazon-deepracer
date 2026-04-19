@@ -1,0 +1,173 @@
+rules:
+  info-title-prefix:
+    description: API title must reference "DeepRacer"
+    severity: warn
+    given: "$.info.title"
+    then:
+      function: pattern
+      functionOptions:
+        match: "DeepRacer"
+
+  info-description-required:
+    description: Info object must have a description
+    severity: error
+    given: "$.info"
+    then:
+      field: description
+      function: truthy
+
+  info-version-required:
+    description: Info object must have a version
+    severity: error
+    given: "$.info"
+    then:
+      field: version
+      function: truthy
+
+  openapi-version-3x:
+    description: Must use OpenAPI 3.x
+    severity: error
+    given: "$"
+    then:
+      field: openapi
+      function: pattern
+      functionOptions:
+        match: "^3\\."
+
+  servers-defined:
+    description: Servers array must be defined
+    severity: error
+    given: "$"
+    then:
+      field: servers
+      function: truthy
+
+  servers-https-only:
+    description: All server URLs must use HTTPS
+    severity: error
+    given: "$.servers[*].url"
+    then:
+      function: pattern
+      functionOptions:
+        match: "^https://"
+
+  paths-versioned:
+    description: DeepRacer API paths should include API version date prefix
+    severity: warn
+    given: "$.paths[*]~"
+    then:
+      function: pattern
+      functionOptions:
+        match: "^/20201101/"
+
+  operation-summary-required:
+    description: All operations must have a summary
+    severity: error
+    given: "$.paths[*][get,post,put,patch,delete]"
+    then:
+      field: summary
+      function: truthy
+
+  operation-description-required:
+    description: All operations must have a description
+    severity: error
+    given: "$.paths[*][get,post,put,patch,delete]"
+    then:
+      field: description
+      function: truthy
+
+  operation-id-required:
+    description: All operations must have an operationId
+    severity: error
+    given: "$.paths[*][get,post,put,patch,delete]"
+    then:
+      field: operationId
+      function: truthy
+
+  operation-id-camel-case:
+    description: OperationId must use camelCase
+    severity: warn
+    given: "$.paths[*][get,post,put,patch,delete].operationId"
+    then:
+      function: pattern
+      functionOptions:
+        match: "^[a-z][a-zA-Z0-9]+$"
+
+  operation-tags-required:
+    description: All operations must have tags
+    severity: error
+    given: "$.paths[*][get,post,put,patch,delete]"
+    then:
+      field: tags
+      function: truthy
+
+  tags-defined:
+    description: Tags array should be defined globally
+    severity: warn
+    given: "$"
+    then:
+      field: tags
+      function: truthy
+
+  response-success-required:
+    description: All operations must have at least one 2xx response
+    severity: error
+    given: "$.paths[*][get,post,put,patch,delete].responses"
+    then:
+      function: schema
+      functionOptions:
+        schema:
+          anyOf:
+            - required: ["200"]
+            - required: ["201"]
+            - required: ["204"]
+
+  response-description-required:
+    description: All responses must have a description
+    severity: error
+    given: "$.paths[*][*].responses[*]"
+    then:
+      field: description
+      function: truthy
+
+  schema-description-required:
+    description: Top-level schemas should have a description
+    severity: warn
+    given: "$.components.schemas[*]"
+    then:
+      field: description
+      function: truthy
+
+  security-schemes-defined:
+    description: Security schemes must be defined
+    severity: error
+    given: "$.components"
+    then:
+      field: securitySchemes
+      function: truthy
+
+  no-empty-descriptions:
+    description: Descriptions must not be empty strings
+    severity: error
+    given: "$..description"
+    then:
+      function: pattern
+      functionOptions:
+        match: ".+"
+
+  list-has-pagination:
+    description: List operations should return nextToken for pagination
+    severity: info
+    given: "$.paths[*][get].responses.200.content.application/json.schema.properties"
+    then:
+      field: nextToken
+      function: truthy
+
+  arn-paths-use-arn-param:
+    description: DeepRacer resource paths with ARN parameters should use {arn} or named ARN path params
+    severity: info
+    given: "$.paths[*]~"
+    then:
+      function: pattern
+      functionOptions:
+        match: "^/20201101/(cars|models|leaderboards|tracks)(/(\\{[a-zA-Z]+\\}|[a-zA-Z0-9_-]+))?"

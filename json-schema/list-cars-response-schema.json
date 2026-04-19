@@ -1,0 +1,20 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://api-evangelist.github.io/amazon-deepracer/json-schema/list-cars-response-schema.json",
+  "title": "ListCarsResponse",
+  "description": "Response containing a list of DeepRacer vehicles.",
+  "type": "object",
+  "properties": {
+    "cars": {
+      "type": "array",
+      "description": "List of DeepRacer vehicles.",
+      "items": {
+        "type": "object"
+      }
+    },
+    "nextToken": {
+      "type": "string",
+      "description": "Token for retrieving the next page of results."
+    }
+  }
+}

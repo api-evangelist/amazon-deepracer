@@ -1,0 +1,17 @@
+{
+  "$schema": "https://json-structure.org/meta/core/v0/#",
+  "$id": "https://api-evangelist.github.io/amazon-deepracer/json-structure/list-leaderboard-submissions-response-structure.json",
+  "title": "ListLeaderboardSubmissionsResponse",
+  "description": "Response containing leaderboard rankings and submissions.",
+  "type": "typedMap",
+  "fields": {
+    "leaderboardSubmissions": {
+      "type": "list",
+      "description": "List of participant submissions."
+    },
+    "nextToken": {
+      "type": "str",
+      "description": "Token for retrieving the next page of results."
+    }
+  }
+}

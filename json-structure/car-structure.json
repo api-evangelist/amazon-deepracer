@@ -1,0 +1,33 @@
+{
+  "$schema": "https://json-structure.org/meta/core/v0/#",
+  "$id": "https://api-evangelist.github.io/amazon-deepracer/json-structure/car-structure.json",
+  "title": "Car",
+  "description": "A physical DeepRacer vehicle registered to an AWS account.",
+  "type": "typedMap",
+  "fields": {
+    "vehicleArn": {
+      "type": "str",
+      "description": "The ARN uniquely identifying the DeepRacer vehicle."
+    },
+    "vehicleName": {
+      "type": "str",
+      "description": "The display name of the vehicle."
+    },
+    "fleetArn": {
+      "type": "str",
+      "description": "The ARN of the fleet this vehicle belongs to."
+    },
+    "createdAt": {
+      "type": "str",
+      "description": "Timestamp when the vehicle was registered."
+    },
+    "lastModifiedTime": {
+      "type": "str",
+      "description": "Timestamp when the vehicle was last updated."
+    },
+    "tagsList": {
+      "type": "list",
+      "description": "Tags associated with the vehicle."
+    }
+  }
+}

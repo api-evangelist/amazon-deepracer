@@ -1,0 +1,25 @@
+{
+  "$schema": "https://json-structure.org/meta/core/v0/#",
+  "$id": "https://api-evangelist.github.io/amazon-deepracer/json-structure/track-structure.json",
+  "title": "Track",
+  "description": "A virtual or physical racing track used for DeepRacer training and evaluation.",
+  "type": "typedMap",
+  "fields": {
+    "arn": {
+      "type": "str",
+      "description": "The ARN uniquely identifying the racing track."
+    },
+    "name": {
+      "type": "str",
+      "description": "The display name of the track."
+    },
+    "trackType": {
+      "type": "str",
+      "description": "The classification type of the track."
+    },
+    "trackDimension": {
+      "type": "str",
+      "description": "The size category of the track."
+    }
+  }
+}

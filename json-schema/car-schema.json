@@ -1,0 +1,38 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://api-evangelist.github.io/amazon-deepracer/json-schema/car-schema.json",
+  "title": "Car",
+  "description": "A physical DeepRacer vehicle registered to an AWS account.",
+  "type": "object",
+  "properties": {
+    "vehicleArn": {
+      "type": "string",
+      "description": "The ARN uniquely identifying the DeepRacer vehicle."
+    },
+    "vehicleName": {
+      "type": "string",
+      "description": "The display name of the vehicle."
+    },
+    "fleetArn": {
+      "type": "string",
+      "description": "The ARN of the fleet this vehicle belongs to."
+    },
+    "createdAt": {
+      "type": "string",
+      "format": "date-time",
+      "description": "Timestamp when the vehicle was registered."
+    },
+    "lastModifiedTime": {
+      "type": "string",
+      "format": "date-time",
+      "description": "Timestamp when the vehicle was last updated."
+    },
+    "tagsList": {
+      "type": "array",
+      "description": "Tags associated with the vehicle.",
+      "items": {
+        "type": "object"
+      }
+    }
+  }
+}

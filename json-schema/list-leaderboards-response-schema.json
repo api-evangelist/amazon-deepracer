@@ -1,0 +1,20 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://api-evangelist.github.io/amazon-deepracer/json-schema/list-leaderboards-response-schema.json",
+  "title": "ListLeaderboardsResponse",
+  "description": "Response containing a list of DeepRacer leaderboards.",
+  "type": "object",
+  "properties": {
+    "leaderboards": {
+      "type": "array",
+      "description": "List of leaderboards.",
+      "items": {
+        "type": "object"
+      }
+    },
+    "nextToken": {
+      "type": "string",
+      "description": "Token for retrieving the next page of results."
+    }
+  }
+}

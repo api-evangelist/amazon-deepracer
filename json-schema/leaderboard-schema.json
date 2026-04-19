@@ -1,0 +1,42 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://api-evangelist.github.io/amazon-deepracer/json-schema/leaderboard-schema.json",
+  "title": "Leaderboard",
+  "description": "A DeepRacer racing leaderboard where participants submit model performances.",
+  "type": "object",
+  "properties": {
+    "arn": {
+      "type": "string",
+      "description": "The ARN uniquely identifying the leaderboard."
+    },
+    "name": {
+      "type": "string",
+      "description": "The display name of the leaderboard."
+    },
+    "status": {
+      "type": "string",
+      "description": "Current status.",
+      "enum": [
+        "ACTIVE",
+        "EXPIRED"
+      ]
+    },
+    "submissionClosureTime": {
+      "type": "string",
+      "format": "date-time",
+      "description": "Timestamp when submissions close."
+    },
+    "isQualifier": {
+      "type": "boolean",
+      "description": "Whether this leaderboard qualifies participants for championship events."
+    },
+    "trackType": {
+      "type": "string",
+      "description": "The type of track used for this leaderboard."
+    },
+    "minimumCountOfLaps": {
+      "type": "integer",
+      "description": "Minimum number of consecutive laps required."
+    }
+  }
+}

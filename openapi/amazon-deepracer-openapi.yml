@@ -1,0 +1,717 @@
+openapi: 3.1.0
+info:
+  title: Amazon DeepRacer API
+  description: >-
+    The Amazon DeepRacer API provides programmatic access to manage DeepRacer
+    vehicles, reinforcement learning models, leaderboards, and training tracks for
+    autonomous racing experiences on AWS. Resources are versioned under /20201101/.
+  version: 2020-11-01
+  contact:
+    name: Amazon Web Services
+    url: https://aws.amazon.com/deepracer/
+  termsOfService: https://aws.amazon.com/service-terms/
+  license:
+    name: Apache 2.0
+    url: https://www.apache.org/licenses/LICENSE-2.0
+
+servers:
+  - url: https://deepracer.amazonaws.com
+    description: Amazon DeepRacer API
+
+security:
+  - awsSignatureV4: []
+
+tags:
+  - name: Cars
+    description: Manage DeepRacer physical vehicles and their configurations
+  - name: Models
+    description: Manage reinforcement learning models for autonomous racing
+  - name: Leaderboards
+    description: Manage racing leaderboards and submissions
+  - name: Tracks
+    description: Manage virtual and physical racing tracks
+
+paths:
+  /20201101/cars:
+    get:
+      operationId: listCars
+      summary: List Cars
+      description: List all DeepRacer vehicles associated with the account.
+      tags:
+        - Cars
+      parameters:
+        - name: nextToken
+          in: query
+          description: Pagination token from a previous list response.
+          required: false
+          schema:
+            type: string
+        - name: maxResults
+          in: query
+          description: Maximum number of cars to return.
+          required: false
+          schema:
+            type: integer
+            minimum: 1
+            maximum: 100
+      responses:
+        '200':
+          description: List of DeepRacer vehicles retrieved successfully.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ListCarsResponse'
+              example:
+                cars:
+                  - vehicleArn: arn:aws:deepracer:us-east-1:123456789012:car/MyDeepRacer
+                    vehicleName: MyDeepRacer
+                    createdAt: '2024-01-15T10:00:00Z'
+                    lastModifiedTime: '2024-01-15T10:00:00Z'
+                    tagsList: []
+                nextToken: null
+                x-microcks-default: true
+        '400':
+          description: Bad request — invalid parameters.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+        '500':
+          description: Internal server error.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+
+  /20201101/cars/{arn}:
+    get:
+      operationId: getCar
+      summary: Get Car
+      description: Retrieve the configuration and metadata for a specific DeepRacer vehicle.
+      tags:
+        - Cars
+      parameters:
+        - name: arn
+          in: path
+          description: The ARN of the DeepRacer vehicle.
+          required: true
+          schema:
+            type: string
+      responses:
+        '200':
+          description: DeepRacer vehicle details retrieved successfully.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Car'
+              example:
+                vehicleArn: arn:aws:deepracer:us-east-1:123456789012:car/MyDeepRacer
+                vehicleName: MyDeepRacer
+                fleetArn: arn:aws:deepracer:us-east-1:123456789012:fleet/MyFleet
+                createdAt: '2024-01-15T10:00:00Z'
+                lastModifiedTime: '2024-01-20T08:30:00Z'
+                tagsList: []
+                x-microcks-default: true
+        '404':
+          description: DeepRacer vehicle not found.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+        '500':
+          description: Internal server error.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+    patch:
+      operationId: updateCar
+      summary: Update Car
+      description: Update the name or configuration of a DeepRacer vehicle.
+      tags:
+        - Cars
+      parameters:
+        - name: arn
+          in: path
+          description: The ARN of the DeepRacer vehicle.
+          required: true
+          schema:
+            type: string
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/UpdateCarRequest'
+            example:
+              vehicleName: UpdatedDeepRacer
+              x-microcks-default: true
+      responses:
+        '200':
+          description: DeepRacer vehicle updated successfully.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/UpdateCarResponse'
+              example:
+                vehicleArn: arn:aws:deepracer:us-east-1:123456789012:car/MyDeepRacer
+                x-microcks-default: true
+        '400':
+          description: Bad request — invalid update parameters.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+        '404':
+          description: DeepRacer vehicle not found.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+
+  /20201101/models:
+    get:
+      operationId: listModels
+      summary: List Models
+      description: List reinforcement learning models available for DeepRacer racing.
+      tags:
+        - Models
+      parameters:
+        - name: nextToken
+          in: query
+          description: Pagination token from a previous list response.
+          required: false
+          schema:
+            type: string
+        - name: maxResults
+          in: query
+          description: Maximum number of models to return.
+          required: false
+          schema:
+            type: integer
+            minimum: 1
+            maximum: 100
+      responses:
+        '200':
+          description: List of reinforcement learning models retrieved successfully.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ListModelsResponse'
+              example:
+                models:
+                  - modelArn: arn:aws:deepracer:us-east-1:123456789012:model/reinforcement_learning/MyModel
+                    modelName: MyModel
+                    creationTime: '2024-01-10T09:00:00Z'
+                    lastModifiedTime: '2024-01-12T14:00:00Z'
+                    modelStatus: READY
+                    trainingJobArn: arn:aws:sagemaker:us-east-1:123456789012:training-job/deepracer-job-123
+                nextToken: null
+                x-microcks-default: true
+        '400':
+          description: Bad request — invalid parameters.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+        '500':
+          description: Internal server error.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+
+  /20201101/models/{modelArn}:
+    get:
+      operationId: getModel
+      summary: Get Model
+      description: Retrieve the details and training status of a specific reinforcement learning model.
+      tags:
+        - Models
+      parameters:
+        - name: modelArn
+          in: path
+          description: The ARN of the reinforcement learning model.
+          required: true
+          schema:
+            type: string
+      responses:
+        '200':
+          description: Reinforcement learning model details retrieved successfully.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Model'
+              example:
+                modelArn: arn:aws:deepracer:us-east-1:123456789012:model/reinforcement_learning/MyModel
+                modelName: MyModel
+                creationTime: '2024-01-10T09:00:00Z'
+                lastModifiedTime: '2024-01-12T14:00:00Z'
+                modelStatus: READY
+                trainingJobArn: arn:aws:sagemaker:us-east-1:123456789012:training-job/deepracer-job-123
+                rewardFunction: >-
+                  def reward_function(params):\n    return float(params["progress"])
+                x-microcks-default: true
+        '404':
+          description: Model not found.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+    delete:
+      operationId: deleteModel
+      summary: Delete Model
+      description: Delete a reinforcement learning model from DeepRacer.
+      tags:
+        - Models
+      parameters:
+        - name: modelArn
+          in: path
+          description: The ARN of the model to delete.
+          required: true
+          schema:
+            type: string
+      responses:
+        '200':
+          description: Model deleted successfully.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/DeleteModelResponse'
+              example:
+                modelArn: arn:aws:deepracer:us-east-1:123456789012:model/reinforcement_learning/MyModel
+                x-microcks-default: true
+        '404':
+          description: Model not found.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+
+  /20201101/leaderboards:
+    get:
+      operationId: listLeaderboards
+      summary: List Leaderboards
+      description: List all active and past DeepRacer racing leaderboards.
+      tags:
+        - Leaderboards
+      parameters:
+        - name: nextToken
+          in: query
+          description: Pagination token from a previous list response.
+          required: false
+          schema:
+            type: string
+        - name: maxResults
+          in: query
+          description: Maximum number of leaderboards to return.
+          required: false
+          schema:
+            type: integer
+            minimum: 1
+            maximum: 100
+        - name: status
+          in: query
+          description: Filter leaderboards by status (ACTIVE, EXPIRED).
+          required: false
+          schema:
+            type: string
+            enum: [ACTIVE, EXPIRED]
+      responses:
+        '200':
+          description: List of leaderboards retrieved successfully.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ListLeaderboardsResponse'
+              example:
+                leaderboards:
+                  - arn: arn:aws:deepracer:us-east-1:123456789012:leaderboard/deepracer-league-2024
+                    name: DeepRacer League 2024
+                    status: ACTIVE
+                    submissionClosureTime: '2024-12-31T23:59:59Z'
+                    isQualifier: true
+                nextToken: null
+                x-microcks-default: true
+        '400':
+          description: Bad request — invalid parameters.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+
+  /20201101/leaderboards/{arn}:
+    get:
+      operationId: getLeaderboard
+      summary: Get Leaderboard
+      description: Retrieve the details and current rankings for a specific leaderboard.
+      tags:
+        - Leaderboards
+      parameters:
+        - name: arn
+          in: path
+          description: The ARN of the leaderboard.
+          required: true
+          schema:
+            type: string
+      responses:
+        '200':
+          description: Leaderboard details retrieved successfully.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Leaderboard'
+              example:
+                arn: arn:aws:deepracer:us-east-1:123456789012:leaderboard/deepracer-league-2024
+                name: DeepRacer League 2024
+                status: ACTIVE
+                submissionClosureTime: '2024-12-31T23:59:59Z'
+                isQualifier: true
+                trackType: REINVENT_2018
+                minimumCountOfLaps: 1
+                x-microcks-default: true
+        '404':
+          description: Leaderboard not found.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+
+  /20201101/leaderboards/{arn}/rankings:
+    get:
+      operationId: listLeaderboardSubmissions
+      summary: List Leaderboard Submissions
+      description: List submissions and rankings for a specific leaderboard.
+      tags:
+        - Leaderboards
+      parameters:
+        - name: arn
+          in: path
+          description: The ARN of the leaderboard.
+          required: true
+          schema:
+            type: string
+        - name: nextToken
+          in: query
+          description: Pagination token from a previous list response.
+          required: false
+          schema:
+            type: string
+        - name: maxResults
+          in: query
+          description: Maximum number of submissions to return.
+          required: false
+          schema:
+            type: integer
+      responses:
+        '200':
+          description: Leaderboard submissions and rankings retrieved successfully.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ListLeaderboardSubmissionsResponse'
+              example:
+                leaderboardSubmissions:
+                  - leaderboardSubmissionId: submission-abc123
+                    participantName: racer-001
+                    modelArn: arn:aws:deepracer:us-east-1:123456789012:model/reinforcement_learning/SpeedModel
+                    rank: 1
+                    lapTime: 8.543
+                    avgLapTime: 8.721
+                nextToken: null
+                x-microcks-default: true
+        '404':
+          description: Leaderboard not found.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+
+  /20201101/tracks:
+    get:
+      operationId: listTracks
+      summary: List Tracks
+      description: List all available DeepRacer racing tracks for training and evaluation.
+      tags:
+        - Tracks
+      parameters:
+        - name: nextToken
+          in: query
+          description: Pagination token from a previous list response.
+          required: false
+          schema:
+            type: string
+        - name: maxResults
+          in: query
+          description: Maximum number of tracks to return.
+          required: false
+          schema:
+            type: integer
+      responses:
+        '200':
+          description: List of available racing tracks retrieved successfully.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ListTracksResponse'
+              example:
+                tracks:
+                  - arn: arn:aws:deepracer:us-east-1::track/London_Loop_2019
+                    name: London Loop 2019
+                    trackType: REINVENT_2018
+                    trackDimension: REGULAR
+                nextToken: null
+                x-microcks-default: true
+        '400':
+          description: Bad request — invalid parameters.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+
+components:
+  securitySchemes:
+    awsSignatureV4:
+      type: apiKey
+      in: header
+      name: Authorization
+      description: AWS Signature Version 4 authentication. Sign requests using your AWS access key, secret key, and session token.
+
+  schemas:
+    Car:
+      type: object
+      description: A physical DeepRacer vehicle registered to an AWS account.
+      properties:
+        vehicleArn:
+          type: string
+          description: The ARN uniquely identifying the DeepRacer vehicle.
+        vehicleName:
+          type: string
+          description: The display name of the vehicle.
+        fleetArn:
+          type: string
+          description: The ARN of the fleet this vehicle belongs to, if any.
+        createdAt:
+          type: string
+          format: date-time
+          description: Timestamp when the vehicle was registered.
+        lastModifiedTime:
+          type: string
+          format: date-time
+          description: Timestamp when the vehicle was last updated.
+        tagsList:
+          type: array
+          description: Tags associated with the vehicle.
+          items:
+            $ref: '#/components/schemas/Tag'
+
+    ListCarsResponse:
+      type: object
+      description: Response containing a list of DeepRacer vehicles.
+      properties:
+        cars:
+          type: array
+          description: List of DeepRacer vehicles.
+          items:
+            $ref: '#/components/schemas/Car'
+        nextToken:
+          type: string
+          description: Token for retrieving the next page of results.
+
+    UpdateCarRequest:
+      type: object
+      description: Request body for updating a DeepRacer vehicle.
+      properties:
+        vehicleName:
+          type: string
+          description: New display name for the vehicle.
+
+    UpdateCarResponse:
+      type: object
+      description: Response confirming the vehicle update.
+      properties:
+        vehicleArn:
+          type: string
+          description: The ARN of the updated vehicle.
+
+    Model:
+      type: object
+      description: A reinforcement learning model trained for DeepRacer autonomous racing.
+      properties:
+        modelArn:
+          type: string
+          description: The ARN uniquely identifying the reinforcement learning model.
+        modelName:
+          type: string
+          description: The display name of the model.
+        creationTime:
+          type: string
+          format: date-time
+          description: Timestamp when the model was created.
+        lastModifiedTime:
+          type: string
+          format: date-time
+          description: Timestamp when the model was last updated.
+        modelStatus:
+          type: string
+          description: Current status of the model (TRAINING, READY, FAILED, STOPPED).
+          enum: [TRAINING, READY, FAILED, STOPPED]
+        trainingJobArn:
+          type: string
+          description: The ARN of the SageMaker training job that produced this model.
+        rewardFunction:
+          type: string
+          description: The Python reward function code used during model training.
+
+    ListModelsResponse:
+      type: object
+      description: Response containing a list of reinforcement learning models.
+      properties:
+        models:
+          type: array
+          description: List of reinforcement learning models.
+          items:
+            $ref: '#/components/schemas/Model'
+        nextToken:
+          type: string
+          description: Token for retrieving the next page of results.
+
+    DeleteModelResponse:
+      type: object
+      description: Response confirming the model deletion.
+      properties:
+        modelArn:
+          type: string
+          description: The ARN of the deleted model.
+
+    Leaderboard:
+      type: object
+      description: A DeepRacer racing leaderboard where participants submit model performances.
+      properties:
+        arn:
+          type: string
+          description: The ARN uniquely identifying the leaderboard.
+        name:
+          type: string
+          description: The display name of the leaderboard.
+        status:
+          type: string
+          description: Current status of the leaderboard (ACTIVE or EXPIRED).
+          enum: [ACTIVE, EXPIRED]
+        submissionClosureTime:
+          type: string
+          format: date-time
+          description: Timestamp when the leaderboard stops accepting new submissions.
+        isQualifier:
+          type: boolean
+          description: Whether this leaderboard qualifies participants for championship events.
+        trackType:
+          type: string
+          description: The type of track used for this leaderboard.
+        minimumCountOfLaps:
+          type: integer
+          description: Minimum number of consecutive laps required for a valid submission.
+
+    ListLeaderboardsResponse:
+      type: object
+      description: Response containing a list of DeepRacer leaderboards.
+      properties:
+        leaderboards:
+          type: array
+          description: List of leaderboards.
+          items:
+            $ref: '#/components/schemas/Leaderboard'
+        nextToken:
+          type: string
+          description: Token for retrieving the next page of results.
+
+    LeaderboardSubmission:
+      type: object
+      description: A participant's submission to a DeepRacer leaderboard including their race performance.
+      properties:
+        leaderboardSubmissionId:
+          type: string
+          description: Unique identifier for this leaderboard submission.
+        participantName:
+          type: string
+          description: The participant's alias or username.
+        modelArn:
+          type: string
+          description: The ARN of the model submitted for evaluation.
+        rank:
+          type: integer
+          description: The participant's current rank on the leaderboard.
+        lapTime:
+          type: number
+          format: double
+          description: The participant's best single lap time in seconds.
+        avgLapTime:
+          type: number
+          format: double
+          description: The participant's average lap time across all evaluated laps.
+
+    ListLeaderboardSubmissionsResponse:
+      type: object
+      description: Response containing leaderboard rankings and submissions.
+      properties:
+        leaderboardSubmissions:
+          type: array
+          description: List of participant submissions and rankings.
+          items:
+            $ref: '#/components/schemas/LeaderboardSubmission'
+        nextToken:
+          type: string
+          description: Token for retrieving the next page of results.
+
+    Track:
+      type: object
+      description: A virtual or physical racing track used for DeepRacer training and evaluation.
+      properties:
+        arn:
+          type: string
+          description: The ARN uniquely identifying the racing track.
+        name:
+          type: string
+          description: The display name of the track.
+        trackType:
+          type: string
+          description: The classification type of the track (e.g., REINVENT_2018, CHAMPIONSHIP).
+        trackDimension:
+          type: string
+          description: The size category of the track (REGULAR, WIDE).
+          enum: [REGULAR, WIDE]
+
+    ListTracksResponse:
+      type: object
+      description: Response containing a list of available racing tracks.
+      properties:
+        tracks:
+          type: array
+          description: List of racing tracks.
+          items:
+            $ref: '#/components/schemas/Track'
+        nextToken:
+          type: string
+          description: Token for retrieving the next page of results.
+
+    Tag:
+      type: object
+      description: A key-value tag for organizing and categorizing DeepRacer resources.
+      properties:
+        key:
+          type: string
+          description: The tag key.
+        value:
+          type: string
+          description: The tag value.
+
+    Error:
+      type: object
+      description: Error response returned when an API request fails.
+      properties:
+        message:
+          type: string
+          description: A human-readable description of the error.
+        code:
+          type: string
+          description: An error code identifying the type of failure.

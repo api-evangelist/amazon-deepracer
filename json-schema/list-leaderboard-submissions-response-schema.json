@@ -1,0 +1,20 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://api-evangelist.github.io/amazon-deepracer/json-schema/list-leaderboard-submissions-response-schema.json",
+  "title": "ListLeaderboardSubmissionsResponse",
+  "description": "Response containing leaderboard rankings and submissions.",
+  "type": "object",
+  "properties": {
+    "leaderboardSubmissions": {
+      "type": "array",
+      "description": "List of participant submissions.",
+      "items": {
+        "type": "object"
+      }
+    },
+    "nextToken": {
+      "type": "string",
+      "description": "Token for retrieving the next page of results."
+    }
+  }
+}

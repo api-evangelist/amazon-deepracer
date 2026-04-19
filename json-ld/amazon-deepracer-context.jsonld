@@ -1,0 +1,49 @@
+{
+  "@context": {
+    "@version": 1.1,
+    "aws": "https://aws.amazon.com/deepracer/",
+    "schema": "https://schema.org/",
+    "xsd": "http://www.w3.org/2001/XMLSchema#",
+
+    "Car": {"@id": "aws:Car"},
+    "Model": {"@id": "aws:ReinforcementLearningModel"},
+    "Leaderboard": {"@id": "aws:Leaderboard"},
+    "LeaderboardSubmission": {"@id": "aws:LeaderboardSubmission"},
+    "Track": {"@id": "aws:RacingTrack"},
+
+    "vehicleArn": {"@id": "aws:vehicleArn", "@type": "xsd:string"},
+    "vehicleName": {"@id": "schema:name", "@type": "xsd:string"},
+    "fleetArn": {"@id": "aws:fleetArn", "@type": "xsd:string"},
+    "modelArn": {"@id": "aws:modelArn", "@type": "xsd:string"},
+    "modelName": {"@id": "schema:name", "@type": "xsd:string"},
+    "modelStatus": {"@id": "aws:modelStatus", "@type": "xsd:string"},
+    "trainingJobArn": {"@id": "aws:trainingJobArn", "@type": "xsd:string"},
+    "rewardFunction": {"@id": "aws:rewardFunction", "@type": "xsd:string"},
+    "leaderboardSubmissionId": {"@id": "aws:leaderboardSubmissionId", "@type": "xsd:string"},
+    "participantName": {"@id": "schema:name", "@type": "xsd:string"},
+    "rank": {"@id": "schema:position", "@type": "xsd:integer"},
+    "lapTime": {"@id": "aws:lapTime", "@type": "xsd:double"},
+    "avgLapTime": {"@id": "aws:avgLapTime", "@type": "xsd:double"},
+    "trackType": {"@id": "aws:trackType", "@type": "xsd:string"},
+    "trackDimension": {"@id": "aws:trackDimension", "@type": "xsd:string"},
+    "status": {"@id": "aws:status", "@type": "xsd:string"},
+    "isQualifier": {"@id": "aws:isQualifier", "@type": "xsd:boolean"},
+    "minimumCountOfLaps": {"@id": "aws:minimumCountOfLaps", "@type": "xsd:integer"},
+    "submissionClosureTime": {"@id": "aws:submissionClosureTime", "@type": "xsd:dateTime"},
+    "tagsList": {"@id": "aws:tagsList", "@container": "@set"},
+
+    "cars": {"@id": "aws:cars", "@container": "@set"},
+    "models": {"@id": "aws:models", "@container": "@set"},
+    "leaderboards": {"@id": "aws:leaderboards", "@container": "@set"},
+    "leaderboardSubmissions": {"@id": "aws:leaderboardSubmissions", "@container": "@set"},
+    "tracks": {"@id": "aws:tracks", "@container": "@set"},
+    "nextToken": {"@id": "aws:nextToken", "@type": "xsd:string"},
+
+    "createdAt": {"@id": "schema:dateCreated", "@type": "xsd:dateTime"},
+    "lastModifiedTime": {"@id": "schema:dateModified", "@type": "xsd:dateTime"},
+    "creationTime": {"@id": "schema:dateCreated", "@type": "xsd:dateTime"},
+
+    "message": {"@id": "schema:description", "@type": "xsd:string"},
+    "code": {"@id": "aws:errorCode", "@type": "xsd:string"}
+  }
+}

@@ -1,0 +1,17 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://api-evangelist.github.io/amazon-deepracer/json-schema/error-schema.json",
+  "title": "Error",
+  "description": "Error response returned when an API request fails.",
+  "type": "object",
+  "properties": {
+    "message": {
+      "type": "string",
+      "description": "A human-readable description of the error."
+    },
+    "code": {
+      "type": "string",
+      "description": "An error code identifying the type of failure."
+    }
+  }
+}

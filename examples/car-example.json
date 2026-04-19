@@ -1,0 +1,8 @@
+{
+  "vehicleArn": "arn:aws:deepracer:us-east-1:123456789012:car/MyDeepRacer",
+  "vehicleName": "MyDeepRacer",
+  "fleetArn": "arn:aws:deepracer:us-east-1:123456789012:fleet/MyFleet",
+  "createdAt": "2024-01-15T10:00:00Z",
+  "lastModifiedTime": "2024-01-20T08:30:00Z",
+  "tagsList": []
+}

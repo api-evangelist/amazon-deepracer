@@ -1,0 +1,17 @@
+{
+  "$schema": "https://json-structure.org/meta/core/v0/#",
+  "$id": "https://api-evangelist.github.io/amazon-deepracer/json-structure/list-models-response-structure.json",
+  "title": "ListModelsResponse",
+  "description": "Response containing a list of reinforcement learning models.",
+  "type": "typedMap",
+  "fields": {
+    "models": {
+      "type": "list",
+      "description": "List of reinforcement learning models."
+    },
+    "nextToken": {
+      "type": "str",
+      "description": "Token for retrieving the next page of results."
+    }
+  }
+}

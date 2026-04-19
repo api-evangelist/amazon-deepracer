@@ -1,0 +1,17 @@
+{
+  "$schema": "https://json-structure.org/meta/core/v0/#",
+  "$id": "https://api-evangelist.github.io/amazon-deepracer/json-structure/error-structure.json",
+  "title": "Error",
+  "description": "Error response returned when an API request fails.",
+  "type": "typedMap",
+  "fields": {
+    "message": {
+      "type": "str",
+      "description": "A human-readable description of the error."
+    },
+    "code": {
+      "type": "str",
+      "description": "An error code identifying the type of failure."
+    }
+  }
+}

@@ -1,0 +1,33 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://api-evangelist.github.io/amazon-deepracer/json-schema/leaderboard-submission-schema.json",
+  "title": "LeaderboardSubmission",
+  "description": "A participant's submission to a DeepRacer leaderboard including race performance.",
+  "type": "object",
+  "properties": {
+    "leaderboardSubmissionId": {
+      "type": "string",
+      "description": "Unique identifier for this submission."
+    },
+    "participantName": {
+      "type": "string",
+      "description": "The participant's alias or username."
+    },
+    "modelArn": {
+      "type": "string",
+      "description": "The ARN of the model submitted for evaluation."
+    },
+    "rank": {
+      "type": "integer",
+      "description": "The participant's current rank on the leaderboard."
+    },
+    "lapTime": {
+      "type": "number",
+      "description": "The participant's best single lap time in seconds."
+    },
+    "avgLapTime": {
+      "type": "number",
+      "description": "The participant's average lap time."
+    }
+  }
+}

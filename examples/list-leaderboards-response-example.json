@@ -1,0 +1,10 @@
+{
+  "leaderboards": [
+    {
+      "arn": "arn:aws:deepracer:us-east-1:123456789012:leaderboard/deepracer-league-2024",
+      "name": "DeepRacer League 2024",
+      "status": "ACTIVE"
+    }
+  ],
+  "nextToken": null
+}

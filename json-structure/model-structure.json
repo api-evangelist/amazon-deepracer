@@ -1,0 +1,37 @@
+{
+  "$schema": "https://json-structure.org/meta/core/v0/#",
+  "$id": "https://api-evangelist.github.io/amazon-deepracer/json-structure/model-structure.json",
+  "title": "Model",
+  "description": "A reinforcement learning model trained for DeepRacer autonomous racing.",
+  "type": "typedMap",
+  "fields": {
+    "modelArn": {
+      "type": "str",
+      "description": "The ARN uniquely identifying the reinforcement learning model."
+    },
+    "modelName": {
+      "type": "str",
+      "description": "The display name of the model."
+    },
+    "creationTime": {
+      "type": "str",
+      "description": "Timestamp when the model was created."
+    },
+    "lastModifiedTime": {
+      "type": "str",
+      "description": "Timestamp when the model was last updated."
+    },
+    "modelStatus": {
+      "type": "str",
+      "description": "Current status of the model."
+    },
+    "trainingJobArn": {
+      "type": "str",
+      "description": "ARN of the SageMaker training job that produced this model."
+    },
+    "rewardFunction": {
+      "type": "str",
+      "description": "Python reward function code used during training."
+    }
+  }
+}

@@ -1,0 +1,10 @@
+{
+  "models": [
+    {
+      "modelArn": "arn:aws:deepracer:us-east-1:123456789012:model/reinforcement_learning/SpeedModel",
+      "modelName": "SpeedModel",
+      "modelStatus": "READY"
+    }
+  ],
+  "nextToken": null
+}

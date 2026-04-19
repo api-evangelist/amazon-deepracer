@@ -1,0 +1,90 @@
+id: https://api-evangelist.github.io/amazon-deepracer/capabilities/autonomous-racing-operations.yaml
+name: Autonomous Racing Operations
+description: Workflow-oriented Naftiko capability for autonomous racing management using Amazon DeepRacer, covering model deployment, leaderboard participation, vehicle configuration, and competitive racing for ML practitioners and racing enthusiasts.
+version: 1.0.0-alpha1
+specificationVersion: 1.0.0-alpha1
+
+tags:
+  - Machine Learning
+  - Reinforcement Learning
+  - Autonomous Racing
+  - Robotics
+  - AWS
+
+imports:
+  - url: capabilities/shared/deepracer.yaml
+    as: deepracer
+
+personas:
+  - name: ML Practitioner
+    description: Developer training and iterating on reinforcement learning models for autonomous racing
+  - name: Race Participant
+    description: Competitor submitting models to DeepRacer leaderboards and virtual racing events
+  - name: Event Organizer
+    description: Administrator managing DeepRacer racing events, leaderboards, and participant access
+
+workflows:
+  - name: Evaluate Model Performance
+    description: Review trained reinforcement learning models and their performance metrics before leaderboard submission
+    steps:
+      - step: listModels
+        capability: deepracer
+        description: List all available trained models
+      - step: getModel
+        capability: deepracer
+        description: Inspect model details and training status
+      - step: listTracks
+        capability: deepracer
+        description: Review available tracks for evaluation
+    persona: ML Practitioner
+
+  - name: Participate in Leaderboard
+    description: Find an active leaderboard, review current rankings, and monitor submission performance
+    steps:
+      - step: listLeaderboards
+        capability: deepracer
+        description: List available leaderboards and their submission deadlines
+      - step: getLeaderboard
+        capability: deepracer
+        description: Review leaderboard details and track requirements
+      - step: listLeaderboardSubmissions
+        capability: deepracer
+        description: Check current rankings and competitive landscape
+    persona: Race Participant
+
+  - name: Manage Racing Fleet
+    description: Register, configure, and maintain DeepRacer physical vehicles for an organization or event
+    steps:
+      - step: listCars
+        capability: deepracer
+        description: List all registered DeepRacer vehicles
+      - step: getCar
+        capability: deepracer
+        description: Review vehicle configuration and assignment
+      - step: updateCar
+        capability: deepracer
+        description: Update vehicle name or fleet assignment
+    persona: Event Organizer
+
+rest:
+  port: 8080
+  baseURL: https://deepracer.amazonaws.com
+  auth:
+    type: aws-signature-v4
+    service: deepracer
+
+mcp:
+  port: 9090
+  tools:
+    - name: evaluate_model_performance
+      description: Review trained reinforcement learning models and their performance before submission
+      workflow: Evaluate Model Performance
+    - name: participate_in_leaderboard
+      description: Find active leaderboards, review rankings, and monitor race submission performance
+      workflow: Participate in Leaderboard
+    - name: manage_racing_fleet
+      description: Register, configure, and maintain DeepRacer physical vehicles
+      workflow: Manage Racing Fleet
+    - name: list_models
+      description: List reinforcement learning models for DeepRacer
+      operationId: listModels

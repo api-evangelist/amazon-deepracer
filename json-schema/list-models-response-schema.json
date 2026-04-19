@@ -1,0 +1,20 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://api-evangelist.github.io/amazon-deepracer/json-schema/list-models-response-schema.json",
+  "title": "ListModelsResponse",
+  "description": "Response containing a list of reinforcement learning models.",
+  "type": "object",
+  "properties": {
+    "models": {
+      "type": "array",
+      "description": "List of reinforcement learning models.",
+      "items": {
+        "type": "object"
+      }
+    },
+    "nextToken": {
+      "type": "string",
+      "description": "Token for retrieving the next page of results."
+    }
+  }
+}

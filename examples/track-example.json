@@ -1,0 +1,6 @@
+{
+  "arn": "arn:aws:deepracer:us-east-1::track/London_Loop_2019",
+  "name": "London Loop 2019",
+  "trackType": "REINVENT_2018",
+  "trackDimension": "REGULAR"
+}

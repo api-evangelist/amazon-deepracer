@@ -1,0 +1,9 @@
+{
+  "arn": "arn:aws:deepracer:us-east-1:123456789012:leaderboard/deepracer-league-2024",
+  "name": "DeepRacer League 2024",
+  "status": "ACTIVE",
+  "submissionClosureTime": "2024-12-31T23:59:59Z",
+  "isQualifier": true,
+  "trackType": "REINVENT_2018",
+  "minimumCountOfLaps": 1
+}

@@ -1,0 +1,113 @@
+id: https://api-evangelist.github.io/amazon-deepracer/vocabulary/amazon-deepracer-vocabulary.yaml
+name: Amazon DeepRacer Vocabulary
+description: Controlled vocabulary for Amazon DeepRacer API covering autonomous racing resources, reinforcement learning model states, vehicle configurations, leaderboard types, and racing personas.
+version: 1.0.0-alpha1
+specificationVersion: 1.0.0-alpha1
+
+operational:
+  resources:
+    - term: Car
+      definition: A physical 1/18th scale DeepRacer vehicle registered to an AWS account. Cars can be assigned to fleets and loaded with reinforcement learning models for physical track racing.
+    - term: Model
+      definition: A reinforcement learning model trained in AWS SageMaker to drive a DeepRacer vehicle autonomously. Models encode a policy learned from reward function feedback during simulation training.
+    - term: Leaderboard
+      definition: A competitive ranking board where DeepRacer participants submit their trained models for evaluation against a specific racing track. Leaderboards may qualify participants for championship events.
+    - term: LeaderboardSubmission
+      definition: A participant's evaluation result on a leaderboard, including their model's lap times, average performance, and current rank relative to other submissions.
+    - term: Track
+      definition: A virtual or physical racing circuit used for DeepRacer model training, evaluation, and competition. Tracks vary in length, complexity, and dimension (REGULAR or WIDE).
+    - term: Fleet
+      definition: A group of DeepRacer physical vehicles managed together for an event or organization. Vehicles can be assigned to a fleet for coordinated management.
+
+  actions:
+    - term: ListCars
+      definition: Retrieve a paginated list of all DeepRacer vehicles registered to an AWS account.
+    - term: GetCar
+      definition: Retrieve the configuration, fleet assignment, and metadata for a specific DeepRacer vehicle by its ARN.
+    - term: UpdateCar
+      definition: Modify the display name or fleet assignment of a registered DeepRacer vehicle.
+    - term: ListModels
+      definition: Retrieve a paginated list of all reinforcement learning models associated with a DeepRacer account.
+    - term: GetModel
+      definition: Retrieve the training status, reward function, and configuration of a specific reinforcement learning model.
+    - term: DeleteModel
+      definition: Permanently remove a reinforcement learning model from a DeepRacer account.
+    - term: ListLeaderboards
+      definition: Retrieve a paginated list of available DeepRacer leaderboards, optionally filtered by status.
+    - term: GetLeaderboard
+      definition: Retrieve the details, track requirements, and submission deadline for a specific leaderboard.
+    - term: ListLeaderboardSubmissions
+      definition: Retrieve the ranked list of participant submissions for a specific leaderboard.
+    - term: ListTracks
+      definition: Retrieve a paginated list of available racing tracks for training and evaluation.
+
+  modelStatuses:
+    - term: TRAINING
+      definition: The model is currently being trained in a SageMaker training job and is not yet available for racing.
+    - term: READY
+      definition: The model has completed training successfully and can be submitted to leaderboards or loaded onto a physical vehicle.
+    - term: FAILED
+      definition: The model training job encountered an error and did not produce a usable model.
+    - term: STOPPED
+      definition: The model training was manually stopped before completion.
+
+  leaderboardStatuses:
+    - term: ACTIVE
+      definition: The leaderboard is currently accepting new submissions and evaluating participant models.
+    - term: EXPIRED
+      definition: The leaderboard submission window has closed; rankings are final and no new submissions are accepted.
+
+  trackDimensions:
+    - term: REGULAR
+      definition: A standard-width racing track suitable for typical DeepRacer vehicle configurations.
+    - term: WIDE
+      definition: An extra-wide racing track that allows more maneuvering room and is typically used in championship events.
+
+capability:
+  personas:
+    - term: ML Practitioner
+      definition: A developer who trains reinforcement learning models by iterating on reward functions, hyperparameters, and training environments to improve autonomous racing performance.
+    - term: Race Participant
+      definition: A competitor who submits trained models to DeepRacer leaderboards, monitors rankings, and qualifies for virtual or physical racing championship events.
+    - term: Event Organizer
+      definition: An administrator who manages DeepRacer racing events, registers and configures physical vehicles, creates leaderboards, and monitors participant progress.
+
+  workflows:
+    - term: Evaluate Model Performance
+      definition: The workflow for reviewing trained reinforcement learning models, checking training status, and selecting tracks for performance evaluation before leaderboard submission.
+    - term: Participate in Leaderboard
+      definition: The workflow for finding active leaderboards, reviewing track requirements and submission deadlines, and monitoring competitive rankings after submission.
+    - term: Manage Racing Fleet
+      definition: The workflow for registering, organizing, and maintaining physical DeepRacer vehicles including fleet assignment and vehicle naming for events.
+
+crossReference:
+  awsServices:
+    - term: Amazon SageMaker
+      definition: The machine learning platform used to train DeepRacer reinforcement learning models. SageMaker training jobs generate the model artifacts referenced by the DeepRacer API.
+      url: https://aws.amazon.com/sagemaker/
+    - term: Amazon S3
+      definition: Object storage used to store DeepRacer model artifacts, reward function code, training logs, and simulation data.
+      url: https://aws.amazon.com/s3/
+    - term: AWS RoboMaker
+      definition: The robotics simulation service used by DeepRacer to run virtual racing simulations during model training without requiring physical hardware.
+      url: https://aws.amazon.com/robomaker/
+    - term: Amazon CloudWatch
+      definition: Monitoring service used to track DeepRacer training metrics, model evaluation logs, and API usage statistics.
+      url: https://aws.amazon.com/cloudwatch/
+    - term: AWS IAM
+      definition: Identity and Access Management service used to control access to DeepRacer API operations and vehicle management through roles and policies.
+      url: https://aws.amazon.com/iam/
+
+  standards:
+    - term: OpenAPI 3.1.0
+      definition: The API specification format used to describe DeepRacer REST API operations, request/response schemas, and authentication requirements.
+      url: https://spec.openapis.org/oas/v3.1.0
+    - term: AWS Signature Version 4
+      definition: The authentication protocol required for all Amazon DeepRacer API requests, using HMAC-SHA256 signing with AWS credentials.
+      url: https://docs.aws.amazon.com/general/latest/gr/signature-version-4.html
+    - term: Reinforcement Learning
+      definition: The machine learning paradigm where an agent (the DeepRacer vehicle) learns to maximize cumulative reward through trial-and-error interaction with its environment (the racing track).
+      url: https://en.wikipedia.org/wiki/Reinforcement_learning
+    - term: JSON Schema
+      definition: The schema language used to describe DeepRacer resource structures including Car, Model, Leaderboard, and Track objects.
+      url: https://json-schema.org/

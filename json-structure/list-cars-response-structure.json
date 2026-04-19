@@ -1,0 +1,17 @@
+{
+  "$schema": "https://json-structure.org/meta/core/v0/#",
+  "$id": "https://api-evangelist.github.io/amazon-deepracer/json-structure/list-cars-response-structure.json",
+  "title": "ListCarsResponse",
+  "description": "Response containing a list of DeepRacer vehicles.",
+  "type": "typedMap",
+  "fields": {
+    "cars": {
+      "type": "list",
+      "description": "List of DeepRacer vehicles."
+    },
+    "nextToken": {
+      "type": "str",
+      "description": "Token for retrieving the next page of results."
+    }
+  }
+}

@@ -1,0 +1,17 @@
+{
+  "$schema": "https://json-structure.org/meta/core/v0/#",
+  "$id": "https://api-evangelist.github.io/amazon-deepracer/json-structure/list-tracks-response-structure.json",
+  "title": "ListTracksResponse",
+  "description": "Response containing a list of available racing tracks.",
+  "type": "typedMap",
+  "fields": {
+    "tracks": {
+      "type": "list",
+      "description": "List of racing tracks."
+    },
+    "nextToken": {
+      "type": "str",
+      "description": "Token for retrieving the next page of results."
+    }
+  }
+}

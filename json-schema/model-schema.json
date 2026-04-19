@@ -1,0 +1,45 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://api-evangelist.github.io/amazon-deepracer/json-schema/model-schema.json",
+  "title": "Model",
+  "description": "A reinforcement learning model trained for DeepRacer autonomous racing.",
+  "type": "object",
+  "properties": {
+    "modelArn": {
+      "type": "string",
+      "description": "The ARN uniquely identifying the reinforcement learning model."
+    },
+    "modelName": {
+      "type": "string",
+      "description": "The display name of the model."
+    },
+    "creationTime": {
+      "type": "string",
+      "format": "date-time",
+      "description": "Timestamp when the model was created."
+    },
+    "lastModifiedTime": {
+      "type": "string",
+      "format": "date-time",
+      "description": "Timestamp when the model was last updated."
+    },
+    "modelStatus": {
+      "type": "string",
+      "description": "Current status of the model.",
+      "enum": [
+        "TRAINING",
+        "READY",
+        "FAILED",
+        "STOPPED"
+      ]
+    },
+    "trainingJobArn": {
+      "type": "string",
+      "description": "ARN of the SageMaker training job that produced this model."
+    },
+    "rewardFunction": {
+      "type": "string",
+      "description": "Python reward function code used during training."
+    }
+  }
+}

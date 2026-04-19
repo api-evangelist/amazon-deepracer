@@ -1,0 +1,11 @@
+{
+  "leaderboardSubmissions": [
+    {
+      "leaderboardSubmissionId": "submission-abc123",
+      "participantName": "racer-001",
+      "rank": 1,
+      "lapTime": 8.543
+    }
+  ],
+  "nextToken": null
+}

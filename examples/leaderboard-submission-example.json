@@ -1,0 +1,8 @@
+{
+  "leaderboardSubmissionId": "submission-abc123",
+  "participantName": "racer-001",
+  "modelArn": "arn:aws:deepracer:us-east-1:123456789012:model/reinforcement_learning/SpeedModel",
+  "rank": 1,
+  "lapTime": 8.543,
+  "avgLapTime": 8.721
+}
