@@ -1,0 +1,13 @@
+{
+  "repo": "amazon-deepracer",
+  "feeds": [
+    {
+      "source": "https://aws.amazon.com/blogs/machine-learning/tag/aws-deepracer/",
+      "feed_url": "https://aws.amazon.com/about-aws/whats-new/recent/feed/",
+      "saved": 10,
+      "title": "Recent Announcements"
+    }
+  ],
+  "post_count": 10,
+  "fetched": "2026-05-03T23:21:10Z"
+}
