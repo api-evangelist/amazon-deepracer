@@ -1,0 +1,171 @@
+naftiko: 1.0.0-alpha2
+info:
+  label: Amazon DeepRacer API — Cars
+  description: 'Amazon DeepRacer API — Cars. 3 operations. Lead operation: List Cars. Self-contained Naftiko capability covering
+    one Amazon Deepracer business surface.'
+  tags:
+  - Amazon Deepracer
+  - Cars
+  created: '2026-05-19'
+  modified: '2026-05-19'
+binds:
+- namespace: env
+  keys:
+    AMAZON_DEEPRACER_API_KEY: AMAZON_DEEPRACER_API_KEY
+capability:
+  consumes:
+  - type: http
+    namespace: amazon-deepracer-cars
+    baseUri: https://deepracer.amazonaws.com
+    description: Amazon DeepRacer API — Cars business capability. Self-contained, no shared references.
+    resources:
+    - name: 20201101-cars
+      path: /20201101/cars
+      operations:
+      - name: listcars
+        method: GET
+        description: List Cars
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+        inputParameters:
+        - name: nextToken
+          in: query
+          type: string
+          description: Pagination token from a previous list response.
+        - name: maxResults
+          in: query
+          type: integer
+          description: Maximum number of cars to return.
+    - name: 20201101-cars-arn
+      path: /20201101/cars/{arn}
+      operations:
+      - name: getcar
+        method: GET
+        description: Get Car
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+        inputParameters:
+        - name: arn
+          in: path
+          type: string
+          description: The ARN of the DeepRacer vehicle.
+          required: true
+      - name: updatecar
+        method: PATCH
+        description: Update Car
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+        inputParameters:
+        - name: arn
+          in: path
+          type: string
+          description: The ARN of the DeepRacer vehicle.
+          required: true
+        - name: body
+          in: body
+          type: object
+          description: Request body (JSON).
+          required: true
+    authentication:
+      type: apikey
+      key: Authorization
+      value: '{{env.AMAZON_DEEPRACER_API_KEY}}'
+      placement: header
+  exposes:
+  - type: rest
+    namespace: amazon-deepracer-cars-rest
+    port: 8080
+    description: REST adapter for Amazon DeepRacer API — Cars. One Spectral-compliant resource per consumed operation, prefixed
+      with /v1.
+    resources:
+    - path: /v1/20201101/cars
+      name: 20201101-cars
+      description: REST surface for 20201101-cars.
+      operations:
+      - method: GET
+        name: listcars
+        description: List Cars
+        call: amazon-deepracer-cars.listcars
+        with:
+          nextToken: rest.nextToken
+          maxResults: rest.maxResults
+        outputParameters:
+        - type: object
+          mapping: $.
+    - path: /v1/20201101/cars/{arn}
+      name: 20201101-cars-arn
+      description: REST surface for 20201101-cars-arn.
+      operations:
+      - method: GET
+        name: getcar
+        description: Get Car
+        call: amazon-deepracer-cars.getcar
+        with:
+          arn: rest.arn
+        outputParameters:
+        - type: object
+          mapping: $.
+      - method: PATCH
+        name: updatecar
+        description: Update Car
+        call: amazon-deepracer-cars.updatecar
+        with:
+          arn: rest.arn
+          body: rest.body
+        outputParameters:
+        - type: object
+          mapping: $.
+  - type: mcp
+    namespace: amazon-deepracer-cars-mcp
+    port: 9090
+    transport: http
+    description: MCP adapter for Amazon DeepRacer API — Cars. One tool per consumed operation, routed inline through this
+      capability's consumes block.
+    tools:
+    - name: list-cars
+      description: List Cars
+      hints:
+        readOnly: true
+        destructive: false
+        idempotent: true
+      call: amazon-deepracer-cars.listcars
+      with:
+        nextToken: tools.nextToken
+        maxResults: tools.maxResults
+      outputParameters:
+      - type: object
+        mapping: $.
+    - name: get-car
+      description: Get Car
+      hints:
+        readOnly: true
+        destructive: false
+        idempotent: true
+      call: amazon-deepracer-cars.getcar
+      with:
+        arn: tools.arn
+      outputParameters:
+      - type: object
+        mapping: $.
+    - name: update-car
+      description: Update Car
+      hints:
+        readOnly: false
+        destructive: false
+        idempotent: true
+      call: amazon-deepracer-cars.updatecar
+      with:
+        arn: tools.arn
+        body: tools.body
+      outputParameters:
+      - type: object
+        mapping: $.

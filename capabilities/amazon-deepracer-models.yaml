@@ -1,0 +1,164 @@
+naftiko: 1.0.0-alpha2
+info:
+  label: Amazon DeepRacer API — Models
+  description: 'Amazon DeepRacer API — Models. 3 operations. Lead operation: List Models. Self-contained Naftiko capability
+    covering one Amazon Deepracer business surface.'
+  tags:
+  - Amazon Deepracer
+  - Models
+  created: '2026-05-19'
+  modified: '2026-05-19'
+binds:
+- namespace: env
+  keys:
+    AMAZON_DEEPRACER_API_KEY: AMAZON_DEEPRACER_API_KEY
+capability:
+  consumes:
+  - type: http
+    namespace: amazon-deepracer-models
+    baseUri: https://deepracer.amazonaws.com
+    description: Amazon DeepRacer API — Models business capability. Self-contained, no shared references.
+    resources:
+    - name: 20201101-models
+      path: /20201101/models
+      operations:
+      - name: listmodels
+        method: GET
+        description: List Models
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+        inputParameters:
+        - name: nextToken
+          in: query
+          type: string
+          description: Pagination token from a previous list response.
+        - name: maxResults
+          in: query
+          type: integer
+          description: Maximum number of models to return.
+    - name: 20201101-models-modelArn
+      path: /20201101/models/{modelArn}
+      operations:
+      - name: getmodel
+        method: GET
+        description: Get Model
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+        inputParameters:
+        - name: modelArn
+          in: path
+          type: string
+          description: The ARN of the reinforcement learning model.
+          required: true
+      - name: deletemodel
+        method: DELETE
+        description: Delete Model
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+        inputParameters:
+        - name: modelArn
+          in: path
+          type: string
+          description: The ARN of the model to delete.
+          required: true
+    authentication:
+      type: apikey
+      key: Authorization
+      value: '{{env.AMAZON_DEEPRACER_API_KEY}}'
+      placement: header
+  exposes:
+  - type: rest
+    namespace: amazon-deepracer-models-rest
+    port: 8080
+    description: REST adapter for Amazon DeepRacer API — Models. One Spectral-compliant resource per consumed operation, prefixed
+      with /v1.
+    resources:
+    - path: /v1/20201101/models
+      name: 20201101-models
+      description: REST surface for 20201101-models.
+      operations:
+      - method: GET
+        name: listmodels
+        description: List Models
+        call: amazon-deepracer-models.listmodels
+        with:
+          nextToken: rest.nextToken
+          maxResults: rest.maxResults
+        outputParameters:
+        - type: object
+          mapping: $.
+    - path: /v1/20201101/models/{modelarn}
+      name: 20201101-models-modelarn
+      description: REST surface for 20201101-models-modelArn.
+      operations:
+      - method: GET
+        name: getmodel
+        description: Get Model
+        call: amazon-deepracer-models.getmodel
+        with:
+          modelArn: rest.modelArn
+        outputParameters:
+        - type: object
+          mapping: $.
+      - method: DELETE
+        name: deletemodel
+        description: Delete Model
+        call: amazon-deepracer-models.deletemodel
+        with:
+          modelArn: rest.modelArn
+        outputParameters:
+        - type: object
+          mapping: $.
+  - type: mcp
+    namespace: amazon-deepracer-models-mcp
+    port: 9090
+    transport: http
+    description: MCP adapter for Amazon DeepRacer API — Models. One tool per consumed operation, routed inline through this
+      capability's consumes block.
+    tools:
+    - name: list-models
+      description: List Models
+      hints:
+        readOnly: true
+        destructive: false
+        idempotent: true
+      call: amazon-deepracer-models.listmodels
+      with:
+        nextToken: tools.nextToken
+        maxResults: tools.maxResults
+      outputParameters:
+      - type: object
+        mapping: $.
+    - name: get-model
+      description: Get Model
+      hints:
+        readOnly: true
+        destructive: false
+        idempotent: true
+      call: amazon-deepracer-models.getmodel
+      with:
+        modelArn: tools.modelArn
+      outputParameters:
+      - type: object
+        mapping: $.
+    - name: delete-model
+      description: Delete Model
+      hints:
+        readOnly: false
+        destructive: true
+        idempotent: true
+      call: amazon-deepracer-models.deletemodel
+      with:
+        modelArn: tools.modelArn
+      outputParameters:
+      - type: object
+        mapping: $.

@@ -1,0 +1,87 @@
+naftiko: 1.0.0-alpha2
+info:
+  label: Amazon DeepRacer API — Tracks
+  description: 'Amazon DeepRacer API — Tracks. 1 operations. Lead operation: List Tracks. Self-contained Naftiko capability
+    covering one Amazon Deepracer business surface.'
+  tags:
+  - Amazon Deepracer
+  - Tracks
+  created: '2026-05-19'
+  modified: '2026-05-19'
+binds:
+- namespace: env
+  keys:
+    AMAZON_DEEPRACER_API_KEY: AMAZON_DEEPRACER_API_KEY
+capability:
+  consumes:
+  - type: http
+    namespace: amazon-deepracer-tracks
+    baseUri: https://deepracer.amazonaws.com
+    description: Amazon DeepRacer API — Tracks business capability. Self-contained, no shared references.
+    resources:
+    - name: 20201101-tracks
+      path: /20201101/tracks
+      operations:
+      - name: listtracks
+        method: GET
+        description: List Tracks
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+        inputParameters:
+        - name: nextToken
+          in: query
+          type: string
+          description: Pagination token from a previous list response.
+        - name: maxResults
+          in: query
+          type: integer
+          description: Maximum number of tracks to return.
+    authentication:
+      type: apikey
+      key: Authorization
+      value: '{{env.AMAZON_DEEPRACER_API_KEY}}'
+      placement: header
+  exposes:
+  - type: rest
+    namespace: amazon-deepracer-tracks-rest
+    port: 8080
+    description: REST adapter for Amazon DeepRacer API — Tracks. One Spectral-compliant resource per consumed operation, prefixed
+      with /v1.
+    resources:
+    - path: /v1/20201101/tracks
+      name: 20201101-tracks
+      description: REST surface for 20201101-tracks.
+      operations:
+      - method: GET
+        name: listtracks
+        description: List Tracks
+        call: amazon-deepracer-tracks.listtracks
+        with:
+          nextToken: rest.nextToken
+          maxResults: rest.maxResults
+        outputParameters:
+        - type: object
+          mapping: $.
+  - type: mcp
+    namespace: amazon-deepracer-tracks-mcp
+    port: 9090
+    transport: http
+    description: MCP adapter for Amazon DeepRacer API — Tracks. One tool per consumed operation, routed inline through this
+      capability's consumes block.
+    tools:
+    - name: list-tracks
+      description: List Tracks
+      hints:
+        readOnly: true
+        destructive: false
+        idempotent: true
+      call: amazon-deepracer-tracks.listtracks
+      with:
+        nextToken: tools.nextToken
+        maxResults: tools.maxResults
+      outputParameters:
+      - type: object
+        mapping: $.
