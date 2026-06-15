@@ -2,11 +2,8 @@
   "repo": "amazon-deepracer",
   "feeds": [
     {
-      "source": "https://aws.amazon.com/rss/",
-      "feed_url": "https://aws.amazon.com/rss/",
-      "title": "",
-      "saved": 4,
-      "method": "feed"
+      "source": "https://aws.amazon.com/blogs/machine-learning/tag/aws-deepracer/feed/",
+      "error": "HTTPError"
     },
     {
       "source": "https://aws.amazon.com/premiumsupport/",
@@ -17,5 +14,5 @@
     }
   ],
   "post_count": 159,
-  "fetched": "2026-06-01T23:35:02Z"
+  "fetched": "2026-06-14T20:42:17Z"
 }

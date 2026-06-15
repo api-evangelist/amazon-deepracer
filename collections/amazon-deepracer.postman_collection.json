@@ -1,0 +1,1905 @@
+{
+  "item": [
+    {
+      "id": "deebc751-c4dc-499a-99e8-db0159e0b81f",
+      "name": "Cars",
+      "description": {
+        "content": "Manage DeepRacer physical vehicles and their configurations",
+        "type": "text/plain"
+      },
+      "item": [
+        {
+          "id": "24476246-3e1c-463e-9426-485ee5835bed",
+          "name": "List Cars",
+          "request": {
+            "name": "List Cars",
+            "description": {
+              "content": "List all DeepRacer vehicles associated with the account.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "20201101",
+                "cars"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [
+                {
+                  "disabled": false,
+                  "key": "nextToken",
+                  "value": "<string>",
+                  "description": "Pagination token from a previous list response."
+                },
+                {
+                  "disabled": false,
+                  "key": "maxResults",
+                  "value": "<integer>",
+                  "description": "Maximum number of cars to return."
+                }
+              ],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "2bda26fc-2447-45eb-8c09-97a13b35d7a5",
+              "name": "List of DeepRacer vehicles retrieved successfully.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "20201101",
+                    "cars"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "nextToken",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "maxResults",
+                      "value": "<integer>"
+                    }
+                  ],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "<API Key>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"cars\": [\n    {\n      \"vehicleArn\": \"arn:aws:deepracer:us-east-1:123456789012:car/MyDeepRacer\",\n      \"vehicleName\": \"MyDeepRacer\",\n      \"createdAt\": \"2024-01-15T10:00:00Z\",\n      \"lastModifiedTime\": \"2024-01-15T10:00:00Z\",\n      \"tagsList\": []\n    }\n  ],\n  \"nextToken\": null,\n  \"x-microcks-default\": true\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "ebdddab7-4a56-43a2-a6a2-fc363fbae7db",
+              "name": "Bad request — invalid parameters.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "20201101",
+                    "cars"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "nextToken",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "maxResults",
+                      "value": "<integer>"
+                    }
+                  ],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "<API Key>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Bad Request",
+              "code": 400,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"message\": \"string\",\n  \"code\": \"string\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "57c31d10-1a4d-4efc-9b82-64193fd88f21",
+              "name": "Internal server error.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "20201101",
+                    "cars"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "nextToken",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "maxResults",
+                      "value": "<integer>"
+                    }
+                  ],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "<API Key>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Internal Server Error",
+              "code": 500,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"message\": \"string\",\n  \"code\": \"string\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "dd0aa129-0bc2-43eb-ba54-0cd06f609802",
+          "name": "Get Car",
+          "request": {
+            "name": "Get Car",
+            "description": {
+              "content": "Retrieve the configuration and metadata for a specific DeepRacer vehicle.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "20201101",
+                "cars",
+                ":arn"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "arn",
+                  "description": "(Required) The ARN of the DeepRacer vehicle."
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "312aabed-820c-4e5d-9784-79579c30f87d",
+              "name": "DeepRacer vehicle details retrieved successfully.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "20201101",
+                    "cars",
+                    ":arn"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "arn",
+                      "description": "(Required) The ARN of the DeepRacer vehicle."
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "<API Key>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"vehicleArn\": \"arn:aws:deepracer:us-east-1:123456789012:car/MyDeepRacer\",\n  \"vehicleName\": \"MyDeepRacer\",\n  \"fleetArn\": \"arn:aws:deepracer:us-east-1:123456789012:fleet/MyFleet\",\n  \"createdAt\": \"2024-01-15T10:00:00Z\",\n  \"lastModifiedTime\": \"2024-01-20T08:30:00Z\",\n  \"tagsList\": [],\n  \"x-microcks-default\": true\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "44721785-116a-4e57-88d3-cdfbab2993e3",
+              "name": "DeepRacer vehicle not found.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "20201101",
+                    "cars",
+                    ":arn"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "arn",
+                      "description": "(Required) The ARN of the DeepRacer vehicle."
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "<API Key>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Not Found",
+              "code": 404,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"message\": \"string\",\n  \"code\": \"string\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "46cd24fd-318e-4e11-b7d9-2cb61c8f3c2d",
+              "name": "Internal server error.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "20201101",
+                    "cars",
+                    ":arn"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "arn",
+                      "description": "(Required) The ARN of the DeepRacer vehicle."
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "<API Key>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Internal Server Error",
+              "code": 500,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"message\": \"string\",\n  \"code\": \"string\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "0dc0bfff-1f33-4e8d-ac49-6f5c04d19012",
+          "name": "Update Car",
+          "request": {
+            "name": "Update Car",
+            "description": {
+              "content": "Update the name or configuration of a DeepRacer vehicle.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "20201101",
+                "cars",
+                ":arn"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "arn",
+                  "description": "(Required) The ARN of the DeepRacer vehicle."
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              },
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "PATCH",
+            "auth": null,
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"vehicleName\": \"<string>\"\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          },
+          "response": [
+            {
+              "id": "d1c693ad-ec61-4fd2-84f3-84daf73a99b5",
+              "name": "DeepRacer vehicle updated successfully.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "20201101",
+                    "cars",
+                    ":arn"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "arn",
+                      "description": "(Required) The ARN of the DeepRacer vehicle."
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "<API Key>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "PATCH",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"vehicleName\": \"UpdatedDeepRacer\",\n  \"x-microcks-default\": true\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"vehicleArn\": \"arn:aws:deepracer:us-east-1:123456789012:car/MyDeepRacer\",\n  \"x-microcks-default\": true\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "b7fdbf69-5198-4751-a5a3-928fa8a25fac",
+              "name": "Bad request — invalid update parameters.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "20201101",
+                    "cars",
+                    ":arn"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "arn",
+                      "description": "(Required) The ARN of the DeepRacer vehicle."
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "<API Key>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "PATCH",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"vehicleName\": \"UpdatedDeepRacer\",\n  \"x-microcks-default\": true\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Bad Request",
+              "code": 400,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"message\": \"string\",\n  \"code\": \"string\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "f43742ea-5bbd-43ae-9abb-9498d365c54d",
+              "name": "DeepRacer vehicle not found.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "20201101",
+                    "cars",
+                    ":arn"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "arn",
+                      "description": "(Required) The ARN of the DeepRacer vehicle."
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "<API Key>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "PATCH",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"vehicleName\": \"UpdatedDeepRacer\",\n  \"x-microcks-default\": true\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Not Found",
+              "code": 404,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"message\": \"string\",\n  \"code\": \"string\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        }
+      ],
+      "event": []
+    },
+    {
+      "id": "232ee799-b951-4c59-b109-f48b674c0e3a",
+      "name": "Models",
+      "description": {
+        "content": "Manage reinforcement learning models for autonomous racing",
+        "type": "text/plain"
+      },
+      "item": [
+        {
+          "id": "a906ee34-6104-498e-965b-221ee9adaf70",
+          "name": "List Models",
+          "request": {
+            "name": "List Models",
+            "description": {
+              "content": "List reinforcement learning models available for DeepRacer racing.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "20201101",
+                "models"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [
+                {
+                  "disabled": false,
+                  "key": "nextToken",
+                  "value": "<string>",
+                  "description": "Pagination token from a previous list response."
+                },
+                {
+                  "disabled": false,
+                  "key": "maxResults",
+                  "value": "<integer>",
+                  "description": "Maximum number of models to return."
+                }
+              ],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "cc97e335-73b1-4c1e-a40c-273e6146493d",
+              "name": "List of reinforcement learning models retrieved successfully.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "20201101",
+                    "models"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "nextToken",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "maxResults",
+                      "value": "<integer>"
+                    }
+                  ],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "<API Key>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"models\": [\n    {\n      \"modelArn\": \"arn:aws:deepracer:us-east-1:123456789012:model/reinforcement_learning/MyModel\",\n      \"modelName\": \"MyModel\",\n      \"creationTime\": \"2024-01-10T09:00:00Z\",\n      \"lastModifiedTime\": \"2024-01-12T14:00:00Z\",\n      \"modelStatus\": \"READY\",\n      \"trainingJobArn\": \"arn:aws:sagemaker:us-east-1:123456789012:training-job/deepracer-job-123\"\n    }\n  ],\n  \"nextToken\": null,\n  \"x-microcks-default\": true\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "64b04a60-bd38-43c7-b79a-abc753b2b423",
+              "name": "Bad request — invalid parameters.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "20201101",
+                    "models"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "nextToken",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "maxResults",
+                      "value": "<integer>"
+                    }
+                  ],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "<API Key>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Bad Request",
+              "code": 400,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"message\": \"string\",\n  \"code\": \"string\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "767ba5be-5108-4425-9cb1-01b7fa70ab47",
+              "name": "Internal server error.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "20201101",
+                    "models"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "nextToken",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "maxResults",
+                      "value": "<integer>"
+                    }
+                  ],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "<API Key>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Internal Server Error",
+              "code": 500,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"message\": \"string\",\n  \"code\": \"string\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "5ed0cfee-48f9-4802-9314-94b95850b2f4",
+          "name": "Get Model",
+          "request": {
+            "name": "Get Model",
+            "description": {
+              "content": "Retrieve the details and training status of a specific reinforcement learning model.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "20201101",
+                "models",
+                ":modelArn"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "modelArn",
+                  "description": "(Required) The ARN of the reinforcement learning model."
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "b64fd624-d262-4382-9b58-fc216d2e1776",
+              "name": "Reinforcement learning model details retrieved successfully.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "20201101",
+                    "models",
+                    ":modelArn"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "modelArn",
+                      "description": "(Required) The ARN of the reinforcement learning model."
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "<API Key>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"modelArn\": \"arn:aws:deepracer:us-east-1:123456789012:model/reinforcement_learning/MyModel\",\n  \"modelName\": \"MyModel\",\n  \"creationTime\": \"2024-01-10T09:00:00Z\",\n  \"lastModifiedTime\": \"2024-01-12T14:00:00Z\",\n  \"modelStatus\": \"READY\",\n  \"trainingJobArn\": \"arn:aws:sagemaker:us-east-1:123456789012:training-job/deepracer-job-123\",\n  \"rewardFunction\": \"def reward_function(params):\\\\n    return float(params[\\\"progress\\\"])\",\n  \"x-microcks-default\": true\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "56bd7605-45d8-4183-a955-1536ccfa211a",
+              "name": "Model not found.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "20201101",
+                    "models",
+                    ":modelArn"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "modelArn",
+                      "description": "(Required) The ARN of the reinforcement learning model."
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "<API Key>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Not Found",
+              "code": 404,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"message\": \"string\",\n  \"code\": \"string\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "6a9b3c79-82c3-4f58-bf99-052085813720",
+          "name": "Delete Model",
+          "request": {
+            "name": "Delete Model",
+            "description": {
+              "content": "Delete a reinforcement learning model from DeepRacer.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "20201101",
+                "models",
+                ":modelArn"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "modelArn",
+                  "description": "(Required) The ARN of the model to delete."
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "DELETE",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "693a00e4-1fc9-43f1-839e-46c89487538e",
+              "name": "Model deleted successfully.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "20201101",
+                    "models",
+                    ":modelArn"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "modelArn",
+                      "description": "(Required) The ARN of the model to delete."
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "<API Key>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "DELETE",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"modelArn\": \"arn:aws:deepracer:us-east-1:123456789012:model/reinforcement_learning/MyModel\",\n  \"x-microcks-default\": true\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "d045870f-6458-485d-9cc9-9e6f2a10dc3b",
+              "name": "Model not found.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "20201101",
+                    "models",
+                    ":modelArn"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "modelArn",
+                      "description": "(Required) The ARN of the model to delete."
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "<API Key>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "DELETE",
+                "body": {}
+              },
+              "status": "Not Found",
+              "code": 404,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"message\": \"string\",\n  \"code\": \"string\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        }
+      ],
+      "event": []
+    },
+    {
+      "id": "42887658-6ebf-43df-9ce0-67448768e757",
+      "name": "Leaderboards",
+      "description": {
+        "content": "Manage racing leaderboards and submissions",
+        "type": "text/plain"
+      },
+      "item": [
+        {
+          "id": "987eead6-b77b-45f2-be5d-792fa19e5717",
+          "name": "List Leaderboards",
+          "request": {
+            "name": "List Leaderboards",
+            "description": {
+              "content": "List all active and past DeepRacer racing leaderboards.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "20201101",
+                "leaderboards"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [
+                {
+                  "disabled": false,
+                  "key": "nextToken",
+                  "value": "<string>",
+                  "description": "Pagination token from a previous list response."
+                },
+                {
+                  "disabled": false,
+                  "key": "maxResults",
+                  "value": "<integer>",
+                  "description": "Maximum number of leaderboards to return."
+                },
+                {
+                  "disabled": false,
+                  "key": "status",
+                  "value": "<string>",
+                  "description": "Filter leaderboards by status (ACTIVE, EXPIRED)."
+                }
+              ],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "31f8e771-5162-4616-9cab-95008765f966",
+              "name": "List of leaderboards retrieved successfully.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "20201101",
+                    "leaderboards"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "nextToken",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "maxResults",
+                      "value": "<integer>"
+                    },
+                    {
+                      "key": "status",
+                      "value": "<string>"
+                    }
+                  ],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "<API Key>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"leaderboards\": [\n    {\n      \"arn\": \"arn:aws:deepracer:us-east-1:123456789012:leaderboard/deepracer-league-2024\",\n      \"name\": \"DeepRacer League 2024\",\n      \"status\": \"ACTIVE\",\n      \"submissionClosureTime\": \"2024-12-31T23:59:59Z\",\n      \"isQualifier\": true\n    }\n  ],\n  \"nextToken\": null,\n  \"x-microcks-default\": true\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "81416abe-658d-46e3-b7ea-19023bbb305c",
+              "name": "Bad request — invalid parameters.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "20201101",
+                    "leaderboards"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "nextToken",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "maxResults",
+                      "value": "<integer>"
+                    },
+                    {
+                      "key": "status",
+                      "value": "<string>"
+                    }
+                  ],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "<API Key>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Bad Request",
+              "code": 400,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"message\": \"string\",\n  \"code\": \"string\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "3fc785d9-ac9c-47b9-95f3-38c0e3ccfaa6",
+          "name": "Get Leaderboard",
+          "request": {
+            "name": "Get Leaderboard",
+            "description": {
+              "content": "Retrieve the details and current rankings for a specific leaderboard.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "20201101",
+                "leaderboards",
+                ":arn"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "arn",
+                  "description": "(Required) The ARN of the leaderboard."
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "3984be95-1b0b-4496-a4a6-da1932fd9943",
+              "name": "Leaderboard details retrieved successfully.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "20201101",
+                    "leaderboards",
+                    ":arn"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "arn",
+                      "description": "(Required) The ARN of the leaderboard."
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "<API Key>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"arn\": \"arn:aws:deepracer:us-east-1:123456789012:leaderboard/deepracer-league-2024\",\n  \"name\": \"DeepRacer League 2024\",\n  \"status\": \"ACTIVE\",\n  \"submissionClosureTime\": \"2024-12-31T23:59:59Z\",\n  \"isQualifier\": true,\n  \"trackType\": \"REINVENT_2018\",\n  \"minimumCountOfLaps\": 1,\n  \"x-microcks-default\": true\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "c8722d4a-f785-4950-a140-fe54a1213bae",
+              "name": "Leaderboard not found.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "20201101",
+                    "leaderboards",
+                    ":arn"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "arn",
+                      "description": "(Required) The ARN of the leaderboard."
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "<API Key>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Not Found",
+              "code": 404,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"message\": \"string\",\n  \"code\": \"string\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "c8cc752e-c46d-4148-9e62-eb2b2bfe0a9d",
+          "name": "List Leaderboard Submissions",
+          "request": {
+            "name": "List Leaderboard Submissions",
+            "description": {
+              "content": "List submissions and rankings for a specific leaderboard.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "20201101",
+                "leaderboards",
+                ":arn",
+                "rankings"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [
+                {
+                  "disabled": false,
+                  "key": "nextToken",
+                  "value": "<string>",
+                  "description": "Pagination token from a previous list response."
+                },
+                {
+                  "disabled": false,
+                  "key": "maxResults",
+                  "value": "<integer>",
+                  "description": "Maximum number of submissions to return."
+                }
+              ],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "arn",
+                  "description": "(Required) The ARN of the leaderboard."
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "b2ce2538-c360-40d7-a478-18f73b04a957",
+              "name": "Leaderboard submissions and rankings retrieved successfully.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "20201101",
+                    "leaderboards",
+                    ":arn",
+                    "rankings"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "nextToken",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "maxResults",
+                      "value": "<integer>"
+                    }
+                  ],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "arn",
+                      "description": "(Required) The ARN of the leaderboard."
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "<API Key>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"leaderboardSubmissions\": [\n    {\n      \"leaderboardSubmissionId\": \"submission-abc123\",\n      \"participantName\": \"racer-001\",\n      \"modelArn\": \"arn:aws:deepracer:us-east-1:123456789012:model/reinforcement_learning/SpeedModel\",\n      \"rank\": 1,\n      \"lapTime\": 8.543,\n      \"avgLapTime\": 8.721\n    }\n  ],\n  \"nextToken\": null,\n  \"x-microcks-default\": true\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "95cc51a7-74f0-4db5-83f4-8946826afcb4",
+              "name": "Leaderboard not found.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "20201101",
+                    "leaderboards",
+                    ":arn",
+                    "rankings"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "nextToken",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "maxResults",
+                      "value": "<integer>"
+                    }
+                  ],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "arn",
+                      "description": "(Required) The ARN of the leaderboard."
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "<API Key>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Not Found",
+              "code": 404,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"message\": \"string\",\n  \"code\": \"string\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        }
+      ],
+      "event": []
+    },
+    {
+      "id": "769c0f2a-eba8-423a-8e45-ff33399594c8",
+      "name": "Tracks",
+      "description": {
+        "content": "Manage virtual and physical racing tracks",
+        "type": "text/plain"
+      },
+      "item": [
+        {
+          "id": "f147ecff-8202-42cc-ad91-a4cec1cfcf23",
+          "name": "List Tracks",
+          "request": {
+            "name": "List Tracks",
+            "description": {
+              "content": "List all available DeepRacer racing tracks for training and evaluation.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "20201101",
+                "tracks"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [
+                {
+                  "disabled": false,
+                  "key": "nextToken",
+                  "value": "<string>",
+                  "description": "Pagination token from a previous list response."
+                },
+                {
+                  "disabled": false,
+                  "key": "maxResults",
+                  "value": "<integer>",
+                  "description": "Maximum number of tracks to return."
+                }
+              ],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "15ea05fd-bf0d-4761-8238-c43eb7134937",
+              "name": "List of available racing tracks retrieved successfully.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "20201101",
+                    "tracks"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "nextToken",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "maxResults",
+                      "value": "<integer>"
+                    }
+                  ],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "<API Key>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"tracks\": [\n    {\n      \"arn\": \"arn:aws:deepracer:us-east-1::track/London_Loop_2019\",\n      \"name\": \"London Loop 2019\",\n      \"trackType\": \"REINVENT_2018\",\n      \"trackDimension\": \"REGULAR\"\n    }\n  ],\n  \"nextToken\": null,\n  \"x-microcks-default\": true\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "a4e56351-e699-44d9-98ee-ae516709584c",
+              "name": "Bad request — invalid parameters.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "20201101",
+                    "tracks"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "nextToken",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "maxResults",
+                      "value": "<integer>"
+                    }
+                  ],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "<API Key>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Bad Request",
+              "code": 400,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"message\": \"string\",\n  \"code\": \"string\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        }
+      ],
+      "event": []
+    }
+  ],
+  "event": [],
+  "variable": [
+    {
+      "type": "string",
+      "value": "https://deepracer.amazonaws.com",
+      "key": "baseUrl"
+    }
+  ],
+  "auth": {
+    "type": "apikey",
+    "apikey": [
+      {
+        "key": "key",
+        "value": "Authorization"
+      },
+      {
+        "key": "value",
+        "value": "{{apiKey}}"
+      },
+      {
+        "key": "in",
+        "value": "header"
+      }
+    ]
+  },
+  "info": {
+    "_postman_id": "cd60e600-671a-4194-8c74-0b21889b3309",
+    "name": "Amazon DeepRacer API",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+    "description": {
+      "content": "The Amazon DeepRacer API provides programmatic access to manage DeepRacer vehicles, reinforcement learning models, leaderboards, and training tracks for autonomous racing experiences on AWS. Resources are versioned under /20201101/.\n\nContact Support:\n Name: Amazon Web Services",
+      "type": "text/plain"
+    }
+  }
+}

@@ -1,0 +1,286 @@
+{
+  "opencollection": "1.0.0",
+  "info": {
+    "name": "Amazon DeepRacer API",
+    "version": "Sat Oct 31 2020 20:00:00 GMT-0400 (Eastern Daylight Time)"
+  },
+  "request": {
+    "auth": {
+      "type": "apikey",
+      "key": "Authorization",
+      "value": "{{Authorization}}",
+      "placement": "header"
+    }
+  },
+  "items": [
+    {
+      "info": {
+        "name": "Cars",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "List Cars",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://deepracer.amazonaws.com/20201101/cars",
+            "params": [
+              {
+                "name": "nextToken",
+                "value": "",
+                "type": "query",
+                "description": "Pagination token from a previous list response."
+              },
+              {
+                "name": "maxResults",
+                "value": "",
+                "type": "query",
+                "description": "Maximum number of cars to return."
+              }
+            ]
+          },
+          "docs": "List all DeepRacer vehicles associated with the account."
+        },
+        {
+          "info": {
+            "name": "Get Car",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://deepracer.amazonaws.com/20201101/cars/:arn",
+            "params": [
+              {
+                "name": "arn",
+                "value": "",
+                "type": "path",
+                "description": "The ARN of the DeepRacer vehicle."
+              }
+            ]
+          },
+          "docs": "Retrieve the configuration and metadata for a specific DeepRacer vehicle."
+        },
+        {
+          "info": {
+            "name": "Update Car",
+            "type": "http"
+          },
+          "http": {
+            "method": "PATCH",
+            "url": "https://deepracer.amazonaws.com/20201101/cars/:arn",
+            "params": [
+              {
+                "name": "arn",
+                "value": "",
+                "type": "path",
+                "description": "The ARN of the DeepRacer vehicle."
+              }
+            ],
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Update the name or configuration of a DeepRacer vehicle."
+        }
+      ]
+    },
+    {
+      "info": {
+        "name": "Models",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "List Models",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://deepracer.amazonaws.com/20201101/models",
+            "params": [
+              {
+                "name": "nextToken",
+                "value": "",
+                "type": "query",
+                "description": "Pagination token from a previous list response."
+              },
+              {
+                "name": "maxResults",
+                "value": "",
+                "type": "query",
+                "description": "Maximum number of models to return."
+              }
+            ]
+          },
+          "docs": "List reinforcement learning models available for DeepRacer racing."
+        },
+        {
+          "info": {
+            "name": "Get Model",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://deepracer.amazonaws.com/20201101/models/:modelArn",
+            "params": [
+              {
+                "name": "modelArn",
+                "value": "",
+                "type": "path",
+                "description": "The ARN of the reinforcement learning model."
+              }
+            ]
+          },
+          "docs": "Retrieve the details and training status of a specific reinforcement learning model."
+        },
+        {
+          "info": {
+            "name": "Delete Model",
+            "type": "http"
+          },
+          "http": {
+            "method": "DELETE",
+            "url": "https://deepracer.amazonaws.com/20201101/models/:modelArn",
+            "params": [
+              {
+                "name": "modelArn",
+                "value": "",
+                "type": "path",
+                "description": "The ARN of the model to delete."
+              }
+            ]
+          },
+          "docs": "Delete a reinforcement learning model from DeepRacer."
+        }
+      ]
+    },
+    {
+      "info": {
+        "name": "Leaderboards",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "List Leaderboards",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://deepracer.amazonaws.com/20201101/leaderboards",
+            "params": [
+              {
+                "name": "nextToken",
+                "value": "",
+                "type": "query",
+                "description": "Pagination token from a previous list response."
+              },
+              {
+                "name": "maxResults",
+                "value": "",
+                "type": "query",
+                "description": "Maximum number of leaderboards to return."
+              },
+              {
+                "name": "status",
+                "value": "",
+                "type": "query",
+                "description": "Filter leaderboards by status (ACTIVE, EXPIRED)."
+              }
+            ]
+          },
+          "docs": "List all active and past DeepRacer racing leaderboards."
+        },
+        {
+          "info": {
+            "name": "Get Leaderboard",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://deepracer.amazonaws.com/20201101/leaderboards/:arn",
+            "params": [
+              {
+                "name": "arn",
+                "value": "",
+                "type": "path",
+                "description": "The ARN of the leaderboard."
+              }
+            ]
+          },
+          "docs": "Retrieve the details and current rankings for a specific leaderboard."
+        },
+        {
+          "info": {
+            "name": "List Leaderboard Submissions",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://deepracer.amazonaws.com/20201101/leaderboards/:arn/rankings",
+            "params": [
+              {
+                "name": "arn",
+                "value": "",
+                "type": "path",
+                "description": "The ARN of the leaderboard."
+              },
+              {
+                "name": "nextToken",
+                "value": "",
+                "type": "query",
+                "description": "Pagination token from a previous list response."
+              },
+              {
+                "name": "maxResults",
+                "value": "",
+                "type": "query",
+                "description": "Maximum number of submissions to return."
+              }
+            ]
+          },
+          "docs": "List submissions and rankings for a specific leaderboard."
+        }
+      ]
+    },
+    {
+      "info": {
+        "name": "Tracks",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "List Tracks",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://deepracer.amazonaws.com/20201101/tracks",
+            "params": [
+              {
+                "name": "nextToken",
+                "value": "",
+                "type": "query",
+                "description": "Pagination token from a previous list response."
+              },
+              {
+                "name": "maxResults",
+                "value": "",
+                "type": "query",
+                "description": "Maximum number of tracks to return."
+              }
+            ]
+          },
+          "docs": "List all available DeepRacer racing tracks for training and evaluation."
+        }
+      ]
+    }
+  ],
+  "bundled": true
+}
