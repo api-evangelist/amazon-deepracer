@@ -5,7 +5,7 @@ description: >-
   a physical track. It provides a fully autonomous driving platform that enables developers to get hands-on experience
   with machine learning through a fun and engaging racing experience.
 type: Index
-image: https://kinlane-productions.s3.amazonaws.com/apis-json/apis-json-logo.jpg
+image: https://kinlane-images.s3.amazonaws.com/shared/apis-json/apis-json-logo.jpg
 tags:
   - Autonomous Vehicles
   - AWS
