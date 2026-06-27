@@ -70,7 +70,7 @@ common:
     url: https://github.com/aws
   - type: Console
     url: https://console.aws.amazon.com/deepracer/
-  - type: SignUp
+  - type: Signup
     url: https://portal.aws.amazon.com/billing/signup
   - type: Login
     url: https://signin.aws.amazon.com/
