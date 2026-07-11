@@ -52,6 +52,14 @@ apis:
         url: >-
           https://raw.githubusercontent.com/api-evangelist/amazon-deepracer/refs/heads/main/json-ld/amazon-deepracer-context.jsonld
 common:
+  - type: TrustCenter
+    url: security/amazon-deepracer-trust-center.yml
+  - type: VulnerabilityDisclosure
+    url: security/amazon-deepracer-vulnerability-disclosure.yml
+  - type: DomainSecurity
+    url: security/amazon-deepracer-domain-security.yml
+  - type: Authentication
+    url: authentication/amazon-deepracer-authentication.yml
   - type: Portal
     url: https://aws.amazon.com/deepracer/
   - type: Website
