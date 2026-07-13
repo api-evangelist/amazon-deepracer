@@ -1,173 +1,227 @@
+# amazon-deepracer — Spectral ruleset (strengthened)
+# Plain Spectral. Existing hand-authored rules preserved; measured rules added
+# from this provider's own OpenAPI conventions by strengthen_ruleset.py,
+# then self-validated against the spec.
+#
+# Provenance:
+#   - servers-https-only: 100% of servers already https (error)
+#   - servers-expected-domain: 1/1 servers on amazonaws.com
+#   - path-params-casing: snake @ 67% (n=6)
+#   - query-params-casing: camel @ 91% (n=11)
+#   - operationid-casing: camel @ 100% (n=10)
+#   - schema-names-casing: pascal @ 100% (n=15)
+#   - schema-properties-casing: camel @ 70% (n=47)
+#   - security: global (root) — NOT emitting operation-security-required
+#   - error-schema-defined: Error
+#   - pagination params observed: ['maxResults', 'nextToken']
+#   - merge: kept 20 existing, added 6 measured, upgraded 0
+#   - added: servers-expected-domain, path-params-casing, query-params-casing, schema-names-casing, schema-properties-casing, error-schema-defined
+extends:
+  - spectral:oas
 rules:
   info-title-prefix:
     description: API title must reference "DeepRacer"
     severity: warn
-    given: "$.info.title"
+    given: $.info.title
     then:
       function: pattern
       functionOptions:
-        match: "DeepRacer"
-
+        match: DeepRacer
   info-description-required:
     description: Info object must have a description
     severity: error
-    given: "$.info"
+    given: $.info
     then:
       field: description
       function: truthy
-
   info-version-required:
     description: Info object must have a version
     severity: error
-    given: "$.info"
+    given: $.info
     then:
       field: version
       function: truthy
-
   openapi-version-3x:
     description: Must use OpenAPI 3.x
     severity: error
-    given: "$"
+    given: $
     then:
       field: openapi
       function: pattern
       functionOptions:
-        match: "^3\\."
-
+        match: ^3\.
   servers-defined:
     description: Servers array must be defined
     severity: error
-    given: "$"
+    given: $
     then:
       field: servers
       function: truthy
-
   servers-https-only:
     description: All server URLs must use HTTPS
     severity: error
-    given: "$.servers[*].url"
+    given: $.servers[*].url
     then:
       function: pattern
       functionOptions:
-        match: "^https://"
-
+        match: ^https://
   paths-versioned:
     description: DeepRacer API paths should include API version date prefix
     severity: warn
-    given: "$.paths[*]~"
+    given: $.paths[*]~
     then:
       function: pattern
       functionOptions:
-        match: "^/20201101/"
-
+        match: ^/20201101/
   operation-summary-required:
     description: All operations must have a summary
     severity: error
-    given: "$.paths[*][get,post,put,patch,delete]"
+    given: $.paths[*][get,post,put,patch,delete]
     then:
       field: summary
       function: truthy
-
   operation-description-required:
     description: All operations must have a description
     severity: error
-    given: "$.paths[*][get,post,put,patch,delete]"
+    given: $.paths[*][get,post,put,patch,delete]
     then:
       field: description
       function: truthy
-
   operation-id-required:
     description: All operations must have an operationId
     severity: error
-    given: "$.paths[*][get,post,put,patch,delete]"
+    given: $.paths[*][get,post,put,patch,delete]
     then:
       field: operationId
       function: truthy
-
   operation-id-camel-case:
     description: OperationId must use camelCase
     severity: warn
-    given: "$.paths[*][get,post,put,patch,delete].operationId"
+    given: $.paths[*][get,post,put,patch,delete].operationId
     then:
       function: pattern
       functionOptions:
-        match: "^[a-z][a-zA-Z0-9]+$"
-
+        match: ^[a-z][a-zA-Z0-9]+$
   operation-tags-required:
     description: All operations must have tags
     severity: error
-    given: "$.paths[*][get,post,put,patch,delete]"
+    given: $.paths[*][get,post,put,patch,delete]
     then:
       field: tags
       function: truthy
-
   tags-defined:
     description: Tags array should be defined globally
     severity: warn
-    given: "$"
+    given: $
     then:
       field: tags
       function: truthy
-
   response-success-required:
     description: All operations must have at least one 2xx response
     severity: error
-    given: "$.paths[*][get,post,put,patch,delete].responses"
+    given: $.paths[*][get,post,put,patch,delete].responses
     then:
       function: schema
       functionOptions:
         schema:
           anyOf:
-            - required: ["200"]
-            - required: ["201"]
-            - required: ["204"]
-
+          - required:
+            - '200'
+          - required:
+            - '201'
+          - required:
+            - '204'
   response-description-required:
     description: All responses must have a description
     severity: error
-    given: "$.paths[*][*].responses[*]"
+    given: $.paths[*][*].responses[*]
     then:
       field: description
       function: truthy
-
   schema-description-required:
     description: Top-level schemas should have a description
     severity: warn
-    given: "$.components.schemas[*]"
+    given: $.components.schemas[*]
     then:
       field: description
       function: truthy
-
   security-schemes-defined:
     description: Security schemes must be defined
     severity: error
-    given: "$.components"
+    given: $.components
     then:
       field: securitySchemes
       function: truthy
-
   no-empty-descriptions:
     description: Descriptions must not be empty strings
     severity: error
-    given: "$..description"
+    given: $..description
     then:
       function: pattern
       functionOptions:
-        match: ".+"
-
+        match: .+
   list-has-pagination:
     description: List operations should return nextToken for pagination
     severity: info
-    given: "$.paths[*][get].responses.200.content.application/json.schema.properties"
+    given: $.paths[*][get].responses.200.content.application/json.schema.properties
     then:
       field: nextToken
       function: truthy
-
   arn-paths-use-arn-param:
     description: DeepRacer resource paths with ARN parameters should use {arn} or named ARN path params
     severity: info
-    given: "$.paths[*]~"
+    given: $.paths[*]~
     then:
       function: pattern
       functionOptions:
-        match: "^/20201101/(cars|models|leaderboards|tracks)(/(\\{[a-zA-Z]+\\}|[a-zA-Z0-9_-]+))?"
+        match: ^/20201101/(cars|models|leaderboards|tracks)(/(\{[a-zA-Z]+\}|[a-zA-Z0-9_-]+))?
+  servers-expected-domain:
+    description: Server URLs should be on the amazonaws.com domain.
+    severity: warn
+    given: $.servers[*].url
+    then:
+      function: pattern
+      functionOptions:
+        match: amazonaws\.com
+  path-params-casing:
+    description: Path parameters should be snake_case (the dominant convention in this API).
+    severity: warn
+    given: $.paths[*].parameters[?(@.in=='path')].name
+    then:
+      function: casing
+      functionOptions:
+        type: snake
+  query-params-casing:
+    description: Query parameters should be camelCase (the dominant convention in this API).
+    severity: warn
+    given: $.paths[*][get,post,put,patch,delete].parameters[?(@.in=='query')]
+    then:
+      field: name
+      function: casing
+      functionOptions:
+        type: camel
+  schema-names-casing:
+    description: Component schema names should be PascalCase (the dominant convention in this API).
+    severity: warn
+    given: $.components.schemas
+    then:
+      field: '@key'
+      function: casing
+      functionOptions:
+        type: pascal
+  schema-properties-casing:
+    description: Schema properties should be camelCase (the dominant convention in this API).
+    severity: info
+    given: $.components.schemas[*].properties
+    then:
+      field: '@key'
+      function: casing
+      functionOptions:
+        type: camel
+  error-schema-defined:
+    description: A shared error schema (Error) should be defined for error payloads.
+    severity: warn
+    given: $.components.schemas
+    then:
+      field: Error
+      function: truthy
