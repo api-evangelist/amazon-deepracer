@@ -52,6 +52,8 @@ apis:
         url: >-
           https://raw.githubusercontent.com/api-evangelist/amazon-deepracer/refs/heads/main/json-ld/amazon-deepracer-context.jsonld
 common:
+  - type: AgenticAccess
+    url: agentic-access/amazon-deepracer-agentic-access.yml
   - type: TrustCenter
     url: security/amazon-deepracer-trust-center.yml
   - type: VulnerabilityDisclosure
