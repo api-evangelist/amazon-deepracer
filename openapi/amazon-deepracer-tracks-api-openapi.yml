@@ -1,0 +1,111 @@
+openapi: 3.1.0
+info:
+  title: Amazon DeepRacer Cars Tracks API
+  description: The Amazon DeepRacer API provides programmatic access to manage DeepRacer vehicles, reinforcement learning models, leaderboards, and training tracks for autonomous racing experiences on AWS. Resources are versioned under /20201101/.
+  version: 2020-11-01
+  contact:
+    name: Amazon Web Services
+    url: https://aws.amazon.com/deepracer/
+  termsOfService: https://aws.amazon.com/service-terms/
+  license:
+    name: Apache 2.0
+    url: https://www.apache.org/licenses/LICENSE-2.0
+servers:
+- url: https://deepracer.amazonaws.com
+  description: Amazon DeepRacer API
+security:
+- awsSignatureV4: []
+tags:
+- name: Tracks
+  description: Manage virtual and physical racing tracks
+paths:
+  /20201101/tracks:
+    get:
+      operationId: listTracks
+      summary: List Tracks
+      description: List all available DeepRacer racing tracks for training and evaluation.
+      tags:
+      - Tracks
+      parameters:
+      - name: nextToken
+        in: query
+        description: Pagination token from a previous list response.
+        required: false
+        schema:
+          type: string
+      - name: maxResults
+        in: query
+        description: Maximum number of tracks to return.
+        required: false
+        schema:
+          type: integer
+      responses:
+        '200':
+          description: List of available racing tracks retrieved successfully.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ListTracksResponse'
+              example:
+                tracks:
+                - arn: arn:aws:deepracer:us-east-1::track/London_Loop_2019
+                  name: London Loop 2019
+                  trackType: REINVENT_2018
+                  trackDimension: REGULAR
+                nextToken: null
+                x-microcks-default: true
+        '400':
+          description: Bad request — invalid parameters.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+components:
+  schemas:
+    Track:
+      type: object
+      description: A virtual or physical racing track used for DeepRacer training and evaluation.
+      properties:
+        arn:
+          type: string
+          description: The ARN uniquely identifying the racing track.
+        name:
+          type: string
+          description: The display name of the track.
+        trackType:
+          type: string
+          description: The classification type of the track (e.g., REINVENT_2018, CHAMPIONSHIP).
+        trackDimension:
+          type: string
+          description: The size category of the track (REGULAR, WIDE).
+          enum:
+          - REGULAR
+          - WIDE
+    ListTracksResponse:
+      type: object
+      description: Response containing a list of available racing tracks.
+      properties:
+        tracks:
+          type: array
+          description: List of racing tracks.
+          items:
+            $ref: '#/components/schemas/Track'
+        nextToken:
+          type: string
+          description: Token for retrieving the next page of results.
+    Error:
+      type: object
+      description: Error response returned when an API request fails.
+      properties:
+        message:
+          type: string
+          description: A human-readable description of the error.
+        code:
+          type: string
+          description: An error code identifying the type of failure.
+  securitySchemes:
+    awsSignatureV4:
+      type: apiKey
+      in: header
+      name: Authorization
+      description: AWS Signature Version 4 authentication. Sign requests using your AWS access key, secret key, and session token.

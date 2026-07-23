@@ -1,0 +1,206 @@
+openapi: 3.1.0
+info:
+  title: Amazon DeepRacer Cars Models API
+  description: The Amazon DeepRacer API provides programmatic access to manage DeepRacer vehicles, reinforcement learning models, leaderboards, and training tracks for autonomous racing experiences on AWS. Resources are versioned under /20201101/.
+  version: 2020-11-01
+  contact:
+    name: Amazon Web Services
+    url: https://aws.amazon.com/deepracer/
+  termsOfService: https://aws.amazon.com/service-terms/
+  license:
+    name: Apache 2.0
+    url: https://www.apache.org/licenses/LICENSE-2.0
+servers:
+- url: https://deepracer.amazonaws.com
+  description: Amazon DeepRacer API
+security:
+- awsSignatureV4: []
+tags:
+- name: Models
+  description: Manage reinforcement learning models for autonomous racing
+paths:
+  /20201101/models:
+    get:
+      operationId: listModels
+      summary: List Models
+      description: List reinforcement learning models available for DeepRacer racing.
+      tags:
+      - Models
+      parameters:
+      - name: nextToken
+        in: query
+        description: Pagination token from a previous list response.
+        required: false
+        schema:
+          type: string
+      - name: maxResults
+        in: query
+        description: Maximum number of models to return.
+        required: false
+        schema:
+          type: integer
+          minimum: 1
+          maximum: 100
+      responses:
+        '200':
+          description: List of reinforcement learning models retrieved successfully.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ListModelsResponse'
+              example:
+                models:
+                - modelArn: arn:aws:deepracer:us-east-1:123456789012:model/reinforcement_learning/MyModel
+                  modelName: MyModel
+                  creationTime: '2024-01-10T09:00:00Z'
+                  lastModifiedTime: '2024-01-12T14:00:00Z'
+                  modelStatus: READY
+                  trainingJobArn: arn:aws:sagemaker:us-east-1:123456789012:training-job/deepracer-job-123
+                nextToken: null
+                x-microcks-default: true
+        '400':
+          description: Bad request — invalid parameters.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+        '500':
+          description: Internal server error.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+  /20201101/models/{modelArn}:
+    get:
+      operationId: getModel
+      summary: Get Model
+      description: Retrieve the details and training status of a specific reinforcement learning model.
+      tags:
+      - Models
+      parameters:
+      - name: modelArn
+        in: path
+        description: The ARN of the reinforcement learning model.
+        required: true
+        schema:
+          type: string
+      responses:
+        '200':
+          description: Reinforcement learning model details retrieved successfully.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Model'
+              example:
+                modelArn: arn:aws:deepracer:us-east-1:123456789012:model/reinforcement_learning/MyModel
+                modelName: MyModel
+                creationTime: '2024-01-10T09:00:00Z'
+                lastModifiedTime: '2024-01-12T14:00:00Z'
+                modelStatus: READY
+                trainingJobArn: arn:aws:sagemaker:us-east-1:123456789012:training-job/deepracer-job-123
+                rewardFunction: def reward_function(params):\n    return float(params["progress"])
+                x-microcks-default: true
+        '404':
+          description: Model not found.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+    delete:
+      operationId: deleteModel
+      summary: Delete Model
+      description: Delete a reinforcement learning model from DeepRacer.
+      tags:
+      - Models
+      parameters:
+      - name: modelArn
+        in: path
+        description: The ARN of the model to delete.
+        required: true
+        schema:
+          type: string
+      responses:
+        '200':
+          description: Model deleted successfully.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/DeleteModelResponse'
+              example:
+                modelArn: arn:aws:deepracer:us-east-1:123456789012:model/reinforcement_learning/MyModel
+                x-microcks-default: true
+        '404':
+          description: Model not found.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+components:
+  schemas:
+    Model:
+      type: object
+      description: A reinforcement learning model trained for DeepRacer autonomous racing.
+      properties:
+        modelArn:
+          type: string
+          description: The ARN uniquely identifying the reinforcement learning model.
+        modelName:
+          type: string
+          description: The display name of the model.
+        creationTime:
+          type: string
+          format: date-time
+          description: Timestamp when the model was created.
+        lastModifiedTime:
+          type: string
+          format: date-time
+          description: Timestamp when the model was last updated.
+        modelStatus:
+          type: string
+          description: Current status of the model (TRAINING, READY, FAILED, STOPPED).
+          enum:
+          - TRAINING
+          - READY
+          - FAILED
+          - STOPPED
+        trainingJobArn:
+          type: string
+          description: The ARN of the SageMaker training job that produced this model.
+        rewardFunction:
+          type: string
+          description: The Python reward function code used during model training.
+    DeleteModelResponse:
+      type: object
+      description: Response confirming the model deletion.
+      properties:
+        modelArn:
+          type: string
+          description: The ARN of the deleted model.
+    Error:
+      type: object
+      description: Error response returned when an API request fails.
+      properties:
+        message:
+          type: string
+          description: A human-readable description of the error.
+        code:
+          type: string
+          description: An error code identifying the type of failure.
+    ListModelsResponse:
+      type: object
+      description: Response containing a list of reinforcement learning models.
+      properties:
+        models:
+          type: array
+          description: List of reinforcement learning models.
+          items:
+            $ref: '#/components/schemas/Model'
+        nextToken:
+          type: string
+          description: Token for retrieving the next page of results.
+  securitySchemes:
+    awsSignatureV4:
+      type: apiKey
+      in: header
+      name: Authorization
+      description: AWS Signature Version 4 authentication. Sign requests using your AWS access key, secret key, and session token.

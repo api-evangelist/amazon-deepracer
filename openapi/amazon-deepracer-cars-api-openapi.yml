@@ -1,0 +1,236 @@
+openapi: 3.1.0
+info:
+  title: Amazon DeepRacer Cars API
+  description: The Amazon DeepRacer API provides programmatic access to manage DeepRacer vehicles, reinforcement learning models, leaderboards, and training tracks for autonomous racing experiences on AWS. Resources are versioned under /20201101/.
+  version: 2020-11-01
+  contact:
+    name: Amazon Web Services
+    url: https://aws.amazon.com/deepracer/
+  termsOfService: https://aws.amazon.com/service-terms/
+  license:
+    name: Apache 2.0
+    url: https://www.apache.org/licenses/LICENSE-2.0
+servers:
+- url: https://deepracer.amazonaws.com
+  description: Amazon DeepRacer API
+security:
+- awsSignatureV4: []
+tags:
+- name: Cars
+  description: Manage DeepRacer physical vehicles and their configurations
+paths:
+  /20201101/cars:
+    get:
+      operationId: listCars
+      summary: List Cars
+      description: List all DeepRacer vehicles associated with the account.
+      tags:
+      - Cars
+      parameters:
+      - name: nextToken
+        in: query
+        description: Pagination token from a previous list response.
+        required: false
+        schema:
+          type: string
+      - name: maxResults
+        in: query
+        description: Maximum number of cars to return.
+        required: false
+        schema:
+          type: integer
+          minimum: 1
+          maximum: 100
+      responses:
+        '200':
+          description: List of DeepRacer vehicles retrieved successfully.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ListCarsResponse'
+              example:
+                cars:
+                - vehicleArn: arn:aws:deepracer:us-east-1:123456789012:car/MyDeepRacer
+                  vehicleName: MyDeepRacer
+                  createdAt: '2024-01-15T10:00:00Z'
+                  lastModifiedTime: '2024-01-15T10:00:00Z'
+                  tagsList: []
+                nextToken: null
+                x-microcks-default: true
+        '400':
+          description: Bad request — invalid parameters.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+        '500':
+          description: Internal server error.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+  /20201101/cars/{arn}:
+    get:
+      operationId: getCar
+      summary: Get Car
+      description: Retrieve the configuration and metadata for a specific DeepRacer vehicle.
+      tags:
+      - Cars
+      parameters:
+      - name: arn
+        in: path
+        description: The ARN of the DeepRacer vehicle.
+        required: true
+        schema:
+          type: string
+      responses:
+        '200':
+          description: DeepRacer vehicle details retrieved successfully.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Car'
+              example:
+                vehicleArn: arn:aws:deepracer:us-east-1:123456789012:car/MyDeepRacer
+                vehicleName: MyDeepRacer
+                fleetArn: arn:aws:deepracer:us-east-1:123456789012:fleet/MyFleet
+                createdAt: '2024-01-15T10:00:00Z'
+                lastModifiedTime: '2024-01-20T08:30:00Z'
+                tagsList: []
+                x-microcks-default: true
+        '404':
+          description: DeepRacer vehicle not found.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+        '500':
+          description: Internal server error.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+    patch:
+      operationId: updateCar
+      summary: Update Car
+      description: Update the name or configuration of a DeepRacer vehicle.
+      tags:
+      - Cars
+      parameters:
+      - name: arn
+        in: path
+        description: The ARN of the DeepRacer vehicle.
+        required: true
+        schema:
+          type: string
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/UpdateCarRequest'
+            example:
+              vehicleName: UpdatedDeepRacer
+              x-microcks-default: true
+      responses:
+        '200':
+          description: DeepRacer vehicle updated successfully.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/UpdateCarResponse'
+              example:
+                vehicleArn: arn:aws:deepracer:us-east-1:123456789012:car/MyDeepRacer
+                x-microcks-default: true
+        '400':
+          description: Bad request — invalid update parameters.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+        '404':
+          description: DeepRacer vehicle not found.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+components:
+  schemas:
+    UpdateCarResponse:
+      type: object
+      description: Response confirming the vehicle update.
+      properties:
+        vehicleArn:
+          type: string
+          description: The ARN of the updated vehicle.
+    Car:
+      type: object
+      description: A physical DeepRacer vehicle registered to an AWS account.
+      properties:
+        vehicleArn:
+          type: string
+          description: The ARN uniquely identifying the DeepRacer vehicle.
+        vehicleName:
+          type: string
+          description: The display name of the vehicle.
+        fleetArn:
+          type: string
+          description: The ARN of the fleet this vehicle belongs to, if any.
+        createdAt:
+          type: string
+          format: date-time
+          description: Timestamp when the vehicle was registered.
+        lastModifiedTime:
+          type: string
+          format: date-time
+          description: Timestamp when the vehicle was last updated.
+        tagsList:
+          type: array
+          description: Tags associated with the vehicle.
+          items:
+            $ref: '#/components/schemas/Tag'
+    UpdateCarRequest:
+      type: object
+      description: Request body for updating a DeepRacer vehicle.
+      properties:
+        vehicleName:
+          type: string
+          description: New display name for the vehicle.
+    ListCarsResponse:
+      type: object
+      description: Response containing a list of DeepRacer vehicles.
+      properties:
+        cars:
+          type: array
+          description: List of DeepRacer vehicles.
+          items:
+            $ref: '#/components/schemas/Car'
+        nextToken:
+          type: string
+          description: Token for retrieving the next page of results.
+    Error:
+      type: object
+      description: Error response returned when an API request fails.
+      properties:
+        message:
+          type: string
+          description: A human-readable description of the error.
+        code:
+          type: string
+          description: An error code identifying the type of failure.
+    Tag:
+      type: object
+      description: A key-value tag for organizing and categorizing DeepRacer resources.
+      properties:
+        key:
+          type: string
+          description: The tag key.
+        value:
+          type: string
+          description: The tag value.
+  securitySchemes:
+    awsSignatureV4:
+      type: apiKey
+      in: header
+      name: Authorization
+      description: AWS Signature Version 4 authentication. Sign requests using your AWS access key, secret key, and session token.
