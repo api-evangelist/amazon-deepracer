@@ -5,7 +5,20 @@ description: >-
   a physical track. It provides a fully autonomous driving platform that enables developers to get hands-on experience
   with machine learning through a fun and engaging racing experience.
 type: Index
-image: https://kinlane-images.s3.amazonaws.com/shared/apis-json/apis-json-logo.jpg
+accessModel:
+  pricing: freemium
+  onboarding: self-serve
+  trial: false
+  try_now: true
+  public: false
+  label: Freemium · Self-serve signup
+  confidence: high
+  source:
+  - plans
+  - authentication
+  generated: '2026-07-22'
+  method: derived
+image: https://kinlane-images.s3.amazonaws.com/shared/apis-json/icons/amazon-deepracer.png
 tags:
   - Autonomous Vehicles
   - AWS
@@ -17,41 +30,121 @@ created: '2026-03-16'
 modified: '2026-05-19'
 specificationVersion: '0.19'
 apis:
-  - aid: amazon-deepracer:aws-deepracer-api
-    name: AWS DeepRacer API
-    description: >-
-      The AWS DeepRacer API provides programmatic access to manage DeepRacer vehicles, models, and leaderboards for
-      reinforcement learning-based autonomous racing experiences.
-    humanURL: https://aws.amazon.com/deepracer/
-    baseURL: https://deepracer.amazonaws.com
-    tags:
-      - Autonomous Racing
-      - Machine Learning
-      - Reinforcement Learning
-      - Robotics
-      - AWS
-    properties:
-      - type: Documentation
-        url: https://docs.aws.amazon.com/deepracer/latest/developerguide/deepracer-understand-api.html
-      - type: OpenAPI
-        url: >-
-          https://raw.githubusercontent.com/api-evangelist/amazon-deepracer/refs/heads/main/openapi/amazon-deepracer-openapi.yml
-      - type: GettingStarted
-        url: https://aws.amazon.com/deepracer/getting-started/
-      - type: Pricing
-        url: https://aws.amazon.com/deepracer/pricing/
-      - type: FAQ
-        url: https://aws.amazon.com/deepracer/faqs/
-      - type: SpectralRules
-        url: >-
-          https://raw.githubusercontent.com/api-evangelist/amazon-deepracer/refs/heads/main/rules/amazon-deepracer-spectral-rules.yml
-      - type: Vocabulary
-        url: >-
-          https://raw.githubusercontent.com/api-evangelist/amazon-deepracer/refs/heads/main/vocabulary/amazon-deepracer-vocabulary.yaml
-      - type: JSONLD
-        url: >-
-          https://raw.githubusercontent.com/api-evangelist/amazon-deepracer/refs/heads/main/json-ld/amazon-deepracer-context.jsonld
+- aid: amazon-deepracer:amazon-deepracer-cars-api
+  name: Amazon DeepRacer Cars API
+  description: Manage DeepRacer physical vehicles and their configurations
+  humanURL: https://aws.amazon.com/deepracer/
+  baseURL: https://deepracer.amazonaws.com
+  tags:
+  - Cars
+  properties:
+  - type: OpenAPI
+    url: openapi/amazon-deepracer-cars-api-openapi.yml
+  - type: Documentation
+    url: >-
+      https://docs.aws.amazon.com/deepracer/latest/developerguide/deepracer-understand-api.html
+  - type: GettingStarted
+    url: https://aws.amazon.com/deepracer/getting-started/
+  - type: Pricing
+    url: https://aws.amazon.com/deepracer/pricing/
+  - type: FAQ
+    url: https://aws.amazon.com/deepracer/faqs/
+  - type: SpectralRules
+    url: >-
+      https://raw.githubusercontent.com/api-evangelist/amazon-deepracer/refs/heads/main/rules/amazon-deepracer-spectral-rules.yml
+  - type: Vocabulary
+    url: >-
+      https://raw.githubusercontent.com/api-evangelist/amazon-deepracer/refs/heads/main/vocabulary/amazon-deepracer-vocabulary.yaml
+  - type: JSONLD
+    url: >-
+      https://raw.githubusercontent.com/api-evangelist/amazon-deepracer/refs/heads/main/json-ld/amazon-deepracer-context.jsonld
+- aid: amazon-deepracer:amazon-deepracer-leaderboards-api
+  name: Amazon DeepRacer Leaderboards API
+  description: Manage racing leaderboards and submissions
+  humanURL: https://aws.amazon.com/deepracer/
+  baseURL: https://deepracer.amazonaws.com
+  tags:
+  - Leaderboards
+  properties:
+  - type: OpenAPI
+    url: openapi/amazon-deepracer-leaderboards-api-openapi.yml
+  - type: Documentation
+    url: >-
+      https://docs.aws.amazon.com/deepracer/latest/developerguide/deepracer-understand-api.html
+  - type: GettingStarted
+    url: https://aws.amazon.com/deepracer/getting-started/
+  - type: Pricing
+    url: https://aws.amazon.com/deepracer/pricing/
+  - type: FAQ
+    url: https://aws.amazon.com/deepracer/faqs/
+  - type: SpectralRules
+    url: >-
+      https://raw.githubusercontent.com/api-evangelist/amazon-deepracer/refs/heads/main/rules/amazon-deepracer-spectral-rules.yml
+  - type: Vocabulary
+    url: >-
+      https://raw.githubusercontent.com/api-evangelist/amazon-deepracer/refs/heads/main/vocabulary/amazon-deepracer-vocabulary.yaml
+  - type: JSONLD
+    url: >-
+      https://raw.githubusercontent.com/api-evangelist/amazon-deepracer/refs/heads/main/json-ld/amazon-deepracer-context.jsonld
+- aid: amazon-deepracer:amazon-deepracer-models-api
+  name: Amazon DeepRacer Models API
+  description: Manage reinforcement learning models for autonomous racing
+  humanURL: https://aws.amazon.com/deepracer/
+  baseURL: https://deepracer.amazonaws.com
+  tags:
+  - Models
+  properties:
+  - type: OpenAPI
+    url: openapi/amazon-deepracer-models-api-openapi.yml
+  - type: Documentation
+    url: >-
+      https://docs.aws.amazon.com/deepracer/latest/developerguide/deepracer-understand-api.html
+  - type: GettingStarted
+    url: https://aws.amazon.com/deepracer/getting-started/
+  - type: Pricing
+    url: https://aws.amazon.com/deepracer/pricing/
+  - type: FAQ
+    url: https://aws.amazon.com/deepracer/faqs/
+  - type: SpectralRules
+    url: >-
+      https://raw.githubusercontent.com/api-evangelist/amazon-deepracer/refs/heads/main/rules/amazon-deepracer-spectral-rules.yml
+  - type: Vocabulary
+    url: >-
+      https://raw.githubusercontent.com/api-evangelist/amazon-deepracer/refs/heads/main/vocabulary/amazon-deepracer-vocabulary.yaml
+  - type: JSONLD
+    url: >-
+      https://raw.githubusercontent.com/api-evangelist/amazon-deepracer/refs/heads/main/json-ld/amazon-deepracer-context.jsonld
+- aid: amazon-deepracer:amazon-deepracer-tracks-api
+  name: Amazon DeepRacer Tracks API
+  description: Manage virtual and physical racing tracks
+  humanURL: https://aws.amazon.com/deepracer/
+  baseURL: https://deepracer.amazonaws.com
+  tags:
+  - Tracks
+  properties:
+  - type: OpenAPI
+    url: openapi/amazon-deepracer-tracks-api-openapi.yml
+  - type: Documentation
+    url: >-
+      https://docs.aws.amazon.com/deepracer/latest/developerguide/deepracer-understand-api.html
+  - type: GettingStarted
+    url: https://aws.amazon.com/deepracer/getting-started/
+  - type: Pricing
+    url: https://aws.amazon.com/deepracer/pricing/
+  - type: FAQ
+    url: https://aws.amazon.com/deepracer/faqs/
+  - type: SpectralRules
+    url: >-
+      https://raw.githubusercontent.com/api-evangelist/amazon-deepracer/refs/heads/main/rules/amazon-deepracer-spectral-rules.yml
+  - type: Vocabulary
+    url: >-
+      https://raw.githubusercontent.com/api-evangelist/amazon-deepracer/refs/heads/main/vocabulary/amazon-deepracer-vocabulary.yaml
+  - type: JSONLD
+    url: >-
+      https://raw.githubusercontent.com/api-evangelist/amazon-deepracer/refs/heads/main/json-ld/amazon-deepracer-context.jsonld
 common:
+  - type: PostmanWorkspace
+    url: https://www.postman.com/kinlaneapi/amazon-deepracer/overview
   - type: AgenticAccess
     url: agentic-access/amazon-deepracer-agentic-access.yml
   - type: TrustCenter
