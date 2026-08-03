@@ -1,0 +1,562 @@
+{
+  "info": {
+    "_postman_id": "3a8a55e3-059f-4181-8d58-e66a3234f577",
+    "name": "Amazon DeepRacer Cars Leaderboards API",
+    "description": "The Amazon DeepRacer API provides programmatic access to manage DeepRacer vehicles, reinforcement learning models, leaderboards, and training tracks for autonomous racing experiences on AWS. Resources are versioned under /20201101/.\n\nContact Support:\n Name: Amazon Web Services",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+    "createdAt": "2026-07-28T00:33:26.000Z",
+    "updatedAt": "2026-07-28T00:33:27.000Z",
+    "lastUpdatedBy": "35240",
+    "uid": "35240-3a8a55e3-059f-4181-8d58-e66a3234f577"
+  },
+  "item": [
+    {
+      "name": "20201101",
+      "item": [
+        {
+          "name": "leaderboards",
+          "item": [
+            {
+              "name": "{arn}",
+              "item": [
+                {
+                  "name": "rankings",
+                  "item": [
+                    {
+                      "name": "List Leaderboard Submissions",
+                      "id": "8e5d5ecc-e015-4106-889d-be684faf216a",
+                      "protocolProfileBehavior": {
+                        "disableBodyPruning": true
+                      },
+                      "request": {
+                        "method": "GET",
+                        "header": [
+                          {
+                            "key": "Accept",
+                            "value": "application/json"
+                          }
+                        ],
+                        "url": {
+                          "raw": "{{baseUrl}}/20201101/leaderboards/:arn/rankings?nextToken=<string>&maxResults=<integer>",
+                          "host": [
+                            "{{baseUrl}}"
+                          ],
+                          "path": [
+                            "20201101",
+                            "leaderboards",
+                            ":arn",
+                            "rankings"
+                          ],
+                          "query": [
+                            {
+                              "description": "Pagination token from a previous list response.",
+                              "key": "nextToken",
+                              "value": "<string>"
+                            },
+                            {
+                              "description": "Maximum number of submissions to return.",
+                              "key": "maxResults",
+                              "value": "<integer>"
+                            }
+                          ],
+                          "variable": [
+                            {
+                              "id": "e39d4339-aba1-44fd-879d-52e24ed6caf5",
+                              "key": "arn",
+                              "value": "<string>",
+                              "description": "(Required) The ARN of the leaderboard."
+                            }
+                          ]
+                        },
+                        "description": "List submissions and rankings for a specific leaderboard."
+                      },
+                      "response": [
+                        {
+                          "id": "3ffe1323-7ee8-4c89-8cf9-e8328840b69d",
+                          "name": "Leaderboard submissions and rankings retrieved successfully.",
+                          "originalRequest": {
+                            "method": "GET",
+                            "header": [
+                              {
+                                "key": "Accept",
+                                "value": "application/json"
+                              },
+                              {
+                                "description": "Added as a part of security scheme: apikey",
+                                "key": "Authorization",
+                                "value": "<API Key>"
+                              }
+                            ],
+                            "url": {
+                              "raw": "{{baseUrl}}/20201101/leaderboards/:arn/rankings?nextToken=<string>&maxResults=<integer>",
+                              "host": [
+                                "{{baseUrl}}"
+                              ],
+                              "path": [
+                                "20201101",
+                                "leaderboards",
+                                ":arn",
+                                "rankings"
+                              ],
+                              "query": [
+                                {
+                                  "description": "Pagination token from a previous list response.",
+                                  "key": "nextToken",
+                                  "value": "<string>"
+                                },
+                                {
+                                  "description": "Maximum number of submissions to return.",
+                                  "key": "maxResults",
+                                  "value": "<integer>"
+                                }
+                              ],
+                              "variable": [
+                                {
+                                  "key": "arn"
+                                }
+                              ]
+                            }
+                          },
+                          "status": "OK",
+                          "code": 200,
+                          "_postman_previewlanguage": "json",
+                          "header": [
+                            {
+                              "key": "Content-Type",
+                              "value": "application/json"
+                            }
+                          ],
+                          "cookie": [],
+                          "responseTime": null,
+                          "body": "{\n  \"leaderboardSubmissions\": [\n    {\n      \"leaderboardSubmissionId\": \"<string>\",\n      \"participantName\": \"<string>\",\n      \"modelArn\": \"<string>\",\n      \"rank\": \"<integer>\",\n      \"lapTime\": \"<double>\",\n      \"avgLapTime\": \"<double>\"\n    },\n    {\n      \"leaderboardSubmissionId\": \"<string>\",\n      \"participantName\": \"<string>\",\n      \"modelArn\": \"<string>\",\n      \"rank\": \"<integer>\",\n      \"lapTime\": \"<double>\",\n      \"avgLapTime\": \"<double>\"\n    }\n  ],\n  \"nextToken\": \"<string>\"\n}",
+                          "createdAt": "2026-07-28T00:33:27.000Z",
+                          "updatedAt": "2026-07-28T00:33:27.000Z",
+                          "uid": "35240-3ffe1323-7ee8-4c89-8cf9-e8328840b69d"
+                        },
+                        {
+                          "id": "be69a607-6265-48eb-aa46-ad2f7658a129",
+                          "name": "Leaderboard not found.",
+                          "originalRequest": {
+                            "method": "GET",
+                            "header": [
+                              {
+                                "key": "Accept",
+                                "value": "application/json"
+                              },
+                              {
+                                "description": "Added as a part of security scheme: apikey",
+                                "key": "Authorization",
+                                "value": "<API Key>"
+                              }
+                            ],
+                            "url": {
+                              "raw": "{{baseUrl}}/20201101/leaderboards/:arn/rankings?nextToken=<string>&maxResults=<integer>",
+                              "host": [
+                                "{{baseUrl}}"
+                              ],
+                              "path": [
+                                "20201101",
+                                "leaderboards",
+                                ":arn",
+                                "rankings"
+                              ],
+                              "query": [
+                                {
+                                  "description": "Pagination token from a previous list response.",
+                                  "key": "nextToken",
+                                  "value": "<string>"
+                                },
+                                {
+                                  "description": "Maximum number of submissions to return.",
+                                  "key": "maxResults",
+                                  "value": "<integer>"
+                                }
+                              ],
+                              "variable": [
+                                {
+                                  "key": "arn"
+                                }
+                              ]
+                            }
+                          },
+                          "status": "Not Found",
+                          "code": 404,
+                          "_postman_previewlanguage": "json",
+                          "header": [
+                            {
+                              "key": "Content-Type",
+                              "value": "application/json"
+                            }
+                          ],
+                          "cookie": [],
+                          "responseTime": null,
+                          "body": "{\n  \"message\": \"<string>\",\n  \"code\": \"<string>\"\n}",
+                          "createdAt": "2026-07-28T00:33:27.000Z",
+                          "updatedAt": "2026-07-28T00:33:27.000Z",
+                          "uid": "35240-be69a607-6265-48eb-aa46-ad2f7658a129"
+                        }
+                      ],
+                      "createdAt": "2026-07-28T00:33:27.000Z",
+                      "updatedAt": "2026-07-28T00:33:27.000Z",
+                      "uid": "35240-8e5d5ecc-e015-4106-889d-be684faf216a"
+                    }
+                  ],
+                  "id": "07dc9e93-a226-4e5d-a266-f915eca8957b",
+                  "createdAt": "2026-07-28T00:33:27.000Z",
+                  "updatedAt": "2026-07-28T00:33:27.000Z",
+                  "uid": "35240-07dc9e93-a226-4e5d-a266-f915eca8957b"
+                },
+                {
+                  "name": "Get Leaderboard",
+                  "id": "cf3836d0-97ea-4c3f-a91b-de817a89f9e0",
+                  "protocolProfileBehavior": {
+                    "disableBodyPruning": true
+                  },
+                  "request": {
+                    "method": "GET",
+                    "header": [
+                      {
+                        "key": "Accept",
+                        "value": "application/json"
+                      }
+                    ],
+                    "url": {
+                      "raw": "{{baseUrl}}/20201101/leaderboards/:arn",
+                      "host": [
+                        "{{baseUrl}}"
+                      ],
+                      "path": [
+                        "20201101",
+                        "leaderboards",
+                        ":arn"
+                      ],
+                      "variable": [
+                        {
+                          "id": "9883f61e-68ea-49d4-8f0a-ededffc79a5e",
+                          "key": "arn",
+                          "value": "<string>",
+                          "description": "(Required) The ARN of the leaderboard."
+                        }
+                      ]
+                    },
+                    "description": "Retrieve the details and current rankings for a specific leaderboard."
+                  },
+                  "response": [
+                    {
+                      "id": "93d766cb-4b58-4584-bba0-310deb682a50",
+                      "name": "Leaderboard details retrieved successfully.",
+                      "originalRequest": {
+                        "method": "GET",
+                        "header": [
+                          {
+                            "key": "Accept",
+                            "value": "application/json"
+                          },
+                          {
+                            "description": "Added as a part of security scheme: apikey",
+                            "key": "Authorization",
+                            "value": "<API Key>"
+                          }
+                        ],
+                        "url": {
+                          "raw": "{{baseUrl}}/20201101/leaderboards/:arn",
+                          "host": [
+                            "{{baseUrl}}"
+                          ],
+                          "path": [
+                            "20201101",
+                            "leaderboards",
+                            ":arn"
+                          ],
+                          "variable": [
+                            {
+                              "key": "arn"
+                            }
+                          ]
+                        }
+                      },
+                      "status": "OK",
+                      "code": 200,
+                      "_postman_previewlanguage": "json",
+                      "header": [
+                        {
+                          "key": "Content-Type",
+                          "value": "application/json"
+                        }
+                      ],
+                      "cookie": [],
+                      "responseTime": null,
+                      "body": "{\n  \"arn\": \"<string>\",\n  \"name\": \"<string>\",\n  \"status\": \"ACTIVE\",\n  \"submissionClosureTime\": \"<dateTime>\",\n  \"isQualifier\": \"<boolean>\",\n  \"trackType\": \"<string>\",\n  \"minimumCountOfLaps\": \"<integer>\"\n}",
+                      "createdAt": "2026-07-28T00:33:27.000Z",
+                      "updatedAt": "2026-07-28T00:33:27.000Z",
+                      "uid": "35240-93d766cb-4b58-4584-bba0-310deb682a50"
+                    },
+                    {
+                      "id": "957d4057-f06c-4d86-9034-3340ab13f9f4",
+                      "name": "Leaderboard not found.",
+                      "originalRequest": {
+                        "method": "GET",
+                        "header": [
+                          {
+                            "key": "Accept",
+                            "value": "application/json"
+                          },
+                          {
+                            "description": "Added as a part of security scheme: apikey",
+                            "key": "Authorization",
+                            "value": "<API Key>"
+                          }
+                        ],
+                        "url": {
+                          "raw": "{{baseUrl}}/20201101/leaderboards/:arn",
+                          "host": [
+                            "{{baseUrl}}"
+                          ],
+                          "path": [
+                            "20201101",
+                            "leaderboards",
+                            ":arn"
+                          ],
+                          "variable": [
+                            {
+                              "key": "arn"
+                            }
+                          ]
+                        }
+                      },
+                      "status": "Not Found",
+                      "code": 404,
+                      "_postman_previewlanguage": "json",
+                      "header": [
+                        {
+                          "key": "Content-Type",
+                          "value": "application/json"
+                        }
+                      ],
+                      "cookie": [],
+                      "responseTime": null,
+                      "body": "{\n  \"message\": \"<string>\",\n  \"code\": \"<string>\"\n}",
+                      "createdAt": "2026-07-28T00:33:27.000Z",
+                      "updatedAt": "2026-07-28T00:33:27.000Z",
+                      "uid": "35240-957d4057-f06c-4d86-9034-3340ab13f9f4"
+                    }
+                  ],
+                  "createdAt": "2026-07-28T00:33:27.000Z",
+                  "updatedAt": "2026-07-28T00:33:27.000Z",
+                  "uid": "35240-cf3836d0-97ea-4c3f-a91b-de817a89f9e0"
+                }
+              ],
+              "id": "0f829199-af30-400d-8d9b-4be4f7cb755a",
+              "createdAt": "2026-07-28T00:33:27.000Z",
+              "updatedAt": "2026-07-28T00:33:27.000Z",
+              "uid": "35240-0f829199-af30-400d-8d9b-4be4f7cb755a"
+            },
+            {
+              "name": "List Leaderboards",
+              "id": "d439ccdc-bb3f-4e04-b3cc-10efa78c7f7d",
+              "protocolProfileBehavior": {
+                "disableBodyPruning": true
+              },
+              "request": {
+                "method": "GET",
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "url": {
+                  "raw": "{{baseUrl}}/20201101/leaderboards?nextToken=<string>&maxResults=<integer>&status=ACTIVE",
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "path": [
+                    "20201101",
+                    "leaderboards"
+                  ],
+                  "query": [
+                    {
+                      "description": "Pagination token from a previous list response.",
+                      "key": "nextToken",
+                      "value": "<string>"
+                    },
+                    {
+                      "description": "Maximum number of leaderboards to return.",
+                      "key": "maxResults",
+                      "value": "<integer>"
+                    },
+                    {
+                      "description": "Filter leaderboards by status (ACTIVE, EXPIRED).",
+                      "key": "status",
+                      "value": "ACTIVE"
+                    }
+                  ]
+                },
+                "description": "List all active and past DeepRacer racing leaderboards."
+              },
+              "response": [
+                {
+                  "id": "94a32519-63f0-49b5-af1a-a4b25023f026",
+                  "name": "List of leaderboards retrieved successfully.",
+                  "originalRequest": {
+                    "method": "GET",
+                    "header": [
+                      {
+                        "key": "Accept",
+                        "value": "application/json"
+                      },
+                      {
+                        "description": "Added as a part of security scheme: apikey",
+                        "key": "Authorization",
+                        "value": "<API Key>"
+                      }
+                    ],
+                    "url": {
+                      "raw": "{{baseUrl}}/20201101/leaderboards?nextToken=<string>&maxResults=<integer>&status=ACTIVE",
+                      "host": [
+                        "{{baseUrl}}"
+                      ],
+                      "path": [
+                        "20201101",
+                        "leaderboards"
+                      ],
+                      "query": [
+                        {
+                          "description": "Pagination token from a previous list response.",
+                          "key": "nextToken",
+                          "value": "<string>"
+                        },
+                        {
+                          "description": "Maximum number of leaderboards to return.",
+                          "key": "maxResults",
+                          "value": "<integer>"
+                        },
+                        {
+                          "description": "Filter leaderboards by status (ACTIVE, EXPIRED).",
+                          "key": "status",
+                          "value": "ACTIVE"
+                        }
+                      ]
+                    }
+                  },
+                  "status": "OK",
+                  "code": 200,
+                  "_postman_previewlanguage": "json",
+                  "header": [
+                    {
+                      "key": "Content-Type",
+                      "value": "application/json"
+                    }
+                  ],
+                  "cookie": [],
+                  "responseTime": null,
+                  "body": "{\n  \"leaderboards\": [\n    {\n      \"arn\": \"<string>\",\n      \"name\": \"<string>\",\n      \"status\": \"ACTIVE\",\n      \"submissionClosureTime\": \"<dateTime>\",\n      \"isQualifier\": \"<boolean>\",\n      \"trackType\": \"<string>\",\n      \"minimumCountOfLaps\": \"<integer>\"\n    },\n    {\n      \"arn\": \"<string>\",\n      \"name\": \"<string>\",\n      \"status\": \"EXPIRED\",\n      \"submissionClosureTime\": \"<dateTime>\",\n      \"isQualifier\": \"<boolean>\",\n      \"trackType\": \"<string>\",\n      \"minimumCountOfLaps\": \"<integer>\"\n    }\n  ],\n  \"nextToken\": \"<string>\"\n}",
+                  "createdAt": "2026-07-28T00:33:27.000Z",
+                  "updatedAt": "2026-07-28T00:33:27.000Z",
+                  "uid": "35240-94a32519-63f0-49b5-af1a-a4b25023f026"
+                },
+                {
+                  "id": "d7b67c12-e5d2-4af5-9eb4-0f65dff62eb7",
+                  "name": "Bad request \u2014 invalid parameters.",
+                  "originalRequest": {
+                    "method": "GET",
+                    "header": [
+                      {
+                        "key": "Accept",
+                        "value": "application/json"
+                      },
+                      {
+                        "description": "Added as a part of security scheme: apikey",
+                        "key": "Authorization",
+                        "value": "<API Key>"
+                      }
+                    ],
+                    "url": {
+                      "raw": "{{baseUrl}}/20201101/leaderboards?nextToken=<string>&maxResults=<integer>&status=ACTIVE",
+                      "host": [
+                        "{{baseUrl}}"
+                      ],
+                      "path": [
+                        "20201101",
+                        "leaderboards"
+                      ],
+                      "query": [
+                        {
+                          "description": "Pagination token from a previous list response.",
+                          "key": "nextToken",
+                          "value": "<string>"
+                        },
+                        {
+                          "description": "Maximum number of leaderboards to return.",
+                          "key": "maxResults",
+                          "value": "<integer>"
+                        },
+                        {
+                          "description": "Filter leaderboards by status (ACTIVE, EXPIRED).",
+                          "key": "status",
+                          "value": "ACTIVE"
+                        }
+                      ]
+                    }
+                  },
+                  "status": "Bad Request",
+                  "code": 400,
+                  "_postman_previewlanguage": "json",
+                  "header": [
+                    {
+                      "key": "Content-Type",
+                      "value": "application/json"
+                    }
+                  ],
+                  "cookie": [],
+                  "responseTime": null,
+                  "body": "{\n  \"message\": \"<string>\",\n  \"code\": \"<string>\"\n}",
+                  "createdAt": "2026-07-28T00:33:27.000Z",
+                  "updatedAt": "2026-07-28T00:33:27.000Z",
+                  "uid": "35240-d7b67c12-e5d2-4af5-9eb4-0f65dff62eb7"
+                }
+              ],
+              "createdAt": "2026-07-28T00:33:27.000Z",
+              "updatedAt": "2026-07-28T00:33:27.000Z",
+              "uid": "35240-d439ccdc-bb3f-4e04-b3cc-10efa78c7f7d"
+            }
+          ],
+          "id": "48a29d02-5ebb-4e91-833a-30fa6d36ddaf",
+          "createdAt": "2026-07-28T00:33:27.000Z",
+          "updatedAt": "2026-07-28T00:33:27.000Z",
+          "uid": "35240-48a29d02-5ebb-4e91-833a-30fa6d36ddaf"
+        }
+      ],
+      "id": "6078bd0b-432a-439a-af59-dc4523e35a7a",
+      "createdAt": "2026-07-28T00:33:27.000Z",
+      "updatedAt": "2026-07-28T00:33:27.000Z",
+      "uid": "35240-6078bd0b-432a-439a-af59-dc4523e35a7a"
+    }
+  ],
+  "auth": {
+    "type": "apikey",
+    "apikey": [
+      {
+        "key": "key",
+        "value": "Authorization",
+        "type": "string"
+      },
+      {
+        "key": "value",
+        "value": "{{apiKey}}",
+        "type": "string"
+      },
+      {
+        "key": "in",
+        "value": "header",
+        "type": "string"
+      }
+    ]
+  },
+  "variable": [
+    {
+      "key": "baseUrl",
+      "value": "https://deepracer.amazonaws.com"
+    }
+  ]
+}

@@ -1,0 +1,20 @@
+{
+  "provider": "amazon-deepracer",
+  "sources": [
+    "amazon-deepracer-cars-api-openapi.yml",
+    "amazon-deepracer-leaderboards-api-openapi.yml",
+    "amazon-deepracer-models-api-openapi.yml",
+    "amazon-deepracer-tracks-api-openapi.yml"
+  ],
+  "outputs": [
+    "amazon-deepracer-cars-api-openapi.yml",
+    "amazon-deepracer-leaderboards-api-openapi.yml",
+    "amazon-deepracer-models-api-openapi.yml",
+    "amazon-deepracer-tracks-api-openapi.yml"
+  ],
+  "archived": [],
+  "errors": [],
+  "warnings": [],
+  "notes": [],
+  "skipped": []
+}

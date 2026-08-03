@@ -1,0 +1,554 @@
+{
+  "info": {
+    "_postman_id": "a75e1bf1-ce85-4bd2-a21a-036e81fd7e1e",
+    "name": "Amazon DeepRacer Cars Models API",
+    "description": "The Amazon DeepRacer API provides programmatic access to manage DeepRacer vehicles, reinforcement learning models, leaderboards, and training tracks for autonomous racing experiences on AWS. Resources are versioned under /20201101/.\n\nContact Support:\n Name: Amazon Web Services",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+    "createdAt": "2026-07-28T00:33:27.000Z",
+    "updatedAt": "2026-07-28T00:33:27.000Z",
+    "lastUpdatedBy": "35240",
+    "uid": "35240-a75e1bf1-ce85-4bd2-a21a-036e81fd7e1e"
+  },
+  "item": [
+    {
+      "name": "20201101",
+      "item": [
+        {
+          "name": "models",
+          "item": [
+            {
+              "name": "{modelArn}",
+              "item": [
+                {
+                  "name": "Get Model",
+                  "id": "d267e8d1-0401-4f5f-a2f6-86706e9fe14c",
+                  "protocolProfileBehavior": {
+                    "disableBodyPruning": true
+                  },
+                  "request": {
+                    "method": "GET",
+                    "header": [
+                      {
+                        "key": "Accept",
+                        "value": "application/json"
+                      }
+                    ],
+                    "url": {
+                      "raw": "{{baseUrl}}/20201101/models/:modelArn",
+                      "host": [
+                        "{{baseUrl}}"
+                      ],
+                      "path": [
+                        "20201101",
+                        "models",
+                        ":modelArn"
+                      ],
+                      "variable": [
+                        {
+                          "id": "fba805ea-d727-4285-8f12-2a5519d15aa1",
+                          "key": "modelArn",
+                          "value": "<string>",
+                          "description": "(Required) The ARN of the reinforcement learning model."
+                        }
+                      ]
+                    },
+                    "description": "Retrieve the details and training status of a specific reinforcement learning model."
+                  },
+                  "response": [
+                    {
+                      "id": "4a64b81e-1b76-4385-b067-1b53ab35b513",
+                      "name": "Reinforcement learning model details retrieved successfully.",
+                      "originalRequest": {
+                        "method": "GET",
+                        "header": [
+                          {
+                            "key": "Accept",
+                            "value": "application/json"
+                          },
+                          {
+                            "description": "Added as a part of security scheme: apikey",
+                            "key": "Authorization",
+                            "value": "<API Key>"
+                          }
+                        ],
+                        "url": {
+                          "raw": "{{baseUrl}}/20201101/models/:modelArn",
+                          "host": [
+                            "{{baseUrl}}"
+                          ],
+                          "path": [
+                            "20201101",
+                            "models",
+                            ":modelArn"
+                          ],
+                          "variable": [
+                            {
+                              "key": "modelArn"
+                            }
+                          ]
+                        }
+                      },
+                      "status": "OK",
+                      "code": 200,
+                      "_postman_previewlanguage": "json",
+                      "header": [
+                        {
+                          "key": "Content-Type",
+                          "value": "application/json"
+                        }
+                      ],
+                      "cookie": [],
+                      "responseTime": null,
+                      "body": "{\n  \"modelArn\": \"<string>\",\n  \"modelName\": \"<string>\",\n  \"creationTime\": \"<dateTime>\",\n  \"lastModifiedTime\": \"<dateTime>\",\n  \"modelStatus\": \"TRAINING\",\n  \"trainingJobArn\": \"<string>\",\n  \"rewardFunction\": \"<string>\"\n}",
+                      "createdAt": "2026-07-28T00:33:28.000Z",
+                      "updatedAt": "2026-07-28T00:33:28.000Z",
+                      "uid": "35240-4a64b81e-1b76-4385-b067-1b53ab35b513"
+                    },
+                    {
+                      "id": "1234460d-23dc-4d5d-b597-0d464db1a597",
+                      "name": "Model not found.",
+                      "originalRequest": {
+                        "method": "GET",
+                        "header": [
+                          {
+                            "key": "Accept",
+                            "value": "application/json"
+                          },
+                          {
+                            "description": "Added as a part of security scheme: apikey",
+                            "key": "Authorization",
+                            "value": "<API Key>"
+                          }
+                        ],
+                        "url": {
+                          "raw": "{{baseUrl}}/20201101/models/:modelArn",
+                          "host": [
+                            "{{baseUrl}}"
+                          ],
+                          "path": [
+                            "20201101",
+                            "models",
+                            ":modelArn"
+                          ],
+                          "variable": [
+                            {
+                              "key": "modelArn"
+                            }
+                          ]
+                        }
+                      },
+                      "status": "Not Found",
+                      "code": 404,
+                      "_postman_previewlanguage": "json",
+                      "header": [
+                        {
+                          "key": "Content-Type",
+                          "value": "application/json"
+                        }
+                      ],
+                      "cookie": [],
+                      "responseTime": null,
+                      "body": "{\n  \"message\": \"<string>\",\n  \"code\": \"<string>\"\n}",
+                      "createdAt": "2026-07-28T00:33:28.000Z",
+                      "updatedAt": "2026-07-28T00:33:28.000Z",
+                      "uid": "35240-1234460d-23dc-4d5d-b597-0d464db1a597"
+                    }
+                  ],
+                  "createdAt": "2026-07-28T00:33:28.000Z",
+                  "updatedAt": "2026-07-28T00:33:28.000Z",
+                  "uid": "35240-d267e8d1-0401-4f5f-a2f6-86706e9fe14c"
+                },
+                {
+                  "name": "Delete Model",
+                  "id": "5f73749d-13f2-4dd3-b97e-f06408aaa466",
+                  "protocolProfileBehavior": {
+                    "disableBodyPruning": true
+                  },
+                  "request": {
+                    "method": "DELETE",
+                    "header": [
+                      {
+                        "key": "Accept",
+                        "value": "application/json"
+                      }
+                    ],
+                    "url": {
+                      "raw": "{{baseUrl}}/20201101/models/:modelArn",
+                      "host": [
+                        "{{baseUrl}}"
+                      ],
+                      "path": [
+                        "20201101",
+                        "models",
+                        ":modelArn"
+                      ],
+                      "variable": [
+                        {
+                          "id": "df8e76f0-9e13-4508-9c36-21b28dadcf1e",
+                          "key": "modelArn",
+                          "value": "<string>",
+                          "description": "(Required) The ARN of the model to delete."
+                        }
+                      ]
+                    },
+                    "description": "Delete a reinforcement learning model from DeepRacer."
+                  },
+                  "response": [
+                    {
+                      "id": "39a78b38-04c9-4f4b-9626-4185c05f5cbc",
+                      "name": "Model deleted successfully.",
+                      "originalRequest": {
+                        "method": "DELETE",
+                        "header": [
+                          {
+                            "key": "Accept",
+                            "value": "application/json"
+                          },
+                          {
+                            "description": "Added as a part of security scheme: apikey",
+                            "key": "Authorization",
+                            "value": "<API Key>"
+                          }
+                        ],
+                        "url": {
+                          "raw": "{{baseUrl}}/20201101/models/:modelArn",
+                          "host": [
+                            "{{baseUrl}}"
+                          ],
+                          "path": [
+                            "20201101",
+                            "models",
+                            ":modelArn"
+                          ],
+                          "variable": [
+                            {
+                              "key": "modelArn"
+                            }
+                          ]
+                        }
+                      },
+                      "status": "OK",
+                      "code": 200,
+                      "_postman_previewlanguage": "json",
+                      "header": [
+                        {
+                          "key": "Content-Type",
+                          "value": "application/json"
+                        }
+                      ],
+                      "cookie": [],
+                      "responseTime": null,
+                      "body": "{\n  \"modelArn\": \"<string>\"\n}",
+                      "createdAt": "2026-07-28T00:33:28.000Z",
+                      "updatedAt": "2026-07-28T00:33:28.000Z",
+                      "uid": "35240-39a78b38-04c9-4f4b-9626-4185c05f5cbc"
+                    },
+                    {
+                      "id": "fb13e7b6-eb48-484c-9f64-734c178f041c",
+                      "name": "Model not found.",
+                      "originalRequest": {
+                        "method": "DELETE",
+                        "header": [
+                          {
+                            "key": "Accept",
+                            "value": "application/json"
+                          },
+                          {
+                            "description": "Added as a part of security scheme: apikey",
+                            "key": "Authorization",
+                            "value": "<API Key>"
+                          }
+                        ],
+                        "url": {
+                          "raw": "{{baseUrl}}/20201101/models/:modelArn",
+                          "host": [
+                            "{{baseUrl}}"
+                          ],
+                          "path": [
+                            "20201101",
+                            "models",
+                            ":modelArn"
+                          ],
+                          "variable": [
+                            {
+                              "key": "modelArn"
+                            }
+                          ]
+                        }
+                      },
+                      "status": "Not Found",
+                      "code": 404,
+                      "_postman_previewlanguage": "json",
+                      "header": [
+                        {
+                          "key": "Content-Type",
+                          "value": "application/json"
+                        }
+                      ],
+                      "cookie": [],
+                      "responseTime": null,
+                      "body": "{\n  \"message\": \"<string>\",\n  \"code\": \"<string>\"\n}",
+                      "createdAt": "2026-07-28T00:33:28.000Z",
+                      "updatedAt": "2026-07-28T00:33:28.000Z",
+                      "uid": "35240-fb13e7b6-eb48-484c-9f64-734c178f041c"
+                    }
+                  ],
+                  "createdAt": "2026-07-28T00:33:28.000Z",
+                  "updatedAt": "2026-07-28T00:33:28.000Z",
+                  "uid": "35240-5f73749d-13f2-4dd3-b97e-f06408aaa466"
+                }
+              ],
+              "id": "1d90af8f-a41c-4671-abcb-9139747b6767",
+              "createdAt": "2026-07-28T00:33:28.000Z",
+              "updatedAt": "2026-07-28T00:33:28.000Z",
+              "uid": "35240-1d90af8f-a41c-4671-abcb-9139747b6767"
+            },
+            {
+              "name": "List Models",
+              "id": "4dc5ea9a-dac3-4a86-9862-b5b3d00b96e1",
+              "protocolProfileBehavior": {
+                "disableBodyPruning": true
+              },
+              "request": {
+                "method": "GET",
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "url": {
+                  "raw": "{{baseUrl}}/20201101/models?nextToken=<string>&maxResults=<integer>",
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "path": [
+                    "20201101",
+                    "models"
+                  ],
+                  "query": [
+                    {
+                      "description": "Pagination token from a previous list response.",
+                      "key": "nextToken",
+                      "value": "<string>"
+                    },
+                    {
+                      "description": "Maximum number of models to return.",
+                      "key": "maxResults",
+                      "value": "<integer>"
+                    }
+                  ]
+                },
+                "description": "List reinforcement learning models available for DeepRacer racing."
+              },
+              "response": [
+                {
+                  "id": "47e77fed-c296-4069-89ef-015933ce48a4",
+                  "name": "List of reinforcement learning models retrieved successfully.",
+                  "originalRequest": {
+                    "method": "GET",
+                    "header": [
+                      {
+                        "key": "Accept",
+                        "value": "application/json"
+                      },
+                      {
+                        "description": "Added as a part of security scheme: apikey",
+                        "key": "Authorization",
+                        "value": "<API Key>"
+                      }
+                    ],
+                    "url": {
+                      "raw": "{{baseUrl}}/20201101/models?nextToken=<string>&maxResults=<integer>",
+                      "host": [
+                        "{{baseUrl}}"
+                      ],
+                      "path": [
+                        "20201101",
+                        "models"
+                      ],
+                      "query": [
+                        {
+                          "description": "Pagination token from a previous list response.",
+                          "key": "nextToken",
+                          "value": "<string>"
+                        },
+                        {
+                          "description": "Maximum number of models to return.",
+                          "key": "maxResults",
+                          "value": "<integer>"
+                        }
+                      ]
+                    }
+                  },
+                  "status": "OK",
+                  "code": 200,
+                  "_postman_previewlanguage": "json",
+                  "header": [
+                    {
+                      "key": "Content-Type",
+                      "value": "application/json"
+                    }
+                  ],
+                  "cookie": [],
+                  "responseTime": null,
+                  "body": "{\n  \"models\": [\n    {\n      \"modelArn\": \"<string>\",\n      \"modelName\": \"<string>\",\n      \"creationTime\": \"<dateTime>\",\n      \"lastModifiedTime\": \"<dateTime>\",\n      \"modelStatus\": \"FAILED\",\n      \"trainingJobArn\": \"<string>\",\n      \"rewardFunction\": \"<string>\"\n    },\n    {\n      \"modelArn\": \"<string>\",\n      \"modelName\": \"<string>\",\n      \"creationTime\": \"<dateTime>\",\n      \"lastModifiedTime\": \"<dateTime>\",\n      \"modelStatus\": \"FAILED\",\n      \"trainingJobArn\": \"<string>\",\n      \"rewardFunction\": \"<string>\"\n    }\n  ],\n  \"nextToken\": \"<string>\"\n}",
+                  "createdAt": "2026-07-28T00:33:28.000Z",
+                  "updatedAt": "2026-07-28T00:33:28.000Z",
+                  "uid": "35240-47e77fed-c296-4069-89ef-015933ce48a4"
+                },
+                {
+                  "id": "06462ff5-03e8-44c9-8a30-83f81b711f1d",
+                  "name": "Bad request \u2014 invalid parameters.",
+                  "originalRequest": {
+                    "method": "GET",
+                    "header": [
+                      {
+                        "key": "Accept",
+                        "value": "application/json"
+                      },
+                      {
+                        "description": "Added as a part of security scheme: apikey",
+                        "key": "Authorization",
+                        "value": "<API Key>"
+                      }
+                    ],
+                    "url": {
+                      "raw": "{{baseUrl}}/20201101/models?nextToken=<string>&maxResults=<integer>",
+                      "host": [
+                        "{{baseUrl}}"
+                      ],
+                      "path": [
+                        "20201101",
+                        "models"
+                      ],
+                      "query": [
+                        {
+                          "description": "Pagination token from a previous list response.",
+                          "key": "nextToken",
+                          "value": "<string>"
+                        },
+                        {
+                          "description": "Maximum number of models to return.",
+                          "key": "maxResults",
+                          "value": "<integer>"
+                        }
+                      ]
+                    }
+                  },
+                  "status": "Bad Request",
+                  "code": 400,
+                  "_postman_previewlanguage": "json",
+                  "header": [
+                    {
+                      "key": "Content-Type",
+                      "value": "application/json"
+                    }
+                  ],
+                  "cookie": [],
+                  "responseTime": null,
+                  "body": "{\n  \"message\": \"<string>\",\n  \"code\": \"<string>\"\n}",
+                  "createdAt": "2026-07-28T00:33:28.000Z",
+                  "updatedAt": "2026-07-28T00:33:28.000Z",
+                  "uid": "35240-06462ff5-03e8-44c9-8a30-83f81b711f1d"
+                },
+                {
+                  "id": "00be38bf-1cba-4f5f-9866-61dd18991b9e",
+                  "name": "Internal server error.",
+                  "originalRequest": {
+                    "method": "GET",
+                    "header": [
+                      {
+                        "key": "Accept",
+                        "value": "application/json"
+                      },
+                      {
+                        "description": "Added as a part of security scheme: apikey",
+                        "key": "Authorization",
+                        "value": "<API Key>"
+                      }
+                    ],
+                    "url": {
+                      "raw": "{{baseUrl}}/20201101/models?nextToken=<string>&maxResults=<integer>",
+                      "host": [
+                        "{{baseUrl}}"
+                      ],
+                      "path": [
+                        "20201101",
+                        "models"
+                      ],
+                      "query": [
+                        {
+                          "description": "Pagination token from a previous list response.",
+                          "key": "nextToken",
+                          "value": "<string>"
+                        },
+                        {
+                          "description": "Maximum number of models to return.",
+                          "key": "maxResults",
+                          "value": "<integer>"
+                        }
+                      ]
+                    }
+                  },
+                  "status": "Internal Server Error",
+                  "code": 500,
+                  "_postman_previewlanguage": "json",
+                  "header": [
+                    {
+                      "key": "Content-Type",
+                      "value": "application/json"
+                    }
+                  ],
+                  "cookie": [],
+                  "responseTime": null,
+                  "body": "{\n  \"message\": \"<string>\",\n  \"code\": \"<string>\"\n}",
+                  "createdAt": "2026-07-28T00:33:28.000Z",
+                  "updatedAt": "2026-07-28T00:33:28.000Z",
+                  "uid": "35240-00be38bf-1cba-4f5f-9866-61dd18991b9e"
+                }
+              ],
+              "createdAt": "2026-07-28T00:33:28.000Z",
+              "updatedAt": "2026-07-28T00:33:28.000Z",
+              "uid": "35240-4dc5ea9a-dac3-4a86-9862-b5b3d00b96e1"
+            }
+          ],
+          "id": "e3c662a0-aa8e-4bee-aef6-2df59e015c66",
+          "createdAt": "2026-07-28T00:33:28.000Z",
+          "updatedAt": "2026-07-28T00:33:28.000Z",
+          "uid": "35240-e3c662a0-aa8e-4bee-aef6-2df59e015c66"
+        }
+      ],
+      "id": "c9c6ffd2-9830-4bb5-9c12-d7b9a20b1f85",
+      "createdAt": "2026-07-28T00:33:28.000Z",
+      "updatedAt": "2026-07-28T00:33:28.000Z",
+      "uid": "35240-c9c6ffd2-9830-4bb5-9c12-d7b9a20b1f85"
+    }
+  ],
+  "auth": {
+    "type": "apikey",
+    "apikey": [
+      {
+        "key": "key",
+        "value": "Authorization",
+        "type": "string"
+      },
+      {
+        "key": "value",
+        "value": "{{apiKey}}",
+        "type": "string"
+      },
+      {
+        "key": "in",
+        "value": "header",
+        "type": "string"
+      }
+    ]
+  },
+  "variable": [
+    {
+      "key": "baseUrl",
+      "value": "https://deepracer.amazonaws.com"
+    }
+  ]
+}
