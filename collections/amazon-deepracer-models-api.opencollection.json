@@ -1,0 +1,89 @@
+{
+  "opencollection": "1.0.0",
+  "info": {
+    "name": "Amazon DeepRacer Cars Models API",
+    "version": "2020-11-01"
+  },
+  "request": {
+    "auth": {
+      "type": "apikey",
+      "key": "Authorization",
+      "value": "{{Authorization}}",
+      "placement": "header"
+    }
+  },
+  "items": [
+    {
+      "info": {
+        "name": "Models",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "List Models",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://deepracer.amazonaws.com/20201101/models",
+            "params": [
+              {
+                "name": "nextToken",
+                "value": "",
+                "type": "query",
+                "description": "Pagination token from a previous list response."
+              },
+              {
+                "name": "maxResults",
+                "value": "",
+                "type": "query",
+                "description": "Maximum number of models to return."
+              }
+            ]
+          },
+          "docs": "List reinforcement learning models available for DeepRacer racing."
+        },
+        {
+          "info": {
+            "name": "Get Model",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://deepracer.amazonaws.com/20201101/models/:modelArn",
+            "params": [
+              {
+                "name": "modelArn",
+                "value": "",
+                "type": "path",
+                "description": "The ARN of the reinforcement learning model."
+              }
+            ]
+          },
+          "docs": "Retrieve the details and training status of a specific reinforcement learning model."
+        },
+        {
+          "info": {
+            "name": "Delete Model",
+            "type": "http"
+          },
+          "http": {
+            "method": "DELETE",
+            "url": "https://deepracer.amazonaws.com/20201101/models/:modelArn",
+            "params": [
+              {
+                "name": "modelArn",
+                "value": "",
+                "type": "path",
+                "description": "The ARN of the model to delete."
+              }
+            ]
+          },
+          "docs": "Delete a reinforcement learning model from DeepRacer."
+        }
+      ]
+    }
+  ],
+  "bundled": true
+}

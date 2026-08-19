@@ -1,0 +1,93 @@
+{
+  "opencollection": "1.0.0",
+  "info": {
+    "name": "Amazon DeepRacer Cars API",
+    "version": "2020-11-01"
+  },
+  "request": {
+    "auth": {
+      "type": "apikey",
+      "key": "Authorization",
+      "value": "{{Authorization}}",
+      "placement": "header"
+    }
+  },
+  "items": [
+    {
+      "info": {
+        "name": "Cars",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "List Cars",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://deepracer.amazonaws.com/20201101/cars",
+            "params": [
+              {
+                "name": "nextToken",
+                "value": "",
+                "type": "query",
+                "description": "Pagination token from a previous list response."
+              },
+              {
+                "name": "maxResults",
+                "value": "",
+                "type": "query",
+                "description": "Maximum number of cars to return."
+              }
+            ]
+          },
+          "docs": "List all DeepRacer vehicles associated with the account."
+        },
+        {
+          "info": {
+            "name": "Get Car",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://deepracer.amazonaws.com/20201101/cars/:arn",
+            "params": [
+              {
+                "name": "arn",
+                "value": "",
+                "type": "path",
+                "description": "The ARN of the DeepRacer vehicle."
+              }
+            ]
+          },
+          "docs": "Retrieve the configuration and metadata for a specific DeepRacer vehicle."
+        },
+        {
+          "info": {
+            "name": "Update Car",
+            "type": "http"
+          },
+          "http": {
+            "method": "PATCH",
+            "url": "https://deepracer.amazonaws.com/20201101/cars/:arn",
+            "params": [
+              {
+                "name": "arn",
+                "value": "",
+                "type": "path",
+                "description": "The ARN of the DeepRacer vehicle."
+              }
+            ],
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Update the name or configuration of a DeepRacer vehicle."
+        }
+      ]
+    }
+  ],
+  "bundled": true
+}

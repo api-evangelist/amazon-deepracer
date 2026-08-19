@@ -1,0 +1,107 @@
+{
+  "opencollection": "1.0.0",
+  "info": {
+    "name": "Amazon DeepRacer Cars Leaderboards API",
+    "version": "2020-11-01"
+  },
+  "request": {
+    "auth": {
+      "type": "apikey",
+      "key": "Authorization",
+      "value": "{{Authorization}}",
+      "placement": "header"
+    }
+  },
+  "items": [
+    {
+      "info": {
+        "name": "Leaderboards",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "List Leaderboards",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://deepracer.amazonaws.com/20201101/leaderboards",
+            "params": [
+              {
+                "name": "nextToken",
+                "value": "",
+                "type": "query",
+                "description": "Pagination token from a previous list response."
+              },
+              {
+                "name": "maxResults",
+                "value": "",
+                "type": "query",
+                "description": "Maximum number of leaderboards to return."
+              },
+              {
+                "name": "status",
+                "value": "",
+                "type": "query",
+                "description": "Filter leaderboards by status (ACTIVE, EXPIRED)."
+              }
+            ]
+          },
+          "docs": "List all active and past DeepRacer racing leaderboards."
+        },
+        {
+          "info": {
+            "name": "Get Leaderboard",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://deepracer.amazonaws.com/20201101/leaderboards/:arn",
+            "params": [
+              {
+                "name": "arn",
+                "value": "",
+                "type": "path",
+                "description": "The ARN of the leaderboard."
+              }
+            ]
+          },
+          "docs": "Retrieve the details and current rankings for a specific leaderboard."
+        },
+        {
+          "info": {
+            "name": "List Leaderboard Submissions",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://deepracer.amazonaws.com/20201101/leaderboards/:arn/rankings",
+            "params": [
+              {
+                "name": "arn",
+                "value": "",
+                "type": "path",
+                "description": "The ARN of the leaderboard."
+              },
+              {
+                "name": "nextToken",
+                "value": "",
+                "type": "query",
+                "description": "Pagination token from a previous list response."
+              },
+              {
+                "name": "maxResults",
+                "value": "",
+                "type": "query",
+                "description": "Maximum number of submissions to return."
+              }
+            ]
+          },
+          "docs": "List submissions and rankings for a specific leaderboard."
+        }
+      ]
+    }
+  ],
+  "bundled": true
+}
