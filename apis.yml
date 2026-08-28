@@ -5,6 +5,18 @@ description: >-
   a physical track. It provides a fully autonomous driving platform that enables developers to get hands-on experience
   with machine learning through a fun and engaging racing experience.
 type: Index
+deliveryModel:
+  model: saas
+  open_source: false
+  commercial: true
+  callable_host: false
+  label: Hosted service · you call their endpoint
+  confidence: medium
+  source:
+  - openapi
+  - pricing
+  generated: '2026-08-28'
+  method: derived
 accessModel:
   pricing: freemium
   onboarding: self-serve
