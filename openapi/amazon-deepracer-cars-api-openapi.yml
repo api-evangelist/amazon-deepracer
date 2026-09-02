@@ -1,4 +1,4 @@
-openapi: 3.1.0
+openapi: 3.2.0
 info:
   title: Amazon DeepRacer Cars API
   description: The Amazon DeepRacer API provides programmatic access to manage DeepRacer vehicles, reinforcement learning models, leaderboards, and training tracks for autonomous racing experiences on AWS. Resources are versioned under /20201101/.
@@ -156,13 +156,45 @@ paths:
                 $ref: '#/components/schemas/Error'
 components:
   schemas:
-    UpdateCarResponse:
+    UpdateCarRequest:
       type: object
-      description: Response confirming the vehicle update.
+      description: Request body for updating a DeepRacer vehicle.
       properties:
-        vehicleArn:
+        vehicleName:
           type: string
-          description: The ARN of the updated vehicle.
+          description: New display name for the vehicle.
+    ListCarsResponse:
+      type: object
+      description: Response containing a list of DeepRacer vehicles.
+      properties:
+        cars:
+          type: array
+          description: List of DeepRacer vehicles.
+          items:
+            $ref: '#/components/schemas/Car'
+        nextToken:
+          type: string
+          description: Token for retrieving the next page of results.
+    Tag:
+      type: object
+      description: A key-value tag for organizing and categorizing DeepRacer resources.
+      properties:
+        key:
+          type: string
+          description: The tag key.
+        value:
+          type: string
+          description: The tag value.
+    Error:
+      type: object
+      description: Error response returned when an API request fails.
+      properties:
+        message:
+          type: string
+          description: A human-readable description of the error.
+        code:
+          type: string
+          description: An error code identifying the type of failure.
     Car:
       type: object
       description: A physical DeepRacer vehicle registered to an AWS account.
@@ -189,45 +221,13 @@ components:
           description: Tags associated with the vehicle.
           items:
             $ref: '#/components/schemas/Tag'
-    UpdateCarRequest:
+    UpdateCarResponse:
       type: object
-      description: Request body for updating a DeepRacer vehicle.
+      description: Response confirming the vehicle update.
       properties:
-        vehicleName:
+        vehicleArn:
           type: string
-          description: New display name for the vehicle.
-    ListCarsResponse:
-      type: object
-      description: Response containing a list of DeepRacer vehicles.
-      properties:
-        cars:
-          type: array
-          description: List of DeepRacer vehicles.
-          items:
-            $ref: '#/components/schemas/Car'
-        nextToken:
-          type: string
-          description: Token for retrieving the next page of results.
-    Error:
-      type: object
-      description: Error response returned when an API request fails.
-      properties:
-        message:
-          type: string
-          description: A human-readable description of the error.
-        code:
-          type: string
-          description: An error code identifying the type of failure.
-    Tag:
-      type: object
-      description: A key-value tag for organizing and categorizing DeepRacer resources.
-      properties:
-        key:
-          type: string
-          description: The tag key.
-        value:
-          type: string
-          description: The tag value.
+          description: The ARN of the updated vehicle.
   securitySchemes:
     awsSignatureV4:
       type: apiKey

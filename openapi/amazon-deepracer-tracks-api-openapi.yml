@@ -1,4 +1,4 @@
-openapi: 3.1.0
+openapi: 3.2.0
 info:
   title: Amazon DeepRacer Cars Tracks API
   description: The Amazon DeepRacer API provides programmatic access to manage DeepRacer vehicles, reinforcement learning models, leaderboards, and training tracks for autonomous racing experiences on AWS. Resources are versioned under /20201101/.
