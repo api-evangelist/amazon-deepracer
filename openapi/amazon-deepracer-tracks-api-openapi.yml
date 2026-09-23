@@ -1,6 +1,6 @@
 openapi: 3.2.0
 info:
-  title: Amazon DeepRacer Cars Tracks API
+  title: Amazon DeepRacer Tracks API
   description: The Amazon DeepRacer API provides programmatic access to manage DeepRacer vehicles, reinforcement learning models, leaderboards, and training tracks for autonomous racing experiences on AWS. Resources are versioned under /20201101/.
   version: 2020-11-01
   contact:
@@ -62,6 +62,18 @@ paths:
                 $ref: '#/components/schemas/Error'
 components:
   schemas:
+    ListTracksResponse:
+      type: object
+      description: Response containing a list of available racing tracks.
+      properties:
+        tracks:
+          type: array
+          description: List of racing tracks.
+          items:
+            $ref: '#/components/schemas/Track'
+        nextToken:
+          type: string
+          description: Token for retrieving the next page of results.
     Track:
       type: object
       description: A virtual or physical racing track used for DeepRacer training and evaluation.
@@ -81,18 +93,6 @@ components:
           enum:
           - REGULAR
           - WIDE
-    ListTracksResponse:
-      type: object
-      description: Response containing a list of available racing tracks.
-      properties:
-        tracks:
-          type: array
-          description: List of racing tracks.
-          items:
-            $ref: '#/components/schemas/Track'
-        nextToken:
-          type: string
-          description: Token for retrieving the next page of results.
     Error:
       type: object
       description: Error response returned when an API request fails.

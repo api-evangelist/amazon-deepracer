@@ -1,10 +1,7 @@
 {
   "provider": "amazon-deepracer",
   "sources": [
-    "amazon-deepracer-cars-api-openapi.yml",
-    "amazon-deepracer-leaderboards-api-openapi.yml",
-    "amazon-deepracer-models-api-openapi.yml",
-    "amazon-deepracer-tracks-api-openapi.yml"
+    "_original/amazon-deepracer-openapi.yml"
   ],
   "outputs": [
     "amazon-deepracer-cars-api-openapi.yml",
@@ -16,7 +13,14 @@
   "errors": [],
   "warnings": [],
   "notes": [
+    "sourced from openapi/_original/ (1 archived document(s)); previously refined output at the top level was skipped rather than re-split",
+    "amazon-deepracer-openapi.yml: upgraded openapi 3.1.0 -> OpenAPI 3.2.0",
     "apis.yml register: already-registered"
   ],
-  "skipped": []
+  "skipped": [
+    "amazon-deepracer-cars-api-openapi.yml: previously refined output, superseded by openapi/_original/",
+    "amazon-deepracer-leaderboards-api-openapi.yml: previously refined output, superseded by openapi/_original/",
+    "amazon-deepracer-models-api-openapi.yml: previously refined output, superseded by openapi/_original/",
+    "amazon-deepracer-tracks-api-openapi.yml: previously refined output, superseded by openapi/_original/"
+  ]
 }

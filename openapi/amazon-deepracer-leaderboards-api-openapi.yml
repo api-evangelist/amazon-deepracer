@@ -1,6 +1,6 @@
 openapi: 3.2.0
 info:
-  title: Amazon DeepRacer Cars Leaderboards API
+  title: Amazon DeepRacer Leaderboards API
   description: The Amazon DeepRacer API provides programmatic access to manage DeepRacer vehicles, reinforcement learning models, leaderboards, and training tracks for autonomous racing experiences on AWS. Resources are versioned under /20201101/.
   version: 2020-11-01
   contact:
@@ -212,16 +212,6 @@ components:
         minimumCountOfLaps:
           type: integer
           description: Minimum number of consecutive laps required for a valid submission.
-    Error:
-      type: object
-      description: Error response returned when an API request fails.
-      properties:
-        message:
-          type: string
-          description: A human-readable description of the error.
-        code:
-          type: string
-          description: An error code identifying the type of failure.
     ListLeaderboardSubmissionsResponse:
       type: object
       description: Response containing leaderboard rankings and submissions.
@@ -246,6 +236,16 @@ components:
         nextToken:
           type: string
           description: Token for retrieving the next page of results.
+    Error:
+      type: object
+      description: Error response returned when an API request fails.
+      properties:
+        message:
+          type: string
+          description: A human-readable description of the error.
+        code:
+          type: string
+          description: An error code identifying the type of failure.
   securitySchemes:
     awsSignatureV4:
       type: apiKey
