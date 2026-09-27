@@ -137,25 +137,6 @@ paths:
                 $ref: '#/components/schemas/Error'
 components:
   schemas:
-    DeleteModelResponse:
-      type: object
-      description: Response confirming the model deletion.
-      properties:
-        modelArn:
-          type: string
-          description: The ARN of the deleted model.
-    ListModelsResponse:
-      type: object
-      description: Response containing a list of reinforcement learning models.
-      properties:
-        models:
-          type: array
-          description: List of reinforcement learning models.
-          items:
-            $ref: '#/components/schemas/Model'
-        nextToken:
-          type: string
-          description: Token for retrieving the next page of results.
     Model:
       type: object
       description: A reinforcement learning model trained for DeepRacer autonomous racing.
@@ -188,6 +169,13 @@ components:
         rewardFunction:
           type: string
           description: The Python reward function code used during model training.
+    DeleteModelResponse:
+      type: object
+      description: Response confirming the model deletion.
+      properties:
+        modelArn:
+          type: string
+          description: The ARN of the deleted model.
     Error:
       type: object
       description: Error response returned when an API request fails.
@@ -198,6 +186,18 @@ components:
         code:
           type: string
           description: An error code identifying the type of failure.
+    ListModelsResponse:
+      type: object
+      description: Response containing a list of reinforcement learning models.
+      properties:
+        models:
+          type: array
+          description: List of reinforcement learning models.
+          items:
+            $ref: '#/components/schemas/Model'
+        nextToken:
+          type: string
+          description: Token for retrieving the next page of results.
   securitySchemes:
     awsSignatureV4:
       type: apiKey

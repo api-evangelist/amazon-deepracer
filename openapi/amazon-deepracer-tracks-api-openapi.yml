@@ -62,18 +62,16 @@ paths:
                 $ref: '#/components/schemas/Error'
 components:
   schemas:
-    ListTracksResponse:
+    Error:
       type: object
-      description: Response containing a list of available racing tracks.
+      description: Error response returned when an API request fails.
       properties:
-        tracks:
-          type: array
-          description: List of racing tracks.
-          items:
-            $ref: '#/components/schemas/Track'
-        nextToken:
+        message:
           type: string
-          description: Token for retrieving the next page of results.
+          description: A human-readable description of the error.
+        code:
+          type: string
+          description: An error code identifying the type of failure.
     Track:
       type: object
       description: A virtual or physical racing track used for DeepRacer training and evaluation.
@@ -93,16 +91,18 @@ components:
           enum:
           - REGULAR
           - WIDE
-    Error:
+    ListTracksResponse:
       type: object
-      description: Error response returned when an API request fails.
+      description: Response containing a list of available racing tracks.
       properties:
-        message:
+        tracks:
+          type: array
+          description: List of racing tracks.
+          items:
+            $ref: '#/components/schemas/Track'
+        nextToken:
           type: string
-          description: A human-readable description of the error.
-        code:
-          type: string
-          description: An error code identifying the type of failure.
+          description: Token for retrieving the next page of results.
   securitySchemes:
     awsSignatureV4:
       type: apiKey
