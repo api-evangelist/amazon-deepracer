@@ -156,23 +156,6 @@ paths:
                 $ref: '#/components/schemas/Error'
 components:
   schemas:
-    UpdateCarResponse:
-      type: object
-      description: Response confirming the vehicle update.
-      properties:
-        vehicleArn:
-          type: string
-          description: The ARN of the updated vehicle.
-    Error:
-      type: object
-      description: Error response returned when an API request fails.
-      properties:
-        message:
-          type: string
-          description: A human-readable description of the error.
-        code:
-          type: string
-          description: An error code identifying the type of failure.
     Tag:
       type: object
       description: A key-value tag for organizing and categorizing DeepRacer resources.
@@ -183,6 +166,13 @@ components:
         value:
           type: string
           description: The tag value.
+    UpdateCarResponse:
+      type: object
+      description: Response confirming the vehicle update.
+      properties:
+        vehicleArn:
+          type: string
+          description: The ARN of the updated vehicle.
     UpdateCarRequest:
       type: object
       description: Request body for updating a DeepRacer vehicle.
@@ -190,18 +180,16 @@ components:
         vehicleName:
           type: string
           description: New display name for the vehicle.
-    ListCarsResponse:
+    Error:
       type: object
-      description: Response containing a list of DeepRacer vehicles.
+      description: Error response returned when an API request fails.
       properties:
-        cars:
-          type: array
-          description: List of DeepRacer vehicles.
-          items:
-            $ref: '#/components/schemas/Car'
-        nextToken:
+        message:
           type: string
-          description: Token for retrieving the next page of results.
+          description: A human-readable description of the error.
+        code:
+          type: string
+          description: An error code identifying the type of failure.
     Car:
       type: object
       description: A physical DeepRacer vehicle registered to an AWS account.
@@ -228,6 +216,18 @@ components:
           description: Tags associated with the vehicle.
           items:
             $ref: '#/components/schemas/Tag'
+    ListCarsResponse:
+      type: object
+      description: Response containing a list of DeepRacer vehicles.
+      properties:
+        cars:
+          type: array
+          description: List of DeepRacer vehicles.
+          items:
+            $ref: '#/components/schemas/Car'
+        nextToken:
+          type: string
+          description: Token for retrieving the next page of results.
   securitySchemes:
     awsSignatureV4:
       type: apiKey

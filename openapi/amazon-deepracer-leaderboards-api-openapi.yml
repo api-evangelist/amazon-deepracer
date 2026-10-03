@@ -159,28 +159,6 @@ paths:
                 $ref: '#/components/schemas/Error'
 components:
   schemas:
-    ListLeaderboardSubmissionsResponse:
-      type: object
-      description: Response containing leaderboard rankings and submissions.
-      properties:
-        leaderboardSubmissions:
-          type: array
-          description: List of participant submissions and rankings.
-          items:
-            $ref: '#/components/schemas/LeaderboardSubmission'
-        nextToken:
-          type: string
-          description: Token for retrieving the next page of results.
-    Error:
-      type: object
-      description: Error response returned when an API request fails.
-      properties:
-        message:
-          type: string
-          description: A human-readable description of the error.
-        code:
-          type: string
-          description: An error code identifying the type of failure.
     ListLeaderboardsResponse:
       type: object
       description: Response containing a list of DeepRacer leaderboards.
@@ -217,6 +195,28 @@ components:
           type: number
           format: double
           description: The participant's average lap time across all evaluated laps.
+    ListLeaderboardSubmissionsResponse:
+      type: object
+      description: Response containing leaderboard rankings and submissions.
+      properties:
+        leaderboardSubmissions:
+          type: array
+          description: List of participant submissions and rankings.
+          items:
+            $ref: '#/components/schemas/LeaderboardSubmission'
+        nextToken:
+          type: string
+          description: Token for retrieving the next page of results.
+    Error:
+      type: object
+      description: Error response returned when an API request fails.
+      properties:
+        message:
+          type: string
+          description: A human-readable description of the error.
+        code:
+          type: string
+          description: An error code identifying the type of failure.
     Leaderboard:
       type: object
       description: A DeepRacer racing leaderboard where participants submit model performances.

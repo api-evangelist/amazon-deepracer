@@ -137,6 +137,16 @@ paths:
                 $ref: '#/components/schemas/Error'
 components:
   schemas:
+    Error:
+      type: object
+      description: Error response returned when an API request fails.
+      properties:
+        message:
+          type: string
+          description: A human-readable description of the error.
+        code:
+          type: string
+          description: An error code identifying the type of failure.
     Model:
       type: object
       description: A reinforcement learning model trained for DeepRacer autonomous racing.
@@ -176,16 +186,6 @@ components:
         modelArn:
           type: string
           description: The ARN of the deleted model.
-    Error:
-      type: object
-      description: Error response returned when an API request fails.
-      properties:
-        message:
-          type: string
-          description: A human-readable description of the error.
-        code:
-          type: string
-          description: An error code identifying the type of failure.
     ListModelsResponse:
       type: object
       description: Response containing a list of reinforcement learning models.
