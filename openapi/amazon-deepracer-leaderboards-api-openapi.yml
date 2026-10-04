@@ -159,6 +159,45 @@ paths:
                 $ref: '#/components/schemas/Error'
 components:
   schemas:
+    Leaderboard:
+      type: object
+      description: A DeepRacer racing leaderboard where participants submit model performances.
+      properties:
+        arn:
+          type: string
+          description: The ARN uniquely identifying the leaderboard.
+        name:
+          type: string
+          description: The display name of the leaderboard.
+        status:
+          type: string
+          description: Current status of the leaderboard (ACTIVE or EXPIRED).
+          enum:
+          - ACTIVE
+          - EXPIRED
+        submissionClosureTime:
+          type: string
+          format: date-time
+          description: Timestamp when the leaderboard stops accepting new submissions.
+        isQualifier:
+          type: boolean
+          description: Whether this leaderboard qualifies participants for championship events.
+        trackType:
+          type: string
+          description: The type of track used for this leaderboard.
+        minimumCountOfLaps:
+          type: integer
+          description: Minimum number of consecutive laps required for a valid submission.
+    Error:
+      type: object
+      description: Error response returned when an API request fails.
+      properties:
+        message:
+          type: string
+          description: A human-readable description of the error.
+        code:
+          type: string
+          description: An error code identifying the type of failure.
     ListLeaderboardsResponse:
       type: object
       description: Response containing a list of DeepRacer leaderboards.
@@ -207,45 +246,6 @@ components:
         nextToken:
           type: string
           description: Token for retrieving the next page of results.
-    Error:
-      type: object
-      description: Error response returned when an API request fails.
-      properties:
-        message:
-          type: string
-          description: A human-readable description of the error.
-        code:
-          type: string
-          description: An error code identifying the type of failure.
-    Leaderboard:
-      type: object
-      description: A DeepRacer racing leaderboard where participants submit model performances.
-      properties:
-        arn:
-          type: string
-          description: The ARN uniquely identifying the leaderboard.
-        name:
-          type: string
-          description: The display name of the leaderboard.
-        status:
-          type: string
-          description: Current status of the leaderboard (ACTIVE or EXPIRED).
-          enum:
-          - ACTIVE
-          - EXPIRED
-        submissionClosureTime:
-          type: string
-          format: date-time
-          description: Timestamp when the leaderboard stops accepting new submissions.
-        isQualifier:
-          type: boolean
-          description: Whether this leaderboard qualifies participants for championship events.
-        trackType:
-          type: string
-          description: The type of track used for this leaderboard.
-        minimumCountOfLaps:
-          type: integer
-          description: Minimum number of consecutive laps required for a valid submission.
   securitySchemes:
     awsSignatureV4:
       type: apiKey

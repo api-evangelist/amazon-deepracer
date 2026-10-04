@@ -62,16 +62,6 @@ paths:
                 $ref: '#/components/schemas/Error'
 components:
   schemas:
-    Error:
-      type: object
-      description: Error response returned when an API request fails.
-      properties:
-        message:
-          type: string
-          description: A human-readable description of the error.
-        code:
-          type: string
-          description: An error code identifying the type of failure.
     Track:
       type: object
       description: A virtual or physical racing track used for DeepRacer training and evaluation.
@@ -103,6 +93,16 @@ components:
         nextToken:
           type: string
           description: Token for retrieving the next page of results.
+    Error:
+      type: object
+      description: Error response returned when an API request fails.
+      properties:
+        message:
+          type: string
+          description: A human-readable description of the error.
+        code:
+          type: string
+          description: An error code identifying the type of failure.
   securitySchemes:
     awsSignatureV4:
       type: apiKey
