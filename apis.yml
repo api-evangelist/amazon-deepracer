@@ -163,6 +163,9 @@ apis:
     url: >-
       https://raw.githubusercontent.com/api-evangelist/amazon-deepracer/refs/heads/main/json-ld/amazon-deepracer-context.jsonld
 common:
+  - type: CapabilityMap
+    url: capabilities/amazon-deepracer-capability-edges.yml
+    name: Amazon DeepRacer Business Capability Map
   - type: PostmanWorkspace
     url: https://www.postman.com/kinlaneapi/amazon-deepracer/overview
   - type: AgenticAccess

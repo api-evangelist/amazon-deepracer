@@ -1,0 +1,26 @@
+slug: amazon-deepracer
+provider: Amazon DeepRacer
+generated_by: planning/capability-mapping/scripts/classify_capabilities.py
+model: claude-opus-5
+frame:
+- Software & Technology
+min_confidence: 0.7
+capability_model:
+  source: https://github.com/vincentmakes/turbo-ea-capabilities
+  license: CC-BY-4.0
+  attribution: Turbo EA Capabilities by Vincent Verdet — Turbo EA, https://github.com/vincentmakes/turbo-ea-capabilities,
+    CC BY 4.0
+  notice: NOTICE
+edge_count: 1
+edges:
+- tag: Models
+  spec_file: amazon-deepracer-models-api-openapi.yml
+  capability_id: BC-610.60
+  capability_id_l1: BC-610
+  capability_name: Artificial Intelligence Management
+  confidence: 0.7
+  evidence: GET /20201101/models listModels; DELETE /20201101/models/{modelArn} deleteModel — 'manage
+    DeepRacer vehicles, reinforcement learning models'
+  reason: Operations manage the lifecycle (list, get, delete) of reinforcement learning models, which
+    is ML model lifecycle management. Confidence tempered because this is a training/educational context
+    rather than production MLOps.
