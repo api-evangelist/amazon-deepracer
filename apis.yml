@@ -163,6 +163,12 @@ apis:
     url: >-
       https://raw.githubusercontent.com/api-evangelist/amazon-deepracer/refs/heads/main/json-ld/amazon-deepracer-context.jsonld
 common:
+  - type: Plans
+    url: plans/amazon-deepracer-plans-pricing.yml
+  - type: RateLimits
+    url: rate-limits/amazon-deepracer-rate-limits.yml
+  - type: FinOps
+    url: finops/amazon-deepracer-finops.yml
   - type: CapabilityMap
     url: capabilities/amazon-deepracer-capability-edges.yml
     name: Amazon DeepRacer Business Capability Map
