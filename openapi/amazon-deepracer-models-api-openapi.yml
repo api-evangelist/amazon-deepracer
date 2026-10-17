@@ -137,16 +137,18 @@ paths:
                 $ref: '#/components/schemas/Error'
 components:
   schemas:
-    Error:
+    ListModelsResponse:
       type: object
-      description: Error response returned when an API request fails.
+      description: Response containing a list of reinforcement learning models.
       properties:
-        message:
+        models:
+          type: array
+          description: List of reinforcement learning models.
+          items:
+            $ref: '#/components/schemas/Model'
+        nextToken:
           type: string
-          description: A human-readable description of the error.
-        code:
-          type: string
-          description: An error code identifying the type of failure.
+          description: Token for retrieving the next page of results.
     Model:
       type: object
       description: A reinforcement learning model trained for DeepRacer autonomous racing.
@@ -179,6 +181,16 @@ components:
         rewardFunction:
           type: string
           description: The Python reward function code used during model training.
+    Error:
+      type: object
+      description: Error response returned when an API request fails.
+      properties:
+        message:
+          type: string
+          description: A human-readable description of the error.
+        code:
+          type: string
+          description: An error code identifying the type of failure.
     DeleteModelResponse:
       type: object
       description: Response confirming the model deletion.
@@ -186,18 +198,6 @@ components:
         modelArn:
           type: string
           description: The ARN of the deleted model.
-    ListModelsResponse:
-      type: object
-      description: Response containing a list of reinforcement learning models.
-      properties:
-        models:
-          type: array
-          description: List of reinforcement learning models.
-          items:
-            $ref: '#/components/schemas/Model'
-        nextToken:
-          type: string
-          description: Token for retrieving the next page of results.
   securitySchemes:
     awsSignatureV4:
       type: apiKey

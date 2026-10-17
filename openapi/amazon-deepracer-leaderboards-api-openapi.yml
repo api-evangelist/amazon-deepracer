@@ -159,6 +159,40 @@ paths:
                 $ref: '#/components/schemas/Error'
 components:
   schemas:
+    LeaderboardSubmission:
+      type: object
+      description: A participant's submission to a DeepRacer leaderboard including their race performance.
+      properties:
+        leaderboardSubmissionId:
+          type: string
+          description: Unique identifier for this leaderboard submission.
+        participantName:
+          type: string
+          description: The participant's alias or username.
+        modelArn:
+          type: string
+          description: The ARN of the model submitted for evaluation.
+        rank:
+          type: integer
+          description: The participant's current rank on the leaderboard.
+        lapTime:
+          type: number
+          format: double
+          description: The participant's best single lap time in seconds.
+        avgLapTime:
+          type: number
+          format: double
+          description: The participant's average lap time across all evaluated laps.
+    Error:
+      type: object
+      description: Error response returned when an API request fails.
+      properties:
+        message:
+          type: string
+          description: A human-readable description of the error.
+        code:
+          type: string
+          description: An error code identifying the type of failure.
     Leaderboard:
       type: object
       description: A DeepRacer racing leaderboard where participants submit model performances.
@@ -188,16 +222,6 @@ components:
         minimumCountOfLaps:
           type: integer
           description: Minimum number of consecutive laps required for a valid submission.
-    Error:
-      type: object
-      description: Error response returned when an API request fails.
-      properties:
-        message:
-          type: string
-          description: A human-readable description of the error.
-        code:
-          type: string
-          description: An error code identifying the type of failure.
     ListLeaderboardsResponse:
       type: object
       description: Response containing a list of DeepRacer leaderboards.
@@ -210,30 +234,6 @@ components:
         nextToken:
           type: string
           description: Token for retrieving the next page of results.
-    LeaderboardSubmission:
-      type: object
-      description: A participant's submission to a DeepRacer leaderboard including their race performance.
-      properties:
-        leaderboardSubmissionId:
-          type: string
-          description: Unique identifier for this leaderboard submission.
-        participantName:
-          type: string
-          description: The participant's alias or username.
-        modelArn:
-          type: string
-          description: The ARN of the model submitted for evaluation.
-        rank:
-          type: integer
-          description: The participant's current rank on the leaderboard.
-        lapTime:
-          type: number
-          format: double
-          description: The participant's best single lap time in seconds.
-        avgLapTime:
-          type: number
-          format: double
-          description: The participant's average lap time across all evaluated laps.
     ListLeaderboardSubmissionsResponse:
       type: object
       description: Response containing leaderboard rankings and submissions.
