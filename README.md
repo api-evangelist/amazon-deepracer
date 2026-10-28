@@ -1,4 +1,4 @@
-# Amazon DeepRacer (amazon-deepracer)
+# Amazon DeepRacer
 
 <!-- API-EVANGELIST-PROVENANCE:BEGIN -->
 > ### About this repository
@@ -66,73 +66,201 @@
 
 AWS DeepRacer is an autonomous 1/18th scale race car designed to test reinforcement learning (RL) models by racing on a physical track. It provides a fully autonomous driving platform that enables developers to get hands-on experience with machine learning through a fun and engaging racing experience.
 
-**APIs.json:** [https://raw.githubusercontent.com/api-evangelist/amazon-deepracer/refs/heads/main/apis.yml](https://raw.githubusercontent.com/api-evangelist/amazon-deepracer/refs/heads/main/apis.yml)
+**Areas:** Autonomous Vehicles · AWS · Machine Learning · Reinforcement Learning · Robotics
 
-## Scope
+## Amazon DeepRacer on APIs.io
 
-- **Type:** Index
+Everything profiled for Amazon DeepRacer is published on APIs.io rather than in this repository. Start at the provider page — **[apis.io/providers/amazon-deepracer/](https://apis.io/providers/amazon-deepracer/)** — or go straight to one of the APIs or properties below.
 
-## Tags
+### APIs (4)
 
-- Autonomous Vehicles
-- AWS
-- Machine Learning
-- Reinforcement Learning
-- Robotics
+- [Amazon DeepRacer Cars API](https://apis.io/apis/amazon-deepracer/amazon-deepracer-cars-api/) — Manage DeepRacer physical vehicles and their configurations
+- [Amazon DeepRacer Leaderboards API](https://apis.io/apis/amazon-deepracer/amazon-deepracer-leaderboards-api/) — Manage racing leaderboards and submissions
+- [Amazon DeepRacer Models API](https://apis.io/apis/amazon-deepracer/amazon-deepracer-models-api/) — Manage reinforcement learning models for autonomous racing
+- [Amazon DeepRacer Tracks API](https://apis.io/apis/amazon-deepracer/amazon-deepracer-tracks-api/) — Manage virtual and physical racing tracks
 
-## Timestamps
+### Published properties
 
-- **Created:** 2026-03-16
-- **Modified:** 2026-05-19
+Each property below is a page on APIs.io carrying the machine-readable artifact and what it says.
 
-## APIs
+#### Agentic access (1)
 
-### AWS DeepRacer API
+Which operations an agent can call, which act, and which need a human in the loop.
 
-The AWS DeepRacer API provides programmatic access to manage DeepRacer vehicles, models, and leaderboards for reinforcement learning-based autonomous racing experiences.
+- [Amazon Deepracer Agentic Access](https://apis.io/agentic-access/amazon-deepracer/amazon-deepracer-agentic-access/)
 
-- **Human URL:** [https://aws.amazon.com/deepracer/](https://aws.amazon.com/deepracer/)
-- **Base URL:** `https://deepracer.amazonaws.com`
+#### JSON Schema (11)
 
-#### Tags
+The data models the API reads and writes.
 
-- Autonomous Racing
-- Machine Learning
-- Reinforcement Learning
-- Robotics
-- AWS
+- [Car](https://apis.io/schemas/amazon-deepracer/car/)
+- [Error](https://apis.io/schemas/amazon-deepracer/error/)
+- [Leaderboard](https://apis.io/schemas/amazon-deepracer/leaderboard/)
+- [LeaderboardSubmission](https://apis.io/schemas/amazon-deepracer/leaderboard-submission/)
+- [ListCarsResponse](https://apis.io/schemas/amazon-deepracer/list-cars-response/)
+- [ListLeaderboardSubmissionsResponse](https://apis.io/schemas/amazon-deepracer/list-leaderboard-submissions-response/)
+- [ListLeaderboardsResponse](https://apis.io/schemas/amazon-deepracer/list-leaderboards-response/)
+- [ListModelsResponse](https://apis.io/schemas/amazon-deepracer/list-models-response/)
+- [ListTracksResponse](https://apis.io/schemas/amazon-deepracer/list-tracks-response/)
+- [Model](https://apis.io/schemas/amazon-deepracer/model/)
+- [Track](https://apis.io/schemas/amazon-deepracer/track/)
 
-#### Properties
+#### JSON Structure (11)
 
-- [Documentation](https://docs.aws.amazon.com/deepracer/latest/developerguide/deepracer-understand-api.html)
-- [OpenAPI](https://raw.githubusercontent.com/api-evangelist/amazon-deepracer/refs/heads/main/openapi/amazon-deepracer-openapi.yml) — [OpenAPI Specification](https://spec.openapis.org/oas/latest.html)
-- [Getting Started](https://aws.amazon.com/deepracer/getting-started/)
-- [Pricing](https://aws.amazon.com/deepracer/pricing/)
-- [F A Q](https://aws.amazon.com/deepracer/faqs/)
-- [Spectral Rules](https://raw.githubusercontent.com/api-evangelist/amazon-deepracer/refs/heads/main/rules/amazon-deepracer-spectral-rules.yml)
-- [Vocabulary](https://raw.githubusercontent.com/api-evangelist/amazon-deepracer/refs/heads/main/vocabulary/amazon-deepracer-vocabulary.yaml)
-- [JSON-LD](https://raw.githubusercontent.com/api-evangelist/amazon-deepracer/refs/heads/main/json-ld/amazon-deepracer-context.jsonld) — [JSON-LD](https://www.w3.org/TR/json-ld11/)
-- [Postman Collection](collections/amazon-deepracer.postman_collection.json) — [Postman Collection 2.1](https://schema.getpostman.com/json/collection/v2.1.0/collection.json)
-- [Open Collection](collections/amazon-deepracer.opencollection.json) — [Open Collection 1.0](https://schema.opencollection.com/opencollection/v1.0.0.json)
+Data models expressed in JSON Structure.
 
-## Common Properties
+- [Car Structure](https://apis.io/json-structure/amazon-deepracer/car-structure/)
+- [Error Structure](https://apis.io/json-structure/amazon-deepracer/error-structure/)
+- [Leaderboard Structure](https://apis.io/json-structure/amazon-deepracer/leaderboard-structure/)
+- [Leaderboard Submission Structure](https://apis.io/json-structure/amazon-deepracer/leaderboard-submission-structure/)
+- [List Cars Response Structure](https://apis.io/json-structure/amazon-deepracer/list-cars-response-structure/)
+- [List Leaderboard Submissions Response Structure](https://apis.io/json-structure/amazon-deepracer/list-leaderboard-submissions-response-structure/)
+- [List Leaderboards Response Structure](https://apis.io/json-structure/amazon-deepracer/list-leaderboards-response-structure/)
+- [List Models Response Structure](https://apis.io/json-structure/amazon-deepracer/list-models-response-structure/)
+- [List Tracks Response Structure](https://apis.io/json-structure/amazon-deepracer/list-tracks-response-structure/)
+- [Model Structure](https://apis.io/json-structure/amazon-deepracer/model-structure/)
+- [Track Structure](https://apis.io/json-structure/amazon-deepracer/track-structure/)
 
-- [Portal](https://aws.amazon.com/deepracer/)
+#### JSON-LD (1)
+
+Linked-data contexts for the provider's vocabulary.
+
+- [Amazon Deepracer Context](https://apis.io/jsonld/amazon-deepracer/amazon-deepracer-context/)
+
+#### Vocabulary (1)
+
+The provider's domain terms, defined.
+
+- [Amazon DeepRacer Vocabulary](https://apis.io/vocabularies/amazon-deepracer/amazon-deepracer-vocabulary/)
+
+#### Examples (11)
+
+Example requests and responses.
+
+- [Car Example](https://apis.io/examples/amazon-deepracer/car-example/)
+- [Error Example](https://apis.io/examples/amazon-deepracer/error-example/)
+- [Leaderboard Example](https://apis.io/examples/amazon-deepracer/leaderboard-example/)
+- [Leaderboard Submission Example](https://apis.io/examples/amazon-deepracer/leaderboard-submission-example/)
+- [List Cars Response Example](https://apis.io/examples/amazon-deepracer/list-cars-response-example/)
+- [List Leaderboard Submissions Response Example](https://apis.io/examples/amazon-deepracer/list-leaderboard-submissions-response-example/)
+- [List Leaderboards Response Example](https://apis.io/examples/amazon-deepracer/list-leaderboards-response-example/)
+- [List Models Response Example](https://apis.io/examples/amazon-deepracer/list-models-response-example/)
+- [List Tracks Response Example](https://apis.io/examples/amazon-deepracer/list-tracks-response-example/)
+- [Model Example](https://apis.io/examples/amazon-deepracer/model-example/)
+- [Track Example](https://apis.io/examples/amazon-deepracer/track-example/)
+
+#### Collections (9)
+
+Postman and Open Collection request collections.
+
+- [Amazon DeepRacer API](https://apis.io/collections/amazon-deepracer/open-amazon-deepracer/)
+- [Amazon DeepRacer Cars API](https://apis.io/collections/amazon-deepracer/open-amazon-deepracer-cars-api/)
+- [Amazon DeepRacer Cars Leaderboards API](https://apis.io/collections/amazon-deepracer/open-amazon-deepracer-leaderboards-api/)
+- [Amazon DeepRacer Cars Models API](https://apis.io/collections/amazon-deepracer/open-amazon-deepracer-models-api/)
+- [Amazon DeepRacer Cars Tracks API](https://apis.io/collections/amazon-deepracer/open-amazon-deepracer-tracks-api/)
+- [Amazon DeepRacer Cars API](https://apis.io/collections/amazon-deepracer/postman-amazon-deepracer-cars-api/)
+- [Amazon DeepRacer Cars Leaderboards API](https://apis.io/collections/amazon-deepracer/postman-amazon-deepracer-leaderboards-api/)
+- [Amazon DeepRacer Cars Models API](https://apis.io/collections/amazon-deepracer/postman-amazon-deepracer-models-api/)
+- [Amazon DeepRacer Cars Tracks API](https://apis.io/collections/amazon-deepracer/postman-amazon-deepracer-tracks-api/)
+
+#### Governance rules (2)
+
+Spectral rulesets for the provider's contracts.
+
+- [Amazon DeepRacer — jsonschema rules](https://apis.io/rules/amazon-deepracer/amazon-deepracer-jsonschema-spectral-rules/)
+- [Amazon DeepRacer API Rules](https://apis.io/rules/amazon-deepracer/amazon-deepracer-spectral-rules/)
+
+#### Security (4)
+
+Authentication, trust centre, and vulnerability disclosure.
+
+- [Amazon Deepracer Authentication](https://apis.io/security/amazon-deepracer/amazon-deepracer-authentication/)
+- [Amazon Deepracer Domain Security](https://apis.io/security/amazon-deepracer/amazon-deepracer-domain-security/)
+- [Amazon Deepracer Trust Center](https://apis.io/security/amazon-deepracer/amazon-deepracer-trust-center/)
+- [Amazon Deepracer Vulnerability Disclosure](https://apis.io/security/amazon-deepracer/amazon-deepracer-vulnerability-disclosure/)
+
+#### Plans and pricing (1)
+
+Published plans, tiers and prices.
+
+- [Amazon Deepracer Plans Pricing](https://apis.io/plans/amazon-deepracer/amazon-deepracer-plans-pricing/)
+
+#### Rate limits (1)
+
+Published request limits.
+
+- [Amazon Deepracer Rate Limits](https://apis.io/rate-limits/amazon-deepracer/amazon-deepracer-rate-limits/)
+
+#### FinOps (1)
+
+What the API costs to run, by operation.
+
+- [Amazon Deepracer Finops](https://apis.io/finops/amazon-deepracer/amazon-deepracer-finops/)
+
+## Where to find this API
+
+Links to the company's own pages. This repository publishes no copy of their specifications — the canonical document is theirs and lives at the URLs below.
+
 - [Website](https://aws.amazon.com/deepracer/)
 - [Documentation](https://docs.aws.amazon.com/deepracer/)
-- [Terms of Service](https://aws.amazon.com/service-terms/)
-- [Privacy Policy](https://aws.amazon.com/privacy/)
 - [Support](https://aws.amazon.com/premiumsupport/)
 - [Blog](https://aws.amazon.com/blogs/machine-learning/tag/aws-deepracer/)
-- [GitHub Organization](https://github.com/aws)
-- [Console](https://console.aws.amazon.com/deepracer/)
-- [Sign Up](https://portal.aws.amazon.com/billing/signup)
-- [Login](https://signin.aws.amazon.com/)
-- [Status Page](https://health.aws.amazon.com/health/status)
-- [Contact](https://aws.amazon.com/contact-us/)
-- [Integrations](https://aws.amazon.com/marketplace)
+- [Terms of service](https://aws.amazon.com/service-terms/)
+- [Privacy policy](https://aws.amazon.com/privacy/)
+- [GitHub](https://github.com/aws)
+- [Status](https://health.aws.amazon.com/health/status)
 
-## Maintainers
+## API Evangelist rating
 
-**FN:** Kin Lane
-**Email:** kin@apievangelist.com
+**Kin Score 50.5** — developing · rubric 0.25.0 · scored 2026-10-23
+
+| Facet | Score |
+|---|---|
+| Discoverability | 57.1 |
+| Contract quality | 57.2 |
+| Contract governance | 27.3 |
+| Operational transparency | 36.8 |
+| Developer ergonomics | 48.8 |
+| Access clarity | 53.9 |
+
+**Agent readiness 30.2** — agent-ready
+
+| Agent-readiness dimension | Result |
+|---|---|
+| Spec Presence | yes |
+| Agentic Access | derived (partial credit) |
+| Reversibility Documented | — |
+| MCP Server | — |
+| Auth Clarity | bearer (partial credit) |
+| Idempotency | — |
+| Error Semantics | verified |
+| OpenAPI Examples | verified |
+| Rate Limit Signal | derived (partial credit) |
+| Event Surface Described | — |
+| Agent Skills | — |
+| Well Known Catalog | — |
+| Consent Identity | — |
+| Agent Card | — |
+| Dry Run Mode | — |
+| Delegated Identity | — |
+| Protected Resource Metadata | — |
+| Dynamic Client Registration | — |
+| Agentic Commerce | — |
+| Pagination Ratio | na |
+| Operation Distinctiveness | distinct |
+
+**Regulatory alignment 32.7** — Horizontal (data, software, accessibility, platform)
+
+The rubric is published at [github.com/api-evangelist/kin-score](https://github.com/api-evangelist/kin-score). The per-check breakdown behind these numbers — which checks were earned, partial or missed — along with score history and how this provider compares to its peers, is available at [apis.io/providers/amazon-deepracer/](https://apis.io/providers/amazon-deepracer/).
+
+## How this profile is made
+
+API Evangelist profiles a company's public API surface the way a developer would find it: the website, developer portal and documentation, the specifications it publishes, its public repositories, and its pricing, status and changelog pages. From that it derives the properties above — contracts split per API, workflows, schemas, collections, governance rules, plans and rate limits — and scores them against the published [Kin Score rubric](https://github.com/api-evangelist/kin-score).
+
+The artifacts are published on [APIs.io](https://apis.io), not in this repository. This repository is the public record for Amazon DeepRacer: the place to say something is wrong, missing or out of date, and to ask for a re-score or a removal.
+
+## Open an issue
+
+- **Something about this listing** — a wrong description, a missing API, a stale artifact or a question about the rating: [open an issue on this repository](https://github.com/api-evangelist/amazon-deepracer/issues/new).
+- **A new API, or one that is not in the catalog yet** — [submit it on APIs.io](https://apis.io/add/).
+- **Anything else** — [the APIs.io inbox](https://github.com/api-search/inbox/issues/new) or [info@apievangelist.com](mailto:info@apievangelist.com).
