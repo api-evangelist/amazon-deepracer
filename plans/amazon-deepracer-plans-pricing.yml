@@ -1,3 +1,4 @@
+name: Amazon DeepRacer API Plans
 specification: API Commons Plans
 specificationVersion: '0.1'
 schema: https://raw.githubusercontent.com/api-evangelist/interface-research/main/schema/api-commons.yml#/$defs/Plans
@@ -150,7 +151,7 @@ maintainers:
   - FN: Kin Lane
     email: kin@apievangelist.com
 x-canonical:
-  generated: '2026-11-06'
+  generated: '2026-11-13'
   vocabulary: engine/economics/plans-canonical.yml
   models:
   - free

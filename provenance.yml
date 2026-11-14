@@ -5,10 +5,19 @@ artifacts:
   agentic-access/amazon-deepracer-agentic-access.yml:
     method: generated
     evidence: declared in the artifact
+  ai-preferences/amazon-deepracer-ai-preferences.yml:
+    method: harvested
+    evidence: declared in the artifact
   authentication/amazon-deepracer-authentication.yml:
     method: derived
     evidence: declared in the artifact
   capabilities/amazon-deepracer-capability-edges.yml:
+    method: unknown
+    evidence: no authorship recorded
+  certification/observations-2026-11-11.jsonl:
+    method: unknown
+    evidence: no authorship recorded
+  certification/status.yml:
     method: unknown
     evidence: no authorship recorded
   collections/amazon-deepracer-cars-api.opencollection.json:
@@ -41,6 +50,21 @@ artifacts:
   collections/amazon-deepracer.postman_collection.json:
     method: derived
     evidence: openapi/amazon-deepracer
+  compliance/amazon-deepracer-compliance.yml:
+    method: harvested
+    evidence: declared in the artifact
+  conformance/amazon-deepracer-conformance.yml:
+    method: derived
+    evidence: declared in the artifact
+  data-model/amazon-deepracer-data-model.yml:
+    method: derived
+    evidence: declared in the artifact
+  eligibility/amazon-deepracer-eligibility.yml:
+    method: harvested
+    evidence: declared in the artifact
+  errors/amazon-deepracer-problem-types.yml:
+    method: derived
+    evidence: declared in the artifact
   examples/car-example.json:
     method: unknown
     evidence: no authorship recorded
@@ -80,6 +104,9 @@ artifacts:
   front-door-ai/2026-09-17.yml:
     method: unknown
     evidence: no authorship recorded
+  hosts/amazon-deepracer-hosts.yml:
+    method: derived
+    evidence: declared in the artifact
   integrations/_index.yml:
     method: generated
     evidence: carries an API Evangelist house phrase
@@ -87,6 +114,39 @@ artifacts:
     method: unknown
     evidence: no authorship recorded
   json-ld/amazon-deepracer-context.jsonld:
+    method: unknown
+    evidence: no authorship recorded
+  json-schema/amazon-deepracer-car-schema.json:
+    method: unknown
+    evidence: no authorship recorded
+  json-schema/amazon-deepracer-delete-model-response-schema.json:
+    method: unknown
+    evidence: no authorship recorded
+  json-schema/amazon-deepracer-leaderboard-schema.json:
+    method: unknown
+    evidence: no authorship recorded
+  json-schema/amazon-deepracer-list-cars-response-schema.json:
+    method: unknown
+    evidence: no authorship recorded
+  json-schema/amazon-deepracer-list-leaderboard-submissions-response-schema.json:
+    method: unknown
+    evidence: no authorship recorded
+  json-schema/amazon-deepracer-list-leaderboards-response-schema.json:
+    method: unknown
+    evidence: no authorship recorded
+  json-schema/amazon-deepracer-list-models-response-schema.json:
+    method: unknown
+    evidence: no authorship recorded
+  json-schema/amazon-deepracer-list-tracks-response-schema.json:
+    method: unknown
+    evidence: no authorship recorded
+  json-schema/amazon-deepracer-model-schema.json:
+    method: unknown
+    evidence: no authorship recorded
+  json-schema/amazon-deepracer-update-car-request-schema.json:
+    method: unknown
+    evidence: no authorship recorded
+  json-schema/amazon-deepracer-update-car-response-schema.json:
     method: unknown
     evidence: no authorship recorded
   json-schema/car-schema.json:
@@ -158,7 +218,7 @@ artifacts:
   kin/checks-2026-10-23T222754.yml:
     method: generated
     evidence: Kin Score snapshot written by score.rb
-  kin/checks-2026-11-02T082323.yml:
+  kin/checks-2026-11-06T143934.yml:
     method: generated
     evidence: Kin Score snapshot written by score.rb
   kin/score-2026-09-23T000603.yml:
@@ -227,6 +287,18 @@ artifacts:
   kin/score-2026-11-02T082323.yml:
     method: generated
     evidence: Kin Score snapshot written by score.rb
+  kin/score-2026-11-06T143934.yml:
+    method: generated
+    evidence: Kin Score snapshot written by score.rb
+  llms/amazon-deepracer-llms-provenance.yml:
+    method: unknown
+    evidence: no authorship recorded
+  llms/amazon-deepracer-llms.txt:
+    method: unknown
+    evidence: no authorship recorded
+  mcp/amazon-deepracer-mcp.yml:
+    method: derived
+    evidence: declared in the artifact
   openapi/_original/amazon-deepracer-openapi.yml:
     method: harvested
     evidence: found in openapi/_original/; the fetch URL and bytes were not recorded, so byte-identity
@@ -243,6 +315,12 @@ artifacts:
   openapi/amazon-deepracer-tracks-api-openapi.yml:
     method: derived
     evidence: paths are a subset of openapi/_original/ (split from the harvested spec)
+  packages/amazon-deepracer-packages.yml:
+    method: unknown
+    evidence: no authorship recorded
+  patterns/amazon-deepracer-patterns.yml:
+    method: derived
+    evidence: declared in the artifact
   plans/amazon-deepracer-plans-pricing.yml:
     method: generated
     evidence: declared in the artifact
@@ -258,10 +336,16 @@ artifacts:
   postman/amazon-deepracer-tracks-api.postman_collection.json:
     method: derived
     evidence: openapi/amazon-deepracer-tracks-api
+  privacy/amazon-deepracer-privacy-policy.yml:
+    method: harvested
+    evidence: declared in the artifact
   rate-limits/amazon-deepracer-rate-limits.yml:
     method: generated
     evidence: declared in the artifact
   rules/amazon-deepracer-jsonschema-spectral-rules.yml:
+    method: generated
+    evidence: declared in the artifact
+  rules/amazon-deepracer-rules.yml:
     method: generated
     evidence: declared in the artifact
   rules/amazon-deepracer-spectral-rules.yml:
@@ -279,6 +363,24 @@ artifacts:
   sla/amazon-deepracer-sla.yml:
     method: generated
     evidence: declared in the artifact
+  terms/amazon-deepracer-terms-of-service.yml:
+    method: harvested
+    evidence: declared in the artifact
+  vendors/amazon-deepracer-vendors.yml:
+    method: unknown
+    evidence: no authorship recorded
   vocabulary/amazon-deepracer-vocabulary.yaml:
+    method: unknown
+    evidence: no authorship recorded
+  vocabulary/amazon-deepracer-vocabulary.yml:
+    method: derived
+    evidence: declared in the artifact
+  well-known/amazon-deepracer-midway-auth-openid-configuration.json:
+    method: unknown
+    evidence: no authorship recorded
+  well-known/amazon-deepracer-security.txt:
+    method: unknown
+    evidence: no authorship recorded
+  well-known/amazon-deepracer-well-known.yml:
     method: unknown
     evidence: no authorship recorded
