@@ -360,9 +360,6 @@ artifacts:
   security/amazon-deepracer-vulnerability-disclosure.yml:
     method: searched
     evidence: declared in the artifact
-  sla/amazon-deepracer-sla.yml:
-    method: generated
-    evidence: declared in the artifact
   terms/amazon-deepracer-terms-of-service.yml:
     method: harvested
     evidence: declared in the artifact
